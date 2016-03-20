@@ -1,24 +1,39 @@
 package com.jones.android.nursingpathways;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.Calendar;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     boolean firstTimeOpeningApp = true;
     boolean paused = false;
     boolean timeToUpdateClasses = true;
+    boolean registrationSoon = false;
+
 
     ImageView image3;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
+    private static Intent alarmIntent = null;
+    private static PendingIntent pendingIntent = null;
+    private static AlarmManager alarmManager = null;
+    private static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +45,48 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
         image3 = (ImageView) findViewById(R.id.imageView) ;
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor =sharedPreferences.edit();
 
+        int numberOfTimesUntilDisplay;
+        int numberOfOpenings;
 
+        int mNotificationId = 071;
+        int m2NotificationId = 061;
+        int m3NotificationId = 051;
+        String ns = Context.NOTIFICATION_SERVICE;
+        NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(ns);
+        nMgr.cancel(mNotificationId);
+        nMgr.cancel(m2NotificationId);
+        nMgr.cancel(m3NotificationId);
+
+        context = getApplicationContext();
+
+        checkIfRegistrationIsClose();
+
+
+        if (sharedPreferences.contains("NumberOfTimesUntilDisplay")){
+            numberOfTimesUntilDisplay = sharedPreferences.getInt("NumberOfTimesUntilDisplay",0);
+
+        } else{
+            numberOfTimesUntilDisplay = 6;
+        }
+
+        if (sharedPreferences.contains("NumberOfOpenings")){
+            numberOfOpenings = sharedPreferences.getInt("NumberOfOpenings",5);
+            int num = numberOfOpenings+1;
+            editor.putInt("NumberOfOpenings", num);
+            editor.commit();
+        } else {
+            numberOfOpenings =0;
+            editor.putInt("NumberOfOpenings", 0);
+            editor.commit();
+        }
+
+
+
+        //TODO implement the timer for this?
         if (sharedPreferences.contains("TimeToUpdateCourses")) {
             timeToUpdateClasses = sharedPreferences.getBoolean("TimeToUpdateCourses", true);
 
@@ -51,22 +104,29 @@ public class MainActivity extends AppCompatActivity {
             editor.putBoolean("FirstTimeOpening", false);
             editor.commit();
         } else {
+
+            editor.putInt("NumberOfTimesUntilDisplay",0);
+            editor.commit();
+            setUpAlarmsFirstInstall();
+            randomizeNextBlackboardPrompt();
             firstTimeOpeningApp = true;
             editor.putBoolean("FirstTimeOpening",false);
             editor.commit();
         }
-        //MUST REMOVE IN PRODUCTION APPLICATION.
-        //editor.putBoolean("FirstTimeOpening",true);
-        //editor.commit();
-        //firstTimeOpeningApp=true;
-        timeToUpdateClasses = true;
+
+
+        if (numberOfOpenings>=numberOfTimesUntilDisplay){
+            setAndDisplayHaveYouLoggedInToBlackboard("Have you logged into Blackboard Recently?", 0);
+            randomizeNextBlackboardPrompt();
+        }
 
         Context context = getApplicationContext();
         if(!timeToUpdateClasses)
         {
             //Check if there is a scheduled update within a day?
+
         }
-        if(timeToUpdateClasses)
+        if(timeToUpdateClasses&&!firstTimeOpeningApp)
         {
             Intent intent = new Intent(context, UpdateClassesInProgress.class);
             timeToUpdateClasses = false;
@@ -75,16 +135,25 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             return;
         }
-        if (firstTimeOpeningApp && !timeToUpdateClasses)
+        if (firstTimeOpeningApp&&timeToUpdateClasses)
         {
             Intent intent = new Intent(context,FirstOpenScreen.class);
             firstTimeOpeningApp = false;
             editor.putBoolean("FirstTimeOpening",false);
             startActivityForResult(intent, 1);
-        } else {
+        } else if (firstTimeOpeningApp && !timeToUpdateClasses) {
+            Intent intent = new Intent(context,FirstOpenScreen.class);
+            firstTimeOpeningApp = false;
+            editor.putBoolean("FirstTimeOpening",false);
+            startActivityForResult(intent, 1);
+        } else{
+                if (registrationSoon){
+                    startActivity(new Intent(this, RegisterForClasses.class));
+                } else {
+                    startActivity(new Intent(context, PathWayDisplay.class));
+                }
+            }
 
-            startActivity(new Intent(context,PathWayDisplay.class));
-        }
 
 
 
@@ -153,6 +222,705 @@ public class MainActivity extends AppCompatActivity {
 
     private void setAllPathwayVariablesToScratch()
     {
+        SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPrefDone.edit();
+        SharedPreferences sharedPrefIP = getSharedPreferences("courses", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editorIP = sharedPrefDone.edit();
+        final String[] courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
+        for (int i=0; i<courseLabels.length;i++){
+            editor.putBoolean(courseLabels[i], false);
+            editorIP.putBoolean(courseLabels[i],false);
 
+            editor.apply();
+            editorIP.apply();
+        }
+    }
+
+
+    private void setAndDisplayRegisterNotification(String text, int days)
+    {
+        Notification.Builder notificationBuilder = new Notification.Builder(this)
+                .setSmallIcon(R.drawable.pathway_icon)
+                .setContentTitle("Title")
+                .setContentText(text);
+
+        Intent resultIntent = new Intent(this, RegisterForClasses.class);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                resultIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        notificationBuilder.setContentIntent(resultPendingIntent);
+
+        // Sets an ID for the notification
+        int mNotificationId = 001;
+// Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+// Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, notificationBuilder.build());
+
+
+    }
+
+    private  void setAndDisplayHaveYouLoggedInToBlackboard(String text, int days)
+    {
+        Notification.Builder notificationBuilder = new Notification.Builder(this)
+                .setSmallIcon(R.drawable.pathway_icon)
+                .setContentTitle("Blackboard")
+                .setContentText(text);
+
+        Intent resultIntent = new Intent(this, CheckBlackBoardFromNotification.class);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                resultIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT );
+        notificationBuilder.setContentIntent(resultPendingIntent);
+
+        // Sets an ID for the notification
+        int mNotificationId = 071;
+// Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+// Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, notificationBuilder.build());
+    }
+
+
+    private void randomizeNextBlackboardPrompt()
+    {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt(5);
+        if (random<2){ random = 2; }
+        editor.putInt("NumberOfTimesUntilDisplay", random);
+        editor.putInt("NumberOfOpenings", 0);
+    }
+
+    private void setTimeToShowBlackboardPrompt(int seconds){
+        int alarmId = 013424;
+        long ms = seconds * (1000) + Calendar.getInstance().getTimeInMillis();
+        alarmIntent = new Intent(this, BlackboardAlarmReceiver.class );
+        pendingIntent = PendingIntent.getBroadcast( context, alarmId, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        if (alarmManager == null) {
+            alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        }
+        alarmManager.set(AlarmManager.RTC_WAKEUP, ms, pendingIntent);
+
+    }
+    private void setTimeToShowRegistrationPrompt(int seconds){
+        int alarmId = 013423;
+        long ms = seconds * (1000) + Calendar.getInstance().getTimeInMillis();
+        alarmIntent = new Intent(this, RegistrationAlarmReceiver.class );
+        pendingIntent = PendingIntent.getBroadcast( context, alarmId, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        if (alarmManager == null) {
+            alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        }
+        alarmManager.set(AlarmManager.RTC_WAKEUP, ms, pendingIntent );
+
+    }
+
+    private void sendToRegistrationFlag(int daysTil) {
+        if(daysTil<15) {
+            registrationSoon = true;
+        }
+    }
+
+
+    private  void checkIfRegistrationIsClose(){
+        Calendar calendar = Calendar.getInstance();
+
+        int year       = calendar.get(Calendar.YEAR);
+        int month      = calendar.get(Calendar.MONTH); // Jan = 0, dec = 11
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        int dayOfWeek  = calendar.get(Calendar.DAY_OF_WEEK);
+        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+        int weekOfMonth= calendar.get(Calendar.WEEK_OF_MONTH);
+
+
+        int dayConversion = 24 * 60 * 60;
+        int registerShow;
+
+        switch (month) {
+            case 0:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 5 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 4 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 4 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 4 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 4 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 5 * 30 * dayConversion;
+                        break;
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 1:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 4 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 3 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 3 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 3 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 2:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 2 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 2 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 2 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 3:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 4:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 0 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 5:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 6:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 0 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 0 * 30 * dayConversion;
+                        break;
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 7:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 2 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 2 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 2 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 8:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 9:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 0 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 10:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+            case 11:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 0 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                }
+                sendToRegistrationFlag(registerShow);
+                break;
+
+        }
+    }
+
+
+    private  void setUpAlarmsFirstInstall(){
+        Calendar calendar = Calendar.getInstance();
+
+        int year       = calendar.get(Calendar.YEAR);
+        int month      = calendar.get(Calendar.MONTH); // Jan = 0, dec = 11
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        int dayOfWeek  = calendar.get(Calendar.DAY_OF_WEEK);
+        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+        int weekOfMonth= calendar.get(Calendar.WEEK_OF_MONTH);
+        Log.e("The", month + "");
+        int blackboardShow = 2 * 7 * 24 * 60 * 60;
+        setTimeToShowBlackboardPrompt(blackboardShow);
+
+        int dayConversion = 24 * 60 * 60;
+        int registerShow;
+
+        switch (month) {
+            case 0:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 5 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 4 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 4 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 4 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 4 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 5 * 30 * dayConversion;
+                        break;
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 1:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 4 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 3 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 3 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 3 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 2:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 2 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 2 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 2 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 3:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 4:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 0 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 5:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 6:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 0 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 0 * 30 * dayConversion;
+                        break;
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 7:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 2 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 2 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 2 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 3 * 30 * dayConversion;
+                        break;
+
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 8:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 9:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 0 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 10:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 2 * 30 * dayConversion;
+                        break;
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+            case 11:
+                switch (weekOfMonth){
+                    case 0:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                    case 1:
+                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        break;
+                    case 2:
+                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        break;
+                    case 3:
+                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        break;
+                    case 4:
+                        registerShow = 0 * 30 * dayConversion;
+                        break;
+                    default:
+                        registerShow = 1 * 30 * dayConversion;
+                        break;
+                }
+                setTimeToShowRegistrationPrompt(registerShow);
+                break;
+
+        }
     }
 }

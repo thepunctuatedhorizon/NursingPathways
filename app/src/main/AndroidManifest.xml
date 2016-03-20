@@ -42,7 +42,23 @@
             android:name=".UpdateClasses"
             android:label="UpdateClasses"
             android:noHistory="true"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".CheckBlackBoardFromNotification" />
+
+        <receiver android:name=".BlackboardAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.jones.android.nursingpathways.BlackboardAlarmReceiver" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".RegistrationAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.jones.android.nursingpathways.RegistrationAlarmReceiver" />
+            </intent-filter>
+        </receiver>
+
+
+        <activity android:name=".RegisterForClasses"></activity>
     </application>
 
 </manifest>
