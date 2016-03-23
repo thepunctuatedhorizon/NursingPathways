@@ -56,7 +56,11 @@
                 <action android:name="com.jones.android.nursingpathways.RegistrationAlarmReceiver" />
             </intent-filter>
         </receiver>
-
+        <receiver android:name=".UpdateClassesInProgressAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.jones.android.nursingpathways.UpdateClassesInProgressAlarmReceiver" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name=".RegisterForClasses"></activity>
     </application>

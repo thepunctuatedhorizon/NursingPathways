@@ -5,11 +5,19 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class RegisterForClasses extends AppCompatActivity {
 
@@ -17,6 +25,13 @@ public class RegisterForClasses extends AppCompatActivity {
     private static PendingIntent pendingIntent = null;
     private static AlarmManager alarmManager = null;
     private static Context context;
+
+    String[] courseLabels;
+    String[] coursePreReqs;
+    List<Boolean> theClassesToRegister;
+    List<Boolean> theClassListDone;
+    List<Boolean> theClassListInProgress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +46,71 @@ public class RegisterForClasses extends AppCompatActivity {
         nMgr.cancel(mNotification3);
         context = getApplicationContext();
 
+        courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
+        coursePreReqs = getResources().getStringArray(R.array.Prereqs);
+
+
         setUpAlarms();
 
+        SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
+        SharedPreferences sharedPrefInProgress = getSharedPreferences("coursesInProgress", Context.MODE_PRIVATE);
 
+
+        theClassesToRegister = new ArrayList<Boolean>();
+        theClassListDone = new ArrayList<Boolean>();
+        theClassListInProgress = new ArrayList<Boolean>();
+
+        for (int i = 0; i < courseLabels.length; i++) {
+            boolean courseAdded = false;
+
+
+
+            if (sharedPrefDone.getBoolean(courseLabels[i], false)) {
+                theClassListDone.add(true);
+                theClassListInProgress.add(false);
+                theClassesToRegister.add(false);
+                courseAdded = true;
+            }
+            if (sharedPrefInProgress.getBoolean(courseLabels[i], false) && !courseAdded) {
+                theClassListDone.add(false);
+                theClassListInProgress.add(true);
+                theClassesToRegister.add(false);
+                courseAdded = true;
+
+            }
+
+            if (coursePreReqs[i] == "NONE" && !courseAdded)            {
+                theClassListDone.add(false);
+                theClassListInProgress.add(false);
+                theClassesToRegister.add(true);
+                courseAdded = true;
+            }
+
+            String preReq = coursePreReqs[i];
+            for (int j=0; j<i; j++)
+            {
+                String course = courseLabels[j];
+                if (course.equals(preReq)&& theClassListDone.get(j)){
+                    theClassesToRegister.add(true);
+                    courseAdded = true;
+                }
+            }
+
+            if (!courseAdded) {
+                theClassListInProgress.add(false);
+                theClassListDone.add(false);
+                theClassesToRegister.add(false);
+
+            }
+        }
+        TextView textView = (TextView) findViewById(R.id.textView3);
+        String text = "";
+        for (int i=0; i<courseLabels.length; i++){
+            if(theClassesToRegister.get(i)) {
+                text = text + courseLabels[i] +"\n";
+            }
+        }
+        textView.setText(text);
     }
 
 
@@ -335,6 +412,8 @@ public class RegisterForClasses extends AppCompatActivity {
 
         }
     }
+
+
     private void setTimeToShowRegistrationPrompt(int seconds){
         int alarmId = 013423;
         long ms = seconds * (1000) + Calendar.getInstance().getTimeInMillis();
@@ -346,6 +425,7 @@ public class RegisterForClasses extends AppCompatActivity {
         alarmManager.set(AlarmManager.RTC_WAKEUP, ms, pendingIntent );
 
     }
+
 
     private void setTimeToShowBlackboardPrompt(int seconds){
         int alarmId = 013424;

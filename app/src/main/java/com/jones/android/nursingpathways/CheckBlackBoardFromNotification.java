@@ -24,14 +24,19 @@ public class CheckBlackBoardFromNotification extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_black_board_from_notification);
+        context = getApplicationContext();
         int mNotificationId = 071;
         int mNotificationSecondId = 061;
         int mNotification3 = 051;
+        int mNotification4 = 001;
+        int mNotification5 = 002;
         String ns = Context.NOTIFICATION_SERVICE;
         NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(ns);
         nMgr.cancel(mNotificationId);
         nMgr.cancel(mNotificationSecondId);
         nMgr.cancel(mNotification3);
+        nMgr.cancel(mNotification4);
+        nMgr.cancel(mNotification5);
         Button checkBB = (Button) findViewById(R.id.bttnCheckBlackBoard);
         checkBB.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -63,18 +63,25 @@ public class MainActivity extends AppCompatActivity {
 
         context = getApplicationContext();
 
+
+        //Remove when finished RegisterForClasses
+        startActivity(new Intent(this, RegisterForClasses.class));
+
+
+
+
         checkIfRegistrationIsClose();
 
 
         if (sharedPreferences.contains("NumberOfTimesUntilDisplay")){
-            numberOfTimesUntilDisplay = sharedPreferences.getInt("NumberOfTimesUntilDisplay",0);
+            numberOfTimesUntilDisplay = sharedPreferences.getInt("NumberOfTimesUntilDisplay",6);
 
         } else{
             numberOfTimesUntilDisplay = 6;
         }
 
         if (sharedPreferences.contains("NumberOfOpenings")){
-            numberOfOpenings = sharedPreferences.getInt("NumberOfOpenings",5);
+            numberOfOpenings = sharedPreferences.getInt("NumberOfOpenings", 0);
             int num = numberOfOpenings+1;
             editor.putInt("NumberOfOpenings", num);
             editor.commit();
@@ -85,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
-        //TODO implement the timer for this?
         if (sharedPreferences.contains("TimeToUpdateCourses")) {
             timeToUpdateClasses = sharedPreferences.getBoolean("TimeToUpdateCourses", true);
 
@@ -110,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             setUpAlarmsFirstInstall();
             randomizeNextBlackboardPrompt();
             firstTimeOpeningApp = true;
-            editor.putBoolean("FirstTimeOpening",false);
+            editor.putBoolean("FirstTimeOpening", false);
             editor.commit();
         }
 
@@ -120,12 +125,7 @@ public class MainActivity extends AppCompatActivity {
             randomizeNextBlackboardPrompt();
         }
 
-        Context context = getApplicationContext();
-        if(!timeToUpdateClasses)
-        {
-            //Check if there is a scheduled update within a day?
 
-        }
         if(timeToUpdateClasses&&!firstTimeOpeningApp)
         {
             Intent intent = new Intent(context, UpdateClassesInProgress.class);
@@ -135,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             return;
         }
+
+
         if (firstTimeOpeningApp&&timeToUpdateClasses)
         {
             Intent intent = new Intent(context,FirstOpenScreen.class);
@@ -146,18 +148,16 @@ public class MainActivity extends AppCompatActivity {
             firstTimeOpeningApp = false;
             editor.putBoolean("FirstTimeOpening",false);
             startActivityForResult(intent, 1);
-        } else{
-                if (registrationSoon){
-                    startActivity(new Intent(this, RegisterForClasses.class));
-                } else {
-                    startActivity(new Intent(context, PathWayDisplay.class));
-                }
+        } else {
+            if (registrationSoon) {
+                startActivity(new Intent(context, RegisterForClasses.class));
+                setTimeToUpdateClasses(14);
+            } else {
+                startActivity(new Intent(context, PathWayDisplay.class));
             }
-
-
-
-
+        }
     }
+
     @Override
     public  void onStart()
     {
@@ -165,8 +165,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-     public void onResume()
-    {
+     public void onResume() {
         super.onResume();
 
         if (paused)
@@ -177,12 +176,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onPause()
-    {
+    public void onPause() {
         super.onPause();
         paused = true;
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -206,8 +205,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode== 1){
             if (resultCode==RESULT_CANCELED){
                 setAllPathwayVariablesToScratch();
@@ -220,8 +218,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setAllPathwayVariablesToScratch()
-    {
+
+    private void setAllPathwayVariablesToScratch() {
         SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefDone.edit();
         SharedPreferences sharedPrefIP = getSharedPreferences("courses", Context.MODE_PRIVATE);
@@ -237,34 +235,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void setAndDisplayRegisterNotification(String text, int days)
-    {
-        Notification.Builder notificationBuilder = new Notification.Builder(this)
-                .setSmallIcon(R.drawable.pathway_icon)
-                .setContentTitle("Title")
-                .setContentText(text);
-
-        Intent resultIntent = new Intent(this, RegisterForClasses.class);
-        PendingIntent resultPendingIntent = PendingIntent.getActivity(
-                this,
-                0,
-                resultIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-        notificationBuilder.setContentIntent(resultPendingIntent);
-
-        // Sets an ID for the notification
-        int mNotificationId = 001;
-// Gets an instance of the NotificationManager service
-        NotificationManager mNotifyMgr =
-                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-// Builds the notification and issues it.
-        mNotifyMgr.notify(mNotificationId, notificationBuilder.build());
-
-
+    private void setTimeToUpdateClasses(int days){
+        int alarmId = 013523;
+        long ms = Calendar.getInstance().getTimeInMillis() + days * 24 * 60 * 60 * (1000) ;
+        alarmIntent = new Intent(this, UpdateClassesInProgressAlarmReceiver.class );
+        pendingIntent = PendingIntent.getBroadcast( context, alarmId, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        if (alarmManager == null) {
+            alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        }
+        alarmManager.set(AlarmManager.RTC_WAKEUP, ms, pendingIntent);
     }
 
-    private  void setAndDisplayHaveYouLoggedInToBlackboard(String text, int days)
-    {
+
+    private  void setAndDisplayHaveYouLoggedInToBlackboard(String text, int days) {
         Notification.Builder notificationBuilder = new Notification.Builder(this)
                 .setSmallIcon(R.drawable.pathway_icon)
                 .setContentTitle("Blackboard")
@@ -288,14 +271,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void randomizeNextBlackboardPrompt()
-    {
+    private void randomizeNextBlackboardPrompt() {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt(5);
         if (random<2){ random = 2; }
         editor.putInt("NumberOfTimesUntilDisplay", random);
         editor.putInt("NumberOfOpenings", 0);
+        editor.commit();
     }
+
 
     private void setTimeToShowBlackboardPrompt(int seconds){
         int alarmId = 013424;
@@ -308,6 +292,8 @@ public class MainActivity extends AppCompatActivity {
         alarmManager.set(AlarmManager.RTC_WAKEUP, ms, pendingIntent);
 
     }
+
+
     private void setTimeToShowRegistrationPrompt(int seconds){
         int alarmId = 013423;
         long ms = seconds * (1000) + Calendar.getInstance().getTimeInMillis();
@@ -319,6 +305,7 @@ public class MainActivity extends AppCompatActivity {
         alarmManager.set(AlarmManager.RTC_WAKEUP, ms, pendingIntent );
 
     }
+
 
     private void sendToRegistrationFlag(int daysTil) {
         if(daysTil<15) {
@@ -923,4 +910,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.jones.android.nursingpathways;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,6 +26,20 @@ public class UpdateClassesInProgress extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_classes_inprogress);
+
+        int mNotificationId = 071;
+        int mNotificationSecondId = 061;
+        int mNotification3 = 051;
+        int mNotification4 = 001;
+        int mNotification5 = 002;
+        String ns = Context.NOTIFICATION_SERVICE;
+        NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(ns);
+        nMgr.cancel(mNotificationId);
+        nMgr.cancel(mNotificationSecondId);
+        nMgr.cancel(mNotification3);
+        nMgr.cancel(mNotification4);
+        nMgr.cancel(mNotification5);
+
 
         final String[] courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
         final Context context = getApplicationContext();
