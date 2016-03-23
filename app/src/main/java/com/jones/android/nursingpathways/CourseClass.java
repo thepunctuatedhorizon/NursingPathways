@@ -62,6 +62,16 @@ public class CourseClass {
     public void setDone(boolean done){
         this.done = done;
     }
+    public void setInProgress(boolean inProgress){
+        this.inProgress = inProgress;
+    }
+    public void setAnyPreReqs(boolean anyPreReqs){
+        this.anyPreReqs = anyPreReqs;
+    }
+    public  void setPreReqs(String preReqs){
+        this.preReqs = preReqs;
+    }
+
 
 
 }

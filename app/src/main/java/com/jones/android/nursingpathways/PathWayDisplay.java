@@ -14,13 +14,16 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.jones.android.nursingpathways.CourseClass;
 
 public class PathWayDisplay extends AppCompatActivity {
 
     String[] courseLabels;
+    String[] coursePrereqs;
     List<Button> buttonOnPathway;
     List<Boolean> theClassListDone;
     List<Boolean> theClassListInProgress;
+    List<CourseClass> theCourseObjects;
 
 
     @Override
@@ -29,7 +32,9 @@ public class PathWayDisplay extends AppCompatActivity {
         setContentView(R.layout.activity_path_way_display);
         theClassListDone = new ArrayList<Boolean>();
         theClassListInProgress = new ArrayList<Boolean>();
+        theCourseObjects = new ArrayList<CourseClass>();
         courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
+        coursePrereqs = getResources().getStringArray(R.array.Prereqs);
         Intent intent = getIntent();
 
         if(intent!=null)
@@ -45,16 +50,32 @@ public class PathWayDisplay extends AppCompatActivity {
         LinearLayout layout = (LinearLayout) findViewById(R.id.content_path_way_display_linearLayout);
         Context context = getApplicationContext();
 
+        for (int i = 0; i< courseLabels.length; i++)
+        {
+            boolean preReq = false;
+            if (!coursePrereqs[i].equals("NONE")){
+                preReq = true;
+            }
+            CourseClass course = new CourseClass(courseLabels[i],
+                    "",
+                    sharedPrefDone.getBoolean(courseLabels[i], false),
+                    sharedPrefInProgress.getBoolean(courseLabels[i], false),
+                    preReq,
+                    coursePrereqs[i]);
+            theCourseObjects.add(course);
+        }
+
+
         for (int i = 0; i < courseLabels.length; i++) {
 
             boolean buttonAdded = false;
-
-            if (sharedPrefDone.getBoolean(courseLabels[i], false)) {
+            CourseClass course = theCourseObjects.get(i);
+            if (course.getDone()) {
                 theClassListDone.add(true);
                 theClassListInProgress.add(false);
 
                 Button button = new Button(context);
-                button.setText(courseLabels[i]);
+                button.setText(course.getTitle());
                 button.setTextColor(Color.BLUE);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 button.setLayoutParams(params);
@@ -69,12 +90,12 @@ public class PathWayDisplay extends AppCompatActivity {
 
                 buttonAdded = true;
             }
-            if(sharedPrefInProgress.getBoolean(courseLabels[i],false) && !buttonAdded){
+            if(course.getInProgress() && !buttonAdded){
                 theClassListDone.add(false);
                 theClassListInProgress.add(true);
 
                 Button button = new Button(context);
-                button.setText(courseLabels[i]);
+                button.setText(course.getTitle());
                 button.setTextColor(Color.GREEN);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 button.setLayoutParams(params);
@@ -94,7 +115,7 @@ public class PathWayDisplay extends AppCompatActivity {
                 theClassListInProgress.add(false);
                 theClassListDone.add(false);
                 Button button = new Button(context);
-                button.setText(courseLabels[i]);
+                button.setText(course.getTitle());
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 button.setLayoutParams(params);
                 button.setTextColor(Color.RED);
