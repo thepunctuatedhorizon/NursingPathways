@@ -103,6 +103,7 @@ public class RegisterForClasses extends AppCompatActivity {
 
             }
         }
+
         TextView textView = (TextView) findViewById(R.id.textView3);
         String text = "";
         for (int i=0; i<courseLabels.length; i++){
@@ -111,7 +112,10 @@ public class RegisterForClasses extends AppCompatActivity {
             }
         }
         textView.setText(text);
+
     }
+
+
 
 
     private  void setUpAlarms(){
