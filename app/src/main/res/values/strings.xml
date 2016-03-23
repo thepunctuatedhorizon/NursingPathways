@@ -30,8 +30,8 @@
         <item>BIOL 210</item>
     </string-array>
     <string name="title_activity_register_denied">Why Can\'t You Register For This Course?</string>
-    <string name="regDen_finAid">I need financial aid</string>
-    <string name="regDen_childCare">I need to care for a child</string>
-    <string name="regDen_switchMajor">I want to switch my major</string>
-    <string name="regDen_personal">I can\'t due to personal reasons</string>
+    <string name="btnregDen_finAid">I need financial aid</string>
+    <string name="btnregDen_childCare">I need to care for a child</string>
+    <string name="btnregDen_switchMajor">I want to switch my major</string>
+    <string name="btnregDen_personal">I can\'t due to personal reasons</string>
 </resources>
