@@ -29,4 +29,5 @@
         <item>NONE</item>
         <item>BIOL 210</item>
     </string-array>
+    <string name="title_activity_register_denied">Why Can\'t You Register For This Course?</string>
 </resources>
