@@ -27,7 +27,7 @@ public class BlackboardAlarmReceiver extends BroadcastReceiver
             Notification.Builder notificationBuilder = new Notification.Builder(context)
                     .setSmallIcon(R.drawable.pathway_icon)
                     .setContentTitle("Blackboard")
-                    .setContentText("Have you Checked BlackBoard Recently");
+                    .setContentText("Have you checked Blackboard Recently");
 
             Intent resultIntent = new Intent(context, CheckBlackBoardFromNotification.class);
             PendingIntent resultPendingIntent = PendingIntent.getActivity(
