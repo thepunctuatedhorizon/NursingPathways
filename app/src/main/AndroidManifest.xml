@@ -43,7 +43,6 @@
             android:label="UpdateClasses"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".CheckBlackBoardFromNotification" />
 
         <receiver android:name=".BlackboardAlarmReceiver">
@@ -62,7 +61,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".RegisterForClasses"></activity>
+        <activity android:name=".RegisterForClasses" />
+        <activity android:name="com.jones.android.nu.Main2Activity" />
+        <activity android:name=".RegistrationDenied"></activity>
     </application>
 
 </manifest>
