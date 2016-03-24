@@ -50,20 +50,8 @@ public class PathWayDisplay extends AppCompatActivity {
         LinearLayout layout = (LinearLayout) findViewById(R.id.content_path_way_display_linearLayout);
         Context context = getApplicationContext();
 
-        for (int i = 0; i< courseLabels.length; i++)
-        {
-            boolean preReq = false;
-            if (!coursePrereqs[i].equals("NONE")){
-                preReq = true;
-            }
-            CourseClass course = new CourseClass(courseLabels[i],
-                    "",
-                    sharedPrefDone.getBoolean(courseLabels[i], false),
-                    sharedPrefInProgress.getBoolean(courseLabels[i], false),
-                    preReq,
-                    coursePrereqs[i]);
-            theCourseObjects.add(course);
-        }
+        CourseClassLoader courseClassLoader = new CourseClassLoader(context);
+        theCourseObjects = courseClassLoader.loadClassObjects();
 
 
         for (int i = 0; i < courseLabels.length; i++) {

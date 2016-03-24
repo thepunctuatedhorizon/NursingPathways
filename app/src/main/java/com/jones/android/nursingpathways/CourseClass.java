@@ -68,9 +68,7 @@ public class CourseClass {
     public void setAnyPreReqs(boolean anyPreReqs){
         this.anyPreReqs = anyPreReqs;
     }
-    public  void setPreReqs(String preReqs){
-        this.preReqs = preReqs;
-    }
+    public  void setPreReqs(String preReqs){this.preReqs = preReqs; }
 
 
 

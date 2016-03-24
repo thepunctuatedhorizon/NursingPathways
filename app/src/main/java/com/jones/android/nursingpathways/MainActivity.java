@@ -19,69 +19,113 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    //This activity should only be run once as it is designed to set up and send to other activities.
 
-    boolean firstTimeOpeningApp = true;
-    boolean paused = false;
-    boolean timeToUpdateClasses = true;
-    boolean registrationSoon = false;
+    //The boolean firstTimeOpeningApp indicates that this is the first install.
+    //If the app is first installed, there will be no shared preferences and thus the
+    //if statements will not trigger.  Thus this flag will not be changed from true
+    //and this will trigger the application to set up.
+    private boolean firstTimeOpeningApp = true;
+
+    //This boolean is designed to ensure that the MainActivity doesn't get run again.
+    private boolean paused = false;
+
+    //This boolean is designed to send the application to the UpdateClasses Activity
+    private boolean timeToUpdateClasses = true;
+
+    //This boolean will be set by a function to make sure that the registration prompt is
+    //sent at the correct time.
+    private boolean registrationSoon = false;
 
 
-    ImageView image3;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    //This is unnecessary,
+    private ImageView image3;
 
+    //This is the shared preferences private repository.
+    private SharedPreferences sharedPreferences;
+    //This is the shared preferences editor.  This will allow the saving of the preferences.
+    private SharedPreferences.Editor editor;
+
+    //This stack of intents allow the setting of the blackboard prompt
     private static Intent alarmIntent = null;
     private static PendingIntent pendingIntent = null;
     private static AlarmManager alarmManager = null;
+
+    //This variable allows the application to use the right context.
     private static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        if(paused)
-        {
-            finish();
-        }
+
+        // This will stop the application from rerunning the main application once everything has
+        // been set up.  This is important so that the main application is not on the backstack.
+        if(paused){finish();}
+
         setContentView(R.layout.activity_main);
+
+        //This is unnecessary.
         image3 = (ImageView) findViewById(R.id.imageView) ;
 
+        //This is getting the shared preferences for this application.  It doesn't matter if it is
+        // the first time opening. This call doesn't return a null object.
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //This is getting an editor class so we can edit the preferences.
         editor =sharedPreferences.edit();
 
+
+        //This integer is designed to hold the number of times until displaying the Blackboard notification
         int numberOfTimesUntilDisplay;
+        //This integer will be used to hold how many times the application has been loaded.
         int numberOfOpenings;
 
+
+        //This variable is designed to keep the application context the same throughout the Main Activity
+        context = getApplicationContext();
+
+        //These three integers refer to the kinds of notifications that could be active when the application
+        //starts. There may be up to five
+        //TODO: Make sure that all of the notifications are represented here.
         int mNotificationId = 071;
         int m2NotificationId = 061;
         int m3NotificationId = 051;
+
+        //This is the string for the notification, as can be clearly seen.
         String ns = Context.NOTIFICATION_SERVICE;
-        NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(ns);
+        //This notification manager is to get the notification service.
+        NotificationManager nMgr = (NotificationManager) context.getSystemService(ns);
+        //These three calls cancel the notifications that can be active
         nMgr.cancel(mNotificationId);
         nMgr.cancel(m2NotificationId);
         nMgr.cancel(m3NotificationId);
 
-        context = getApplicationContext();
+
 
 
         //Remove when finished RegisterForClasses
-/*
+
         startActivity(new Intent(this, RegistrationDenied.class));
         finish();
-*/
 
 
-
+        //This function is designed to check if the registration is within two weeks,  if it is
+        //close, the flag registrationSoon is set to true.
         checkIfRegistrationIsClose();
 
-
+        // This checks to see if the application has the number of times until display preference set
+        //and loads the said preference. This is for the Blackboard log in prompt launched base upon
+        // how many loads of the application has happened.
         if (sharedPreferences.contains("NumberOfTimesUntilDisplay")){
             numberOfTimesUntilDisplay = sharedPreferences.getInt("NumberOfTimesUntilDisplay",6);
-
-        } else{
+        } else {
+            //if there is no number stored, we just arbitrarily store 6 times until the randomization feature kicks in.
             numberOfTimesUntilDisplay = 6;
         }
 
+
+        // This checks to see if the application has the number of times the app has been opened.
+        // It also loads the said preference into memory. That is, if the number of openings exists, then the number of openings
+        // needs to be incremented and saved. Otherwise, it just needs to be set to zero and the preference written to memory.
         if (sharedPreferences.contains("NumberOfOpenings")){
             numberOfOpenings = sharedPreferences.getInt("NumberOfOpenings", 0);
             int num = numberOfOpenings+1;
@@ -94,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        //This section of code asks if the Time To Update Courses preference exists.  If it doesn't exist,
+        //this section of code sets the flag to false and writes it in the memory. If it does exist, it sets the
+        //flag to true and then writes the time to update courses preference to false. As is needed to reset the feature.
         if (sharedPreferences.contains("TimeToUpdateCourses")) {
             timeToUpdateClasses = sharedPreferences.getBoolean("TimeToUpdateCourses", true);
 
@@ -105,6 +152,12 @@ public class MainActivity extends AppCompatActivity {
             editor.commit();
         }
 
+
+        //This section of code sees if this is the first install of the application.
+        //If it is the first time the application will not have this preference and will execute the
+        //else statement.  The else statement contains the code to set up alarms, randomize the blackboard
+        //prompt, and writing the preferences to the memory.
+        //Otherwise it sets the flag first time opening the app to false.
         if (sharedPreferences.contains("FirstTimeOpening")) {
             firstTimeOpeningApp = sharedPreferences.getBoolean("FirstTimeOpening", true);
 
@@ -122,14 +175,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        //This checks to see if it is time to set and display the "Have you logged into Blackboard Recently?
         if (numberOfOpenings>=numberOfTimesUntilDisplay){
             setAndDisplayHaveYouLoggedInToBlackboard("Have you logged into Blackboard Recently?", 0);
             randomizeNextBlackboardPrompt();
         }
 
 
-        if(timeToUpdateClasses&&!firstTimeOpeningApp)
-        {
+        //This if statement is where things start to get fun.
+        //This if statement checks to see if it is time to update classes.  It also checks to see if
+        //the first time opening the app is false (it is true when first installs so this has to be checked for.
+        //If the flag timeToUpdateClasses
+        if(timeToUpdateClasses&&!firstTimeOpeningApp){
             Intent intent = new Intent(context, UpdateClassesInProgress.class);
             timeToUpdateClasses = false;
             editor.putBoolean("timeToUpdateCourses", false);
