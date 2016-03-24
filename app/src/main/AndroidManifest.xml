@@ -62,7 +62,6 @@
         </receiver>
 
         <activity android:name=".RegisterForClasses" />
-        <activity android:name="com.jones.android.nu.Main2Activity" />
         <activity android:name=".RegistrationDenied"></activity>
     </application>
 
