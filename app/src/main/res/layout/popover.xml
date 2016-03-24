@@ -60,7 +60,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Have you taken any ____ What was her suggestion?"
+                android:text="Have you taken any college courses previously?"
                 android:id="@+id/promptText"
                 android:layout_below="@+id/scrollView3"
                 android:layout_centerHorizontal="true"
