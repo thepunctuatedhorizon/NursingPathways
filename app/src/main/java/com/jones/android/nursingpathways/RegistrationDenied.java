@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class RegistrationDenied extends AppCompatActivity {
     private Button btn_childCare;
@@ -47,7 +49,19 @@ public class RegistrationDenied extends AppCompatActivity {
         btn_personal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setData(Uri.parse("mailto:ksamuel1@umbc.edu"));
+                emailIntent.setType("text/plain");
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Cannot register for course(s)");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "Enter message body here");
+                try {
+                    startActivity(Intent.createChooser(emailIntent, "Send email"));
+                    finish();
+                    Log.d("","Sent email!");
+                }
+                catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
