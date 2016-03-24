@@ -7,10 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,6 +34,8 @@ public class RegisterForClasses extends AppCompatActivity {
     List<Boolean> theClassListDone;
     List<Boolean> theClassListInProgress;
 
+    private Button btn_register_link;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,19 @@ public class RegisterForClasses extends AppCompatActivity {
         nMgr.cancel(mNotificationSecondId);
         nMgr.cancel(mNotification3);
         context = getApplicationContext();
+
+        btn_register_link = (Button)findViewById(R.id.btnRegisterLink);
+
+        btn_register_link.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Uri uri = Uri.parse("http://www.ccbcmd.edu/resources-for-students/registering-for-classes");
+                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                 startActivity(intent);
+             }
+
+             });
+
 
         courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
         coursePreReqs = getResources().getStringArray(R.array.Prereqs);
