@@ -3,9 +3,9 @@ NURSING ASN pre-allied health track:
 Semester 1:
 ACDV 101
 ENGL 101
-Gen. ed math (program specific)
+MATH 125
 BIOL 110
-PSYC101
+PSYC 101
 
 Semester 2:
 BIOL 220
