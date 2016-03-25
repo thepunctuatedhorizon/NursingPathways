@@ -104,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Remove when finished RegisterForClasses
 
-        startActivity(new Intent(this, RegistrationDenied.class));
-        finish();
+        //StartActivity(new Intent(this, RegistrationDenied.class));
+        //finish();
 
 
         //This function is designed to check if the registration is within two weeks,  if it is
@@ -195,23 +195,26 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-
-        if (firstTimeOpeningApp&&timeToUpdateClasses)
-        {
+        //This is where most of the application runs will end up.
+        if (firstTimeOpeningApp&&timeToUpdateClasses) {
+            //If it is the first time opening, both flags will be true and thus we launch first open screen.
             Intent intent = new Intent(context,FirstOpenScreen.class);
             firstTimeOpeningApp = false;
             editor.putBoolean("FirstTimeOpening",false);
             startActivityForResult(intent, 1);
         } else if (firstTimeOpeningApp && !timeToUpdateClasses) {
+            //A case that shouldn't happen, but has to be protected against
             Intent intent = new Intent(context,FirstOpenScreen.class);
             firstTimeOpeningApp = false;
             editor.putBoolean("FirstTimeOpening",false);
             startActivityForResult(intent, 1);
         } else {
+            //The normal case.  If registration is soon then we launch RegisterForClasses.
             if (registrationSoon) {
                 startActivity(new Intent(context, RegisterForClasses.class));
                 setTimeToUpdateClasses(14);
             } else {
+                //Otherwise, it is time to show the pathway.
                 startActivity(new Intent(context, PathWayDisplay.class));
             }
         }
@@ -226,7 +229,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
      public void onResume() {
         super.onResume();
-
+        //This causes the application to quit when the back button is pressed in the other activities.
+        //Otherwise, there would be no way to exit the app.
         if (paused)
         {
             finish();
@@ -236,6 +240,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onPause() {
+        //When the onPause method happens, it means that the MainActivity has been passed into the background
+        //Thus, it is necessary to set the paused flag true.  See onResume for mor info.
         super.onPause();
         paused = true;
 
@@ -265,12 +271,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //This function catches what happened to the FirstOpenScreen screen.
+        //If the user selected no, the result code will be RESULT_CANCELED and the pathway needs to be
+        // set to no progress and then displayed.
         if (requestCode== 1){
             if (resultCode==RESULT_CANCELED){
                 setAllPathwayVariablesToScratch();
                 Intent intent = new Intent(getApplicationContext(),PathWayDisplay.class);
                 startActivity(intent);
             } else if (resultCode == RESULT_OK){
+                //If the result code is OK then we need to send the user to the setUp class
                 Intent intent = new Intent(getApplicationContext(),SetUp.class);
                 startActivity(intent);
             }
@@ -279,6 +289,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setAllPathwayVariablesToScratch() {
+        //This method does exactly what it is named to do.
         SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefDone.edit();
         SharedPreferences sharedPrefIP = getSharedPreferences("courses", Context.MODE_PRIVATE);
@@ -295,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setTimeToUpdateClasses(int days){
+        //This function will set the UpdateClasses timer
         int alarmId = 013523;
         long ms = Calendar.getInstance().getTimeInMillis() + days * 24 * 60 * 60 * (1000) ;
         alarmIntent = new Intent(this, UpdateClassesInProgressAlarmReceiver.class );
@@ -307,6 +319,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private  void setAndDisplayHaveYouLoggedInToBlackboard(String text, int days) {
+        //The annoying but useful have you logged into Blackboard prompt builder function.
         Notification.Builder notificationBuilder = new Notification.Builder(this)
                 .setSmallIcon(R.drawable.pathway_icon)
                 .setContentTitle("Blackboard")
@@ -331,6 +344,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void randomizeNextBlackboardPrompt() {
+
+        //This function randomizes the number of times the application must be opened before the
+        //Have you checked blackboard prompt is shown.
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt(5);
         if (random<2){ random = 2; }
@@ -341,6 +357,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setTimeToShowBlackboardPrompt(int seconds){
+
+        //This does exacty what it says it does.
         int alarmId = 013424;
         long ms = seconds * (1000) + Calendar.getInstance().getTimeInMillis();
         alarmIntent = new Intent(this, BlackboardAlarmReceiver.class );
@@ -354,6 +372,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setTimeToShowRegistrationPrompt(int seconds){
+        //This does exactly what it says it does.
         int alarmId = 013423;
         long ms = seconds * (1000) + Calendar.getInstance().getTimeInMillis();
         alarmIntent = new Intent(this, RegistrationAlarmReceiver.class );
@@ -367,6 +386,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void sendToRegistrationFlag(int daysTil) {
+        //This checks to see if registration is soon.  If it is it will set the registration flag
+        //to true. This will cause the application to prompt the user to register.
         if(daysTil<15) {
             registrationSoon = true;
         }
@@ -374,6 +395,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private  void checkIfRegistrationIsClose(){
+        //Very complicated function to see how close registration is.
         Calendar calendar = Calendar.getInstance();
 
         int year       = calendar.get(Calendar.YEAR);
@@ -672,6 +694,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private  void setUpAlarmsFirstInstall(){
+        //When the user first uses the application, the alarms must be set up
         Calendar calendar = Calendar.getInstance();
 
         int year       = calendar.get(Calendar.YEAR);
