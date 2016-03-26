@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -54,7 +56,7 @@ public class PathWayDisplay extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
         for (int i = 0; i < courseLabels.length; i++) {
-
+            //TODO: IMPLEMENT THE PREREQ LOGIC
             boolean buttonAdded = false;
             CourseClass course = theCourseObjects.get(i);
             if (course.getDone()) {
@@ -122,13 +124,7 @@ public class PathWayDisplay extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.textViewTemp);
 
         textView.setText("The Pathway");
-        Button updatePathway = (Button) findViewById(R.id.editCourseList);
-        updatePathway.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),UpdateClasses.class));
-            }
-        });
+
 
  //       layout.post(new Runnable() {
  //           @Override
@@ -143,6 +139,30 @@ public class PathWayDisplay extends AppCompatActivity {
     }
 
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(getApplicationContext(), Settings.class);
+            startActivity(intent );
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
 
