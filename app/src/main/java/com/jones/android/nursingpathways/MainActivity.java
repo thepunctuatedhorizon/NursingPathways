@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
         int mNotificationId = 071;
         int m2NotificationId = 061;
         int m3NotificationId = 051;
+        int mNotification4 = 001;
+        int mNotification5 = 002;
 
         //This is the string for the notification, as can be clearly seen.
         String ns = Context.NOTIFICATION_SERVICE;
@@ -98,14 +100,16 @@ public class MainActivity extends AppCompatActivity {
         nMgr.cancel(mNotificationId);
         nMgr.cancel(m2NotificationId);
         nMgr.cancel(m3NotificationId);
+        nMgr.cancel(mNotification4);
+        nMgr.cancel(mNotification5);
 
 
 
 
         //Remove when finished RegisterForClasses
 
-        //StartActivity(new Intent(this, RegistrationDenied.class));
-        //finish();
+        startActivity(new Intent(this, RegistrationDenied.class));
+        finish();
 
 
         //This function is designed to check if the registration is within two weeks,  if it is

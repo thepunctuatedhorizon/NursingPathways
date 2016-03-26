@@ -5,6 +5,7 @@ package com.jones.android.nursingpathways;
  */
 public class CourseClass {
 
+    //These are the different types of information used by the course class.
     String title;
     String url;
     boolean done;
@@ -14,6 +15,7 @@ public class CourseClass {
 
     public CourseClass()
     {
+        //Null constructor.  DO NOT use.
         super();
         title = null;
         url = null;
@@ -25,6 +27,8 @@ public class CourseClass {
 
     public CourseClass(String title, String url, boolean done, boolean inProgress, boolean anyPreReqs, String preReqs){
         super();
+        //The proper constructor.
+        //TODO: Nullable inputs?
         this.title = title;
         this.url = url;
         this.done = done;
@@ -34,6 +38,7 @@ public class CourseClass {
 
     }
 
+    //The getters and setters.
     public String getTitle(){
         return title;
     }

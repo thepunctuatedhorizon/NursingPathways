@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegistrationDenied extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class RegistrationDenied extends AppCompatActivity {
                 Uri uri = Uri.parse("http://www.ccbcmd.edu/Resources-for-Students/Childcare-Services.aspx");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+                sympathy();
             }
         });
         btn_financial.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +38,7 @@ public class RegistrationDenied extends AppCompatActivity {
                 Uri uri = Uri.parse("http://www.ccbcmd.edu/costs-and-paying-for-college");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+                sympathy();
             }
         });
         btn_switchMajor.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +47,7 @@ public class RegistrationDenied extends AppCompatActivity {
                 Uri uri = Uri.parse("http://www.ccbcmd.edu/resources-for-students/academic-advisement");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+                sympathy();
             }
         });
         btn_personal.setOnClickListener(new View.OnClickListener() {
@@ -56,13 +60,19 @@ public class RegistrationDenied extends AppCompatActivity {
                 emailIntent.putExtra(Intent.EXTRA_TEXT, "Enter message body here");
                 try {
                     startActivity(Intent.createChooser(emailIntent, "Send email"));
-                    finish();
                     Log.d("","Sent email!");
+                    sympathy();
                 }
                 catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
+                    sympathy();
                 }
             }
         });
+    }
+
+    private void sympathy(){
+        TextView textView = (TextView) findViewById(R.id.registrationDeniedSympathyText);
+        textView.setText(R.string.registrationDeniedSympathyText_text);
     }
 }

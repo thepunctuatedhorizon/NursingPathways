@@ -17,6 +17,8 @@ import android.widget.PopupWindow;
 
 public class FirstOpenScreen extends AppCompatActivity {
 
+    //This is shown to the students when they first install.
+    //TODO: MAKE THE INTERFACE ACCEPTABLE!
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,7 @@ public class FirstOpenScreen extends AppCompatActivity {
         });
     }
 
+    //This tells the MainActivity that they haven't taken courses.
     private void finishWithResultNo()
     {
         Bundle conData = new Bundle();
@@ -55,6 +58,7 @@ public class FirstOpenScreen extends AppCompatActivity {
         finish();
     }
 
+    //This tells the MainActivity that they have taken courses.  The main activity will launch setup when receiving these values.
     private void finishWithResult()
     {
         Bundle conData = new Bundle();

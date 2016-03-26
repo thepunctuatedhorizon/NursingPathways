@@ -14,6 +14,8 @@ import android.widget.Toast;
  */
 public class RegistrationAlarmReceiver extends BroadcastReceiver
 {
+    //A very neat registration Alarm Receiver. That is, the alarm to register will trigger this to
+    //set a notification.
     @Override
     public void onReceive(Context context, Intent intent)
     {

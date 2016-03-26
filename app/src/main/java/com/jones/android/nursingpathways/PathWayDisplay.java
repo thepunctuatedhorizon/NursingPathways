@@ -18,12 +18,12 @@ import com.jones.android.nursingpathways.CourseClass;
 
 public class PathWayDisplay extends AppCompatActivity {
 
-    String[] courseLabels;
-    String[] coursePrereqs;
-    List<Button> buttonOnPathway;
-    List<Boolean> theClassListDone;
-    List<Boolean> theClassListInProgress;
-    List<CourseClass> theCourseObjects;
+    private String[] courseLabels;
+    private String[] coursePrereqs;
+    private List<Button> buttonOnPathway;
+    private List<Boolean> theClassListDone;
+    private List<Boolean> theClassListInProgress;
+    private List<CourseClass> theCourseObjects;
 
 
     @Override
@@ -42,12 +42,10 @@ public class PathWayDisplay extends AppCompatActivity {
 
         }
 
-        SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
-        SharedPreferences sharedPrefInProgress = getSharedPreferences("coursesInProgress", Context.MODE_PRIVATE);
 
 
         buttonOnPathway = new ArrayList<Button>();
-        LinearLayout layout = (LinearLayout) findViewById(R.id.content_path_way_display_linearLayout);
+        final LinearLayout layout = (LinearLayout) findViewById(R.id.content_path_way_display_linearLayout);
         Context context = getApplicationContext();
 
         CourseClassLoader courseClassLoader = new CourseClassLoader(context);
@@ -132,8 +130,17 @@ public class PathWayDisplay extends AppCompatActivity {
             }
         });
 
+        layout.post(new Runnable() {
+            @Override
+            public void run() {
+//                This method should implement a way to pause then increase the size of the buttons.
+//                for (Button button : buttonOnPathway) {
+//                    button.setTextSize(24);
+//                    Log.e("String", "It's doing this");
+//                }
+            }
+        });
     }
-
 
 
 

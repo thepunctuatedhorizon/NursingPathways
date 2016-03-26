@@ -14,8 +14,9 @@ import android.widget.Toast;
  * Created by jones on 3/19/2016.
  */
 
-public class BlackboardAlarmReceiver extends BroadcastReceiver
-{
+public class BlackboardAlarmReceiver extends BroadcastReceiver {
+
+    //This Broadcast Receiver builds a notification when the alarm triggers it.
     @Override
     public void onReceive(Context context, Intent intent)
     {

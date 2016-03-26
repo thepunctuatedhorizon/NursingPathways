@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class CourseClassLoader {
     private List<CourseClass> coursesObject;
+    //This class will load the courses into memory.
 
     CourseClassLoader(Context context){
         super();
@@ -38,6 +39,7 @@ public class CourseClassLoader {
         }
     }
 
+    //TODO: What if the list is NULL?
     public List<CourseClass> loadClassObjects(){
         return coursesObject;
     }

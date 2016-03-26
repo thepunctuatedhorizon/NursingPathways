@@ -22,6 +22,10 @@ public class CheckBlackBoardFromNotification extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //This Class is triggered when a person taps the notification.  It has a button that
+        // directly links blakcboard.
+        // TODO: update this class so that the user doesn't barf from the inglorious interface.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_black_board_from_notification);
         context = getApplicationContext();
@@ -45,12 +49,14 @@ public class CheckBlackBoardFromNotification extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        // THis sets up the blackboard propmt to two weeks.
+        //TODO: Do we need it to be two weeks? Or a random number of weeks?
         int blackboardShow =  2 * 7 * 24 * 60 * 60;
         setTimeToShowBlackboardPrompt(blackboardShow);
     }
 
     private void setTimeToShowBlackboardPrompt(int seconds){
+        //This function sets an alarm for showing the blackboard prompt.
         int alarmId = 013424;
         long ms = seconds * (1000) + Calendar.getInstance().getTimeInMillis();
         alarmIntent = new Intent(this, BlackboardAlarmReceiver.class );

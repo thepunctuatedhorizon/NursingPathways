@@ -12,7 +12,8 @@ import android.widget.Toast;
  * Created by jones on 3/20/2016.
  */
 public class UpdateClassesInProgressAlarmReceiver extends BroadcastReceiver {
-
+    //This lovely class is triggered when the alarm is set to update courses.
+    //This should happen 2 weeks after the registration prompt is shown.
     @Override
     public void onReceive(Context context, Intent intent) {
         try {
