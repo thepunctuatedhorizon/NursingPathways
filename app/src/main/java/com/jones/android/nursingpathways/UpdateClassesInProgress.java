@@ -49,7 +49,7 @@ public class UpdateClassesInProgress extends AppCompatActivity {
         final SharedPreferences.Editor editorIP = sharedPrefInProgress.edit();
         checkBoxesDone = new ArrayList<CheckBox>();
         coursesDone = new boolean[courseLabels.length];
-
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.relativeLayoutUpdate);
 
@@ -61,7 +61,6 @@ public class UpdateClassesInProgress extends AppCompatActivity {
                 CheckBox checkBox = new CheckBox(context);
                 checkBox.setText(courseLabels[i]);
                 checkBox.setTextColor(Color.BLACK);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 checkBox.setLayoutParams(params);
                 linearLayout.addView(checkBox);
                 checkBoxesDone.add(checkBox);

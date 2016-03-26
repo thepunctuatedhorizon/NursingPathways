@@ -35,12 +35,13 @@ public class UpdateClasses extends AppCompatActivity {
         coursesInProgress = new boolean[courseLabels.length];
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.relativeLayoutUpdateReal);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
         for (int i = 0; i < courseLabels.length; i++) {
             CheckBox checkBox = new CheckBox(context);
             checkBox.setText(courseLabels[i]);
             checkBox.setTextColor(Color.BLACK);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
             checkBox.setLayoutParams(params);
             linearLayout.addView(checkBox);
             checkBoxesDone.add(checkBox);
@@ -113,7 +114,7 @@ public class UpdateClasses extends AppCompatActivity {
         final String[] courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
         final Context context = getApplicationContext();
         checkBoxesInProgress= new ArrayList<CheckBox>();
-
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
         for (int i = 0; i < courseLabels.length; i++) {
@@ -121,7 +122,6 @@ public class UpdateClasses extends AppCompatActivity {
                 CheckBox checkBox = new CheckBox(context);
                 checkBox.setText(courseLabels[i]);
                 checkBox.setTextColor(Color.BLACK);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 checkBox.setLayoutParams(params);
                 linearLayout.addView(checkBox);
                 checkBoxesInProgress.add(checkBox);
@@ -140,7 +140,7 @@ public class UpdateClasses extends AppCompatActivity {
                 //Save Actions
                 SharedPreferences sharedPrefInProgress = getSharedPreferences("coursesInProgress", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editorIP = sharedPrefInProgress.edit();
-                //FIX THIS STUPID LOGIC
+
                 int counter = 0;
                 for (int i = 0; i < courseLabels.length; i++) {
                     if(coursesDone[i]) {

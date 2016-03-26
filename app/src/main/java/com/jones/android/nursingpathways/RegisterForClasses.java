@@ -7,14 +7,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,6 +38,7 @@ public class RegisterForClasses extends AppCompatActivity {
     List<Boolean> theClassesToRegister;
     List<Boolean> theClassListDone;
     List<Boolean> theClassListInProgress;
+    List<CourseClass> theClassListObjects;
 
     private Button btn_register_link;
 
@@ -40,6 +46,15 @@ public class RegisterForClasses extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_for_classes);
+
+        context = getApplicationContext();
+        CourseClassLoader courseClassLoader = new CourseClassLoader(context);
+        theClassListObjects = courseClassLoader.loadClassObjects();
+
+        final String LOGTAG = getClass().getSimpleName();
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
+
         int mNotificationId = 071;
         int mNotificationSecondId = 061;
         int mNotification3 = 051;
@@ -48,7 +63,7 @@ public class RegisterForClasses extends AppCompatActivity {
         nMgr.cancel(mNotificationId);
         nMgr.cancel(mNotificationSecondId);
         nMgr.cancel(mNotification3);
-        context = getApplicationContext();
+
 
         btn_register_link = (Button)findViewById(R.id.btnRegisterLink);
 
@@ -69,8 +84,8 @@ public class RegisterForClasses extends AppCompatActivity {
 
         setUpAlarms();
 
-        SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
-        SharedPreferences sharedPrefInProgress = getSharedPreferences("coursesInProgress", Context.MODE_PRIVATE);
+        //SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
+        //SharedPreferences sharedPrefInProgress = getSharedPreferences("coursesInProgress", Context.MODE_PRIVATE);
 
 
         theClassesToRegister = new ArrayList<Boolean>();
@@ -80,55 +95,108 @@ public class RegisterForClasses extends AppCompatActivity {
         for (int i = 0; i < courseLabels.length; i++) {
             boolean courseAdded = false;
 
+            CourseClass course = theClassListObjects.get(i);
 
-
-            if (sharedPrefDone.getBoolean(courseLabels[i], false)) {
+            if (course.getDone()) {
                 theClassListDone.add(true);
                 theClassListInProgress.add(false);
                 theClassesToRegister.add(false);
                 courseAdded = true;
             }
-            if (sharedPrefInProgress.getBoolean(courseLabels[i], false) && !courseAdded) {
+            if (course.getInProgress() && !courseAdded) {
                 theClassListDone.add(false);
                 theClassListInProgress.add(true);
                 theClassesToRegister.add(false);
                 courseAdded = true;
-
             }
 
-            if (coursePreReqs[i] == "NONE" && !courseAdded)            {
+            if (coursePreReqs[i].equals( "NONE") && !courseAdded)            {
                 theClassListDone.add(false);
                 theClassListInProgress.add(false);
                 theClassesToRegister.add(true);
                 courseAdded = true;
             }
 
+
+
             String preReq = coursePreReqs[i];
             for (int j=0; j<i; j++)
             {
-                String course = courseLabels[j];
-                if (course.equals(preReq)&& theClassListDone.get(j)){
+                String courseString = courseLabels[j];
+                if (courseString.equals(preReq)&& theClassListDone.get(j)){
                     theClassesToRegister.add(true);
                     courseAdded = true;
                 }
             }
 
+            if (!coursePreReqs[i].equals( "NONE") && !courseAdded)            {
+                theClassListDone.add(false);
+                theClassListInProgress.add(false);
+                theClassesToRegister.add(false);
+                courseAdded = true;
+            }
+
             if (!courseAdded) {
                 theClassListInProgress.add(false);
                 theClassListDone.add(false);
-                theClassesToRegister.add(false);
+                theClassesToRegister.add(true);
+                courseAdded = true;
 
+                //WE HAVE A PROBLEM IF THIS IS EVER THE CASE.
+                Log.e(LOGTAG, "PROBLEM!");
+                Log.e(LOGTAG, courseLabels[i]);
             }
         }
 
-        TextView textView = (TextView) findViewById(R.id.textView3);
-        String text = "";
-        for (int i=0; i<courseLabels.length; i++){
-            if(theClassesToRegister.get(i)) {
-                text = text + courseLabels[i] +"\n";
+        LinearLayout layout = (LinearLayout) findViewById(R.id.register_for_classes_subLayout);
+        List<Button> courseButtons = new ArrayList<Button>();
+
+        for (int i=0; i<courseLabels.length; i++)
+        {
+            if (theClassesToRegister.get(i)) {
+               final CourseClass course = theClassListObjects.get(i);
+                Button button = new Button(context);
+                button.setText(course.getTitle());
+                button.setTextColor(Color.GRAY);
+
+                button.setLayoutParams(params);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.e("RegistrationButton", ((Button) view).getText().toString());
+
+                        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        final View inflatedView = layoutInflater.inflate(R.layout.register_for_classes_popover, null, false);
+                        TextView textView = (TextView) inflatedView.findViewById(R.id.textView5);
+                        textView.setText(course.getTitle());
+                        Button button = (Button) inflatedView.findViewById(R.id.button);
+                        String buttonText = "Register for " + course.getTitle();
+                        button.setText(buttonText);
+                        button.setOnClickListener(new OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Uri uri = Uri.parse("http://www.google.com"); //course.getUrl());
+                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                startActivity(intent);
+                            }
+                        });
+                        Display display = getWindowManager().getDefaultDisplay();
+                        Point size = new Point();
+                        display.getSize(size);
+
+                        PopupWindow popWindow = new PopupWindow(inflatedView, size.x - 50,size.y - 500, true );
+                        popWindow.setFocusable(true);
+                        popWindow.setOutsideTouchable(true);
+                        popWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.img));
+                        popWindow.showAtLocation(view, Gravity.BOTTOM, 0, 150);
+                    }
+                });
+                layout.addView(button);
+                courseButtons.add(button);
             }
         }
-        textView.setText(text);
+
+
 
     }
 
@@ -144,7 +212,7 @@ public class RegisterForClasses extends AppCompatActivity {
         int dayOfWeek  = calendar.get(Calendar.DAY_OF_WEEK);
         int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
         int weekOfMonth= calendar.get(Calendar.WEEK_OF_MONTH);
-        Log.e("The", month + "");
+
         int blackboardShow = 2 * 7 * 24 * 60 * 60;
         setTimeToShowBlackboardPrompt(blackboardShow);
 

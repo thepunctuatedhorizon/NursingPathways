@@ -27,7 +27,7 @@
                 android:id="@+id/textView4"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:textSize="30sp"
+                android:textSize="24sp"
                 android:gravity="center" />
 
             <Button
@@ -77,7 +77,7 @@
                 android:id="@+id/registrationDeniedSympathyText"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/btnPersonal"
-                android:layout_marginTop="25dp" />
+                android:layout_marginTop="20dp" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

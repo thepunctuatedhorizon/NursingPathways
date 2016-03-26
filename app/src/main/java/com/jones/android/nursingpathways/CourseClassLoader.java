@@ -8,9 +8,7 @@ import com.jones.android.nursingpathways.CourseClass;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by jones on 3/23/2016.
- */
+
 public class CourseClassLoader {
     private List<CourseClass> coursesObject;
     //This class will load the courses into memory.

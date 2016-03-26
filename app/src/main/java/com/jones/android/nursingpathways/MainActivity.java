@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Remove when finished RegisterForClasses
 
-        startActivity(new Intent(this, RegistrationDenied.class));
-        finish();
+        startActivity(new Intent(this, RegisterForClasses.class));
+
 
 
         //This function is designed to check if the registration is within two weeks,  if it is
@@ -707,7 +707,7 @@ public class MainActivity extends AppCompatActivity {
         int dayOfWeek  = calendar.get(Calendar.DAY_OF_WEEK);
         int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
         int weekOfMonth= calendar.get(Calendar.WEEK_OF_MONTH);
-        Log.e("The", month + "");
+
         int blackboardShow = 2 * 7 * 24 * 60 * 60;
         setTimeToShowBlackboardPrompt(blackboardShow);
 

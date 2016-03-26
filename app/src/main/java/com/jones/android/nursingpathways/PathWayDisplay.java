@@ -26,6 +26,7 @@ public class PathWayDisplay extends AppCompatActivity {
     private List<CourseClass> theCourseObjects;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +51,7 @@ public class PathWayDisplay extends AppCompatActivity {
 
         CourseClassLoader courseClassLoader = new CourseClassLoader(context);
         theCourseObjects = courseClassLoader.loadClassObjects();
-
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
         for (int i = 0; i < courseLabels.length; i++) {
 
@@ -63,7 +64,7 @@ public class PathWayDisplay extends AppCompatActivity {
                 Button button = new Button(context);
                 button.setText(course.getTitle());
                 button.setTextColor(Color.BLUE);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
                 button.setLayoutParams(params);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -83,7 +84,7 @@ public class PathWayDisplay extends AppCompatActivity {
                 Button button = new Button(context);
                 button.setText(course.getTitle());
                 button.setTextColor(Color.GREEN);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
                 button.setLayoutParams(params);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -102,7 +103,6 @@ public class PathWayDisplay extends AppCompatActivity {
                 theClassListDone.add(false);
                 Button button = new Button(context);
                 button.setText(course.getTitle());
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 button.setLayoutParams(params);
                 button.setTextColor(Color.RED);
                 button.setOnClickListener(new View.OnClickListener() {
@@ -130,16 +130,16 @@ public class PathWayDisplay extends AppCompatActivity {
             }
         });
 
-        layout.post(new Runnable() {
-            @Override
-            public void run() {
+ //       layout.post(new Runnable() {
+ //           @Override
+//            public void run() {
 //                This method should implement a way to pause then increase the size of the buttons.
 //                for (Button button : buttonOnPathway) {
 //                    button.setTextSize(24);
 //                    Log.e("String", "It's doing this");
 //                }
-            }
-        });
+ //           }
+  //      });
     }
 
 
