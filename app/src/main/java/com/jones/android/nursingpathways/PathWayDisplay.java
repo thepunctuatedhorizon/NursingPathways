@@ -4,14 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -58,7 +63,8 @@ public class PathWayDisplay extends AppCompatActivity {
         for (int i = 0; i < courseLabels.length; i++) {
             //TODO: IMPLEMENT THE PREREQ LOGIC
             boolean buttonAdded = false;
-            CourseClass course = theCourseObjects.get(i);
+            final CourseClass course = theCourseObjects.get(i);
+            final String url = course.getUrl();
             if (course.getDone()) {
                 theClassListDone.add(true);
                 theClassListInProgress.add(false);
@@ -72,6 +78,8 @@ public class PathWayDisplay extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Log.e("Button", ((Button) view).getText().toString());
+
+                        setTheButtonPopup(course,view);
                     }
                 });
                 layout.addView(button);
@@ -92,6 +100,8 @@ public class PathWayDisplay extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Log.e("ButtonIP", ((Button) view).getText().toString());
+                        setTheButtonPopup(course,view);
+
                     }
                 });
                 layout.addView(button);
@@ -111,6 +121,7 @@ public class PathWayDisplay extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Log.e("Button Red", ((Button) view).getText().toString());
+                        setTheButtonPopup(course,view);
                     }
                 });
                 layout.addView(button);
@@ -138,7 +149,36 @@ public class PathWayDisplay extends AppCompatActivity {
   //      });
     }
 
-
+    public void setTheButtonPopup(CourseClass course, View view){
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View inflatedView = layoutInflater.inflate(R.layout.register_for_classes_popover, null, false);
+        TextView textView = (TextView) inflatedView.findViewById(R.id.textView5);
+        textView.setText(course.getTitle());
+        Button button = (Button) inflatedView.findViewById(R.id.button);
+        String buttonText = "Register for " + course.getTitle();
+        button.setText(buttonText);
+        final String url = course.getUrl();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(url); //course.getUrl());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int x = (int) size.x *2 /3;
+        int startX =(int) size.x/5;
+        int locx =(int) button.getX();
+        int offset = (int) locx - startX;
+        PopupWindow popWindow = new PopupWindow(inflatedView, x, 300, true );
+        popWindow.setFocusable(true);
+        popWindow.setOutsideTouchable(true);
+        popWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.gray));
+        popWindow.showAsDropDown(view, offset, 0);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -140,7 +140,7 @@ public class SetUp extends AppCompatActivity {
                 //Save Actions
                 SharedPreferences sharedPrefInProgress = getSharedPreferences("coursesInProgress", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editorIP = sharedPrefInProgress.edit();
-                //FIX THIS STUPID LOGIC
+
                 int counter = 0;
                 for (int i = 0; i < courseLabels.length; i++) {
                     if(coursesDone[i]) {

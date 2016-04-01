@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/graybig"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.jones.android.nursingpathways.FirstOpenScreen"
     tools:showIn="@layout/activity_first_open_screen">
@@ -61,7 +58,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Have you taken any ____ What was her suggestion?"
+                android:text="Have you taken any courses?"
                 android:id="@+id/promptText"
                 android:layout_below="@+id/scrollView3"
                 android:layout_centerHorizontal="true"

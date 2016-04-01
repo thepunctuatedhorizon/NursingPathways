@@ -85,9 +85,6 @@ public class RegisterForClasses extends AppCompatActivity {
 
         setUpAlarms();
 
-        //SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
-        //SharedPreferences sharedPrefInProgress = getSharedPreferences("coursesInProgress", Context.MODE_PRIVATE);
-
 
         theClassesToRegister = new ArrayList<Boolean>();
         theClassListDone = new ArrayList<Boolean>();
