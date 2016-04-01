@@ -23,7 +23,6 @@ public class RegistrationAlarmReceiver extends BroadcastReceiver
         {
             Bundle bundle = intent.getExtras();
             String message = bundle.getString("alarm_message");
-            Toast.makeText(context, "We are showing the toast.", Toast.LENGTH_SHORT).show();
             Notification.Builder notificationBuilder = new Notification.Builder(context)
                     .setSmallIcon(R.drawable.pathway_icon)
                     .setContentTitle("Registration")

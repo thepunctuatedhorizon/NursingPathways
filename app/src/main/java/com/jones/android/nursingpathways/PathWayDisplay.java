@@ -151,28 +151,28 @@ public class PathWayDisplay extends AppCompatActivity {
 
     public void setTheButtonPopup(CourseClass course, View view){
         LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View inflatedView = layoutInflater.inflate(R.layout.register_for_classes_popover, null, false);
-        TextView textView = (TextView) inflatedView.findViewById(R.id.textView5);
+        final View inflatedView = layoutInflater.inflate(R.layout.pathway_popover, null, false);
+        TextView textView = (TextView) inflatedView.findViewById(R.id.txtTitle);
         textView.setText(course.getTitle());
-        Button button = (Button) inflatedView.findViewById(R.id.button);
-        String buttonText = "Register for " + course.getTitle();
-        button.setText(buttonText);
-        final String url = course.getUrl();
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse(url); //course.getUrl());
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
+        TextView txtView = (TextView) inflatedView.findViewById(R.id.txtInfo);
+        txtView.setText("This course has " + course.getPreReqs() + " as a prerequisite.");
+        TextView txtView2 = (TextView) inflatedView.findViewById(R.id.txtTaken);
+        if (course.getDone()){
+            txtView2.setText("You have completed this course.");
+        }else if (course.getInProgress())
+        {
+            txtView2.setText("You are taking this course now.");
+        } else{
+            txtView2.setText("Your pathway requires this course.");
+        }
+
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int x = (int) size.x *2 /3;
         int startX =(int) size.x/5;
-        int locx =(int) button.getX();
-        int offset = (int) locx - startX;
+        int locx =(int) view.getX();
+        int offset = (int) -startX;
         PopupWindow popWindow = new PopupWindow(inflatedView, x, 300, true );
         popWindow.setFocusable(true);
         popWindow.setOutsideTouchable(true);
