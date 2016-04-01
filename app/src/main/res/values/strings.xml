@@ -29,6 +29,19 @@
         <item>NONE</item>
         <item>BIOL 210</item>
     </string-array>
+
+    <string-array name="URLS">
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+    </string-array>
     <string name="btnRegisterLink">Register Now!</string>
     <string name="title_activity_register_denied">We are sorry you are having difficulties with continuing your education here at CCBC. We are committed to your success and we hope you will allow us the opportunity to serve you and help you with your needs.</string>
     <string name="registrationDeniedSympathyText_text">We hope the links here have helped you. Please feel free to contact us with the last button. </string>

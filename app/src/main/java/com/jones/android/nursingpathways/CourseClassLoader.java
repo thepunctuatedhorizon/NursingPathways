@@ -17,6 +17,7 @@ public class CourseClassLoader {
         super();
         String[] courseLabels = context.getResources().getStringArray(R.array.AlliedHealthPathway);
         String[] coursePrereqs = context.getResources().getStringArray(R.array.Prereqs);
+        String[] courseURLs = context.getResources().getStringArray(R.array.URLS);
         SharedPreferences sharedPrefDone = context.getSharedPreferences("courses", Context.MODE_PRIVATE);
         SharedPreferences sharedPrefInProgress = context.getSharedPreferences("coursesInProgress", Context.MODE_PRIVATE);
 
@@ -28,7 +29,7 @@ public class CourseClassLoader {
                 preReq = true;
             }
             CourseClass course = new CourseClass(courseLabels[i],
-                    "",
+                    courseURLs[i],
                     sharedPrefDone.getBoolean(courseLabels[i], false),
                     sharedPrefInProgress.getBoolean(courseLabels[i], false),
                     preReq,

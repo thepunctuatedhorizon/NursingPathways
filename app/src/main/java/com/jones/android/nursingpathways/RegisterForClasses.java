@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -155,6 +156,7 @@ public class RegisterForClasses extends AppCompatActivity {
         {
             if (theClassesToRegister.get(i)) {
                final CourseClass course = theClassListObjects.get(i);
+                final String url = course.getUrl();
                 Button button = new Button(context);
                 button.setText(course.getTitle());
                 button.setTextColor(Color.GRAY);
@@ -175,7 +177,7 @@ public class RegisterForClasses extends AppCompatActivity {
                         button.setOnClickListener(new OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Uri uri = Uri.parse("http://www.google.com"); //course.getUrl());
+                                Uri uri = Uri.parse(url); //course.getUrl());
                                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                                 startActivity(intent);
                             }
@@ -183,12 +185,17 @@ public class RegisterForClasses extends AppCompatActivity {
                         Display display = getWindowManager().getDefaultDisplay();
                         Point size = new Point();
                         display.getSize(size);
-
-                        PopupWindow popWindow = new PopupWindow(inflatedView, size.x - 50,size.y - 500, true );
+                        int x = (int) size.x *2 /3;
+                        int startX =(int) size.x/5;
+                        int locx =(int) button.getX();
+                        int offset = (int) locx - startX;
+                        PopupWindow popWindow = new PopupWindow(inflatedView, x, 300, true );
                         popWindow.setFocusable(true);
                         popWindow.setOutsideTouchable(true);
-                        popWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.img));
-                        popWindow.showAtLocation(view, Gravity.BOTTOM, 0, 150);
+                        popWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.gray));
+                        popWindow.showAsDropDown(view, offset, 0);
+
+
                     }
                 });
                 layout.addView(button);
