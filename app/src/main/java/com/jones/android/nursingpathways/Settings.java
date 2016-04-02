@@ -14,6 +14,7 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         Button button2 = (Button) findViewById(R.id.button2);
         Button button3 = (Button) findViewById(R.id.button3);
+        Button button4 = (Button) findViewById(R.id.button4);
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +28,15 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( getApplicationContext(), UpdateClassesInProgress.class);
+                startActivity(intent);
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( getApplicationContext(), UpdateClasses.class);
+                intent.putExtra("KEY","Yes");
                 startActivity(intent);
             }
         });

@@ -79,8 +79,15 @@ public class UpdateClasses extends AppCompatActivity {
                 }
                 editor.putInt("arraySize", courseLabels.length);
                 editor.commit();
-
-                resetAndAskForInProgress();
+                Intent intent = getIntent();
+                //if the intent has a key then it is that we only want to edit the courses taken not the courses inprogress.
+                if (intent.getStringExtra("KEY").equals("Yes"))
+                {
+                    startActivity(new Intent(context,PathWayDisplay.class));
+                    finish();
+                } else {
+                    resetAndAskForInProgress();
+                }
             }
         });
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.jones.android.nursingpathways.Settings">
+    android:orientation="vertical"
+    tools:context="com.jones.android.nursingpathways.Settings"
+    android:gravity="center_horizontal">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,7 +17,8 @@
         android:text="Here in the settings, you can reset your progress or modify your progress as needed."
         android:id="@+id/textView6"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,8 +31,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Edit courses taken"
+        android:id="@+id/button4"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Edit courses you are taking."
         android:id="@+id/button3"
         android:layout_below="@+id/button2"
         android:layout_alignParentStart="true" />
-</RelativeLayout>
+</LinearLayout>
