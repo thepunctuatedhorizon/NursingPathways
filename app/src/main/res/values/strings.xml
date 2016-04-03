@@ -31,16 +31,16 @@
     </string-array>
 
     <string-array name="URLS">
-        <item>http://www.ccbcmd.edu</item>
-        <item>http://www.ccbcmd.edu</item>
-        <item>http://www.ccbcmd.edu</item>
-        <item>http://www.ccbcmd.edu</item>
-        <item>http://www.ccbcmd.edu</item>
-        <item>http://www.ccbcmd.edu</item>
-        <item>http://www.ccbcmd.edu</item>
-        <item>http://www.ccbcmd.edu</item>
-        <item>http://www.ccbcmd.edu</item>
-        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/ACDV/101</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/engl/101</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/math/083</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/biol/110</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/psyc/101</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/biol/210</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/psyc/103</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/cmns/101</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/socl/101</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/biol/230</item>
     </string-array>
     <string name="btnRegisterLink">Register Now!</string>
     <string name="title_activity_register_denied">We are sorry you are having difficulties with continuing your education here at CCBC. We are committed to your success and we hope you will allow us the opportunity to serve you and help you with your needs.</string>
