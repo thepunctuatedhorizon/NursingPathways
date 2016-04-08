@@ -26,6 +26,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 public class RegisterForClasses extends AppCompatActivity {
 
@@ -34,8 +35,7 @@ public class RegisterForClasses extends AppCompatActivity {
     private static AlarmManager alarmManager = null;
     private static Context context;
 
-    String[] courseLabels;
-    String[] coursePreReqs;
+
     List<Boolean> theClassesToRegister;
     List<Boolean> theClassListDone;
     List<Boolean> theClassListInProgress;
@@ -79,9 +79,6 @@ public class RegisterForClasses extends AppCompatActivity {
              });
 
 
-        courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
-        coursePreReqs = getResources().getStringArray(R.array.Prereqs);
-
 
         setUpAlarms();
 
@@ -90,7 +87,7 @@ public class RegisterForClasses extends AppCompatActivity {
         theClassListDone = new ArrayList<Boolean>();
         theClassListInProgress = new ArrayList<Boolean>();
 
-        for (int i = 0; i < courseLabels.length; i++) {
+        for (int i = 0; i < theClassListObjects.size(); i++) {
             boolean courseAdded = false;
 
             CourseClass course = theClassListObjects.get(i);
@@ -108,7 +105,7 @@ public class RegisterForClasses extends AppCompatActivity {
                 courseAdded = true;
             }
 
-            if (coursePreReqs[i].equals( "NONE") && !courseAdded)            {
+            if (theClassListObjects.get(i).getPreReqs().equals( "NONE") && !courseAdded)            {
                 theClassListDone.add(false);
                 theClassListInProgress.add(false);
                 theClassesToRegister.add(true);
@@ -117,17 +114,17 @@ public class RegisterForClasses extends AppCompatActivity {
 
 
 
-            String preReq = coursePreReqs[i];
+            String preReq = theClassListObjects.get(i).getPreReqs();
             for (int j=0; j<i; j++)
             {
-                String courseString = courseLabels[j];
+                String courseString = theClassListObjects.get(i).getTitle();
                 if (courseString.equals(preReq)&& theClassListDone.get(j)){
                     theClassesToRegister.add(true);
                     courseAdded = true;
                 }
             }
 
-            if (!coursePreReqs[i].equals( "NONE") && !courseAdded)            {
+            if (!theClassListObjects.get(i).getPreReqs().equals( "NONE") && !courseAdded)            {
                 theClassListDone.add(false);
                 theClassListInProgress.add(false);
                 theClassesToRegister.add(false);
@@ -142,14 +139,14 @@ public class RegisterForClasses extends AppCompatActivity {
 
                 //WE HAVE A PROBLEM IF THIS IS EVER THE CASE.
                 Log.e(LOGTAG, "PROBLEM!");
-                Log.e(LOGTAG, courseLabels[i]);
+                //Log.e(LOGTAG, courseLabels[i]);
             }
         }
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.register_for_classes_subLayout);
         List<Button> courseButtons = new ArrayList<Button>();
 
-        for (int i=0; i<courseLabels.length; i++)
+        for (int i=0; i<theClassListObjects.size(); i++)
         {
             if (theClassesToRegister.get(i)) {
                final CourseClass course = theClassListObjects.get(i);
@@ -217,8 +214,11 @@ public class RegisterForClasses extends AppCompatActivity {
         int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
         int weekOfMonth= calendar.get(Calendar.WEEK_OF_MONTH);
 
-        int blackboardShow = 2 * 7 * 24 * 60 * 60;
+        Random random = new Random();
+        int rand = random.nextInt(14);
+        int blackboardShow = (7+rand)* 24 * 60 * 60;
         setTimeToShowBlackboardPrompt(blackboardShow);
+
 
         int dayConversion = 24 * 60 * 60;
         int registerShow;

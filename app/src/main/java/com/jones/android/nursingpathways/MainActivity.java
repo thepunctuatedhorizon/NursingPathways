@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Remove when finished RegisterForClasses
 
-        //startActivity(new Intent(this, RegisterForClasses.class));
-
+        //startActivity(new Intent(this, RegistrationDenied.class));
+        //finish();
 
 
         //This function is designed to check if the registration is within two weeks,  if it is
@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             } else if (resultCode == RESULT_OK){
                 //If the result code is OK then we need to send the user to the setUp class
-                Intent intent = new Intent(getApplicationContext(),SetUp.class);
+                Intent intent = new Intent(getApplicationContext(),PickPathway.class);
                 startActivity(intent);
             }
         }
@@ -713,7 +713,9 @@ public class MainActivity extends AppCompatActivity {
         int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
         int weekOfMonth= calendar.get(Calendar.WEEK_OF_MONTH);
 
-        int blackboardShow = 2 * 7 * 24 * 60 * 60;
+        Random random = new Random();
+        int rand = random.nextInt(14);
+        int blackboardShow = (7+rand)* 24 * 60 * 60;
         setTimeToShowBlackboardPrompt(blackboardShow);
 
         int dayConversion = 24 * 60 * 60;

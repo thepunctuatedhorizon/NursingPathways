@@ -62,8 +62,12 @@
         </receiver>
 
         <activity android:name=".RegisterForClasses" />
-        <activity android:name=".RegistrationDenied" android:noHistory="true" />
-        <activity android:name=".Settings" android:noHistory="true" ></activity>
+        <activity android:name=".RegistrationDenied" />
+        <activity
+            android:name=".Settings"
+            android:noHistory="true" />
+        <activity android:name=".PickPathway" />
+        <activity android:name=".Help"></activity>
     </application>
 
 </manifest>

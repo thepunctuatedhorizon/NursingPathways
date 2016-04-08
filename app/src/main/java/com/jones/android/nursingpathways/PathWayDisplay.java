@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -25,8 +26,7 @@ import com.jones.android.nursingpathways.CourseClass;
 
 public class PathWayDisplay extends AppCompatActivity {
 
-    private String[] courseLabels;
-    private String[] coursePrereqs;
+    //private String[] courseLabels;
     private List<Button> buttonOnPathway;
     private List<Boolean> theClassListDone;
     private List<Boolean> theClassListInProgress;
@@ -41,14 +41,17 @@ public class PathWayDisplay extends AppCompatActivity {
         theClassListDone = new ArrayList<Boolean>();
         theClassListInProgress = new ArrayList<Boolean>();
         theCourseObjects = new ArrayList<CourseClass>();
-        courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
-        coursePrereqs = getResources().getStringArray(R.array.Prereqs);
+        //courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
         Intent intent = getIntent();
 
-        if(intent!=null)
-        {
-
-        }
+        ImageView imageView = (ImageView) findViewById(R.id.qm);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PathWayDisplay.this, Help.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -60,7 +63,7 @@ public class PathWayDisplay extends AppCompatActivity {
         theCourseObjects = courseClassLoader.loadClassObjects();
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        for (int i = 0; i < courseLabels.length; i++) {
+        for (int i = 0; i < theCourseObjects.size(); i++) {
             //TODO: IMPLEMENT THE PREREQ LOGIC
             boolean buttonAdded = false;
             final CourseClass course = theCourseObjects.get(i);

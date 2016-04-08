@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="AlliedHealthPathway">
+        <item>ACDV 101</item>
+        <item>ENGL 101</item>
+        <item>MATH 083</item>
+        <item>BIOL 110</item>
+        <item>PSYC 101</item>
+        <item>BIOL 210</item>
+        <item>PSYC 103</item>
+        <item>CMNS 101</item>
+        <item>SOCL 101</item>
+        <item>BIOL 230</item>
+    </string-array>
+
+    <string-array name="AlliedHealthPrereqs">
+        <item>NONE</item>
+        <item>NONE</item>
+        <item>NONE</item>
+        <item>NONE</item>
+        <item>NONE</item>
+        <item>BIOL 110</item>
+        <item>PSYC 101</item>
+        <item>NONE</item>
+        <item>NONE</item>
+        <item>BIOL 210</item>
+    </string-array>
+
+    <string-array name="AlliedHealthURLS">
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/ACDV/101</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/engl/101</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/math/083</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/biol/110</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/psyc/101</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/biol/210</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/psyc/103</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/cmns/101</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/socl/101</item>
+        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/biol/230</item>
+    </string-array>
+</resources>

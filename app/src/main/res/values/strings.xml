@@ -4,44 +4,7 @@
     <string name="title_activity_first_open_screen">FirstOpenScreen</string>
     <string name="title_activity_path_way_display">PathWayDisplay</string>
     <string name="title_activity_set_up">SetUp</string>
-    <string-array name="AlliedHealthPathway">
-        <item>ACDV 101</item>
-        <item>ENGL 101</item>
-        <item>MATH 083</item>
-        <item>BIOL 110</item>
-        <item>PSYC 101</item>
-        <item>BIOL 210</item>
-        <item>PSYC 103</item>
-        <item>CMNS 101</item>
-        <item>SOCL 101</item>
-        <item>BIOL 230</item>
-    </string-array>
 
-    <string-array name="Prereqs">
-        <item>NONE</item>
-        <item>NONE</item>
-        <item>NONE</item>
-        <item>NONE</item>
-        <item>NONE</item>
-        <item>BIOL 110</item>
-        <item>PSYC 101</item>
-        <item>NONE</item>
-        <item>NONE</item>
-        <item>BIOL 210</item>
-    </string-array>
-
-    <string-array name="URLS">
-        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/ACDV/101</item>
-        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/engl/101</item>
-        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/math/083</item>
-        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/biol/110</item>
-        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/psyc/101</item>
-        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/biol/210</item>
-        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/psyc/103</item>
-        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/cmns/101</item>
-        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/socl/101</item>
-        <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/biol/230</item>
-    </string-array>
     <string name="btnRegisterLink">Register Now!</string>
     <string name="title_activity_register_denied">We are sorry you are having difficulties with continuing your education here at CCBC. We are committed to your success and we hope you will allow us the opportunity to serve you and help you with your needs.</string>
     <string name="registrationDeniedSympathyText_text">We hope the links here have helped you. Please feel free to contact us with the last button. </string>

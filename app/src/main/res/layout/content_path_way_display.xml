@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/graybig"
+    android:background="@drawable/bg"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.jones.android.nursingpathways.PathWayDisplay"
     tools:showIn="@layout/activity_path_way_display">
@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/graybig"
+        android:background="@drawable/bg"
         android:orientation="vertical"
         android:id="@+id/content_path_way_display_linearLayout"
         android:gravity="center_horizontal">
@@ -31,6 +31,16 @@
 
     </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:id="@+id/qm"
+        android:scaleType="fitXY"
+        android:src="@drawable/qm"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:clickable="true" />
 
 
 </RelativeLayout>
