@@ -67,7 +67,8 @@
             android:name=".Settings"
             android:noHistory="true" />
         <activity android:name=".PickPathway" />
-        <activity android:name=".Help"></activity>
+        <activity android:name=".Help" />
+        <activity android:name=".DelayRegistration"></activity>
     </application>
 
 </manifest>

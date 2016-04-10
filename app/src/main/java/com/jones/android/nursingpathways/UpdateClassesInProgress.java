@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class UpdateClassesInProgress extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_classes_inprogress);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         int mNotificationId = 071;
         int mNotificationSecondId = 061;
@@ -98,7 +100,12 @@ public class UpdateClassesInProgress extends AppCompatActivity {
                         }
                     }
                 }
-                startActivity(new Intent(getApplicationContext(), PathWayDisplay.class));
+                Intent intent = getIntent();
+                if (intent.hasExtra("PreRecBlank")){
+                    startActivity(new Intent(getApplicationContext(), RegisterForClasses.class));
+                } else {
+                    startActivity(new Intent(getApplicationContext(), PathWayDisplay.class));
+                }
             }
         });
 

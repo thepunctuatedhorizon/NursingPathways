@@ -11,6 +11,10 @@
         <item>CMNS 101</item>
         <item>SOCL 101</item>
         <item>BIOL 230</item>
+        <item>NURS S01</item>
+        <item>NURS S02</item>
+        <item>NURS S03</item>
+        <item>NURS S04</item>
     </string-array>
 
     <string-array name="AlliedHealthPrereqs">
@@ -24,6 +28,10 @@
         <item>NONE</item>
         <item>NONE</item>
         <item>BIOL 210</item>
+        <item>PERMISSION</item>
+        <item>PERMISSION</item>
+        <item>PERMISSION</item>
+        <item>PERMISSION</item>
     </string-array>
 
     <string-array name="AlliedHealthURLS">
@@ -37,5 +45,9 @@
         <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/cmns/101</item>
         <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/socl/101</item>
         <item>http://www.ccbcmd.edu/Programs-and-Courses-Finder/course/biol/230</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
+        <item>http://www.ccbcmd.edu</item>
     </string-array>
 </resources>

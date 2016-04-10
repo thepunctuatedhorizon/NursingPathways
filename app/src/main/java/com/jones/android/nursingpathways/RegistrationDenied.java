@@ -1,6 +1,7 @@
 package com.jones.android.nursingpathways;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ public class RegistrationDenied extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_denied);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         btn_childCare = (Button)findViewById(R.id.btnChildCare);
         btn_financial = (Button)findViewById(R.id.btnFinancial);
         btn_switchMajor = (Button)findViewById(R.id.btnSwitchMajor);

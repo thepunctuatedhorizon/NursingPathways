@@ -20,6 +20,7 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),UpdateClasses.class);
+                intent.putExtra("KEY","No");
                 startActivity(intent);
             }
         });
@@ -28,6 +29,7 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( getApplicationContext(), UpdateClassesInProgress.class);
+                intent.putExtra("KEY","No");
                 startActivity(intent);
             }
         });

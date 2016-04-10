@@ -6,9 +6,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.net.Uri;
+import android.support.annotation.StyleRes;
+import android.support.annotation.StyleableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,11 +46,13 @@ public class RegisterForClasses extends AppCompatActivity {
     List<CourseClass> theClassListObjects;
 
     private Button btn_register_link;
+    private Button btn_delay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_for_classes);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         context = getApplicationContext();
         CourseClassLoader courseClassLoader = new CourseClassLoader(context);
@@ -59,11 +65,15 @@ public class RegisterForClasses extends AppCompatActivity {
         int mNotificationId = 071;
         int mNotificationSecondId = 061;
         int mNotification3 = 051;
+        int mNotification4 = 002;
+        int mNotification5 = 001;
         String ns = Context.NOTIFICATION_SERVICE;
         NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(ns);
         nMgr.cancel(mNotificationId);
         nMgr.cancel(mNotificationSecondId);
         nMgr.cancel(mNotification3);
+        nMgr.cancel(mNotification4);
+        nMgr.cancel(mNotification5);
 
 
         btn_register_link = (Button)findViewById(R.id.btnRegisterLink);
@@ -78,6 +88,17 @@ public class RegisterForClasses extends AppCompatActivity {
 
              });
 
+        btn_delay = (Button)findViewById(R.id.delay);
+
+        btn_delay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, DelayRegistration.class);
+                startActivity(intent);
+            }
+
+        });
 
 
         setUpAlarms();
@@ -87,6 +108,7 @@ public class RegisterForClasses extends AppCompatActivity {
         theClassListDone = new ArrayList<Boolean>();
         theClassListInProgress = new ArrayList<Boolean>();
 
+        int numberAdded = 0;
         for (int i = 0; i < theClassListObjects.size(); i++) {
             boolean courseAdded = false;
 
@@ -109,6 +131,7 @@ public class RegisterForClasses extends AppCompatActivity {
                 theClassListDone.add(false);
                 theClassListInProgress.add(false);
                 theClassesToRegister.add(true);
+                numberAdded +=1;
                 courseAdded = true;
             }
 
@@ -120,6 +143,7 @@ public class RegisterForClasses extends AppCompatActivity {
                 String courseString = theClassListObjects.get(i).getTitle();
                 if (courseString.equals(preReq)&& theClassListDone.get(j)){
                     theClassesToRegister.add(true);
+                    numberAdded +=1;
                     courseAdded = true;
                 }
             }
@@ -135,6 +159,7 @@ public class RegisterForClasses extends AppCompatActivity {
                 theClassListInProgress.add(false);
                 theClassListDone.add(false);
                 theClassesToRegister.add(true);
+                numberAdded +=1;
                 courseAdded = true;
 
                 //WE HAVE A PROBLEM IF THIS IS EVER THE CASE.
@@ -142,8 +167,48 @@ public class RegisterForClasses extends AppCompatActivity {
                 //Log.e(LOGTAG, courseLabels[i]);
             }
         }
+        final List<Boolean> recommendedCourse = new ArrayList<Boolean>();
+        for (int i=0; i<theClassListObjects.size();i++){
+            CourseClass course = theClassListObjects.get(i);
+            // How do we determine if it is recommended?
+            boolean recommended = true;
+
+            if(recommended){
+                recommendedCourse.add(true);
+            }
+        }
+
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.register_for_classes_subLayout);
+        if ( numberAdded == 0){
+            TextView txtV = new TextView(context);
+            txtV.setText("It appears that you have taken all the classes you yourself can register for, or you are taking the prerequisites of the courses next in the sequence.  Please press below to indicate you have finished the prerequisite courses.  You may also click register for classes  You may also click finshed if you are finished here. ");
+            Button bttn  = new Button(context);
+            bttn.setText("Update courses");
+            bttn.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, UpdateClassesInProgress.class);
+                    intent.putExtra("PreRecBlank", true);
+                    startActivity(intent);
+                }
+            });
+            Button bttnF  = new Button(context);
+            bttnF.setText("Finish");
+            bttnF.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PathWayDisplay.class);
+                    startActivity(intent);
+                }
+            });
+            layout.addView(txtV);
+            layout.addView(bttn);
+            layout.addView(bttnF);
+
+        }
+
+
         List<Button> courseButtons = new ArrayList<Button>();
 
         for (int i=0; i<theClassListObjects.size(); i++)
@@ -154,19 +219,26 @@ public class RegisterForClasses extends AppCompatActivity {
                 Button button = new Button(context);
                 button.setText(course.getTitle());
                 button.setTextColor(Color.GRAY);
-
+                if(recommendedCourse.get(i)){
+                    button.setTypeface(null, Typeface.BOLD_ITALIC);
+                }
                 button.setLayoutParams(params);
+
+
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Log.e("RegistrationButton", ((Button) view).getText().toString());
 
+
                         LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                         final View inflatedView = layoutInflater.inflate(R.layout.register_for_classes_popover, null, false);
+
                         TextView textView = (TextView) inflatedView.findViewById(R.id.textView5);
                         textView.setText(course.getTitle());
                         Button button = (Button) inflatedView.findViewById(R.id.button);
                         String buttonText = "Register for " + course.getTitle();
+
                         button.setText(buttonText);
                         button.setOnClickListener(new OnClickListener() {
                             @Override
@@ -505,7 +577,7 @@ public class RegisterForClasses extends AppCompatActivity {
 
         }
     }
-
+        //TODO: FIX THE seT uP ALARMS IT"S ADDING a new registration propmt!!!!
 
     private void setTimeToShowRegistrationPrompt(int seconds){
         int alarmId = 013423;

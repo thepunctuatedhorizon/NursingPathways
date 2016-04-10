@@ -7,15 +7,27 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg"
     tools:context="com.jones.android.nursingpathways.RegisterForClasses">
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I need some time"
+        android:id="@+id/delay"
+        android:layout_gravity="right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/register_for_classes_subLayout"
-        android:gravity="center_horizontal"></LinearLayout>
+        android:gravity="center_horizontal">
+
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -23,7 +35,7 @@
         android:text="@string/btnRegisterLink"
         android:id="@+id/btnRegisterLink"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true" />
 
     <TextView
         android:layout_width="wrap_content"

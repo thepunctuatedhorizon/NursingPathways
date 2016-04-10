@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.Calendar;
+import java.util.Random;
 
 public class CheckBlackBoardFromNotification extends AppCompatActivity {
     private static Intent alarmIntent = null;
@@ -51,7 +52,9 @@ public class CheckBlackBoardFromNotification extends AppCompatActivity {
         });
         // THis sets up the blackboard propmt to two weeks.
         //TODO: Do we need it to be two weeks? Or a random number of weeks?
-        int blackboardShow =  2 * 7 * 24 * 60 * 60;
+        Random random = new Random();
+        int rand = random.nextInt(14);
+        int blackboardShow = (7+rand)* 24 * 60 * 60;
         setTimeToShowBlackboardPrompt(blackboardShow);
     }
 

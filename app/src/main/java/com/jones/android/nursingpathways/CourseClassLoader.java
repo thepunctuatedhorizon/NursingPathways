@@ -49,7 +49,7 @@ public class CourseClassLoader {
 
 
         coursesObject = new ArrayList<CourseClass>();
-        for (int i = 0; i< courseLabels.length; i++)
+        for (int i =courseLabels.length-1; i>=0; i--)
         {
             boolean preReq = false;
             if (!coursePrereqs[i].equals("NONE")){

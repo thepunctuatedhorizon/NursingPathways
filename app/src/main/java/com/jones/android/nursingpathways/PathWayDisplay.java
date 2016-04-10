@@ -3,6 +3,7 @@ package com.jones.android.nursingpathways;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.net.Uri;
@@ -38,6 +39,8 @@ public class PathWayDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_path_way_display);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         theClassListDone = new ArrayList<Boolean>();
         theClassListInProgress = new ArrayList<Boolean>();
         theCourseObjects = new ArrayList<CourseClass>();
