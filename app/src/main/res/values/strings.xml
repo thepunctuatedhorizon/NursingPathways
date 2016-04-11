@@ -11,5 +11,5 @@
     <string name="btnregDen_finAid">I need financial aid</string>
     <string name="btnregDen_childCare">I need to care for a child</string>
     <string name="btnregDen_switchMajor">I want to switch my major</string>
-    <string name="btnregDen_personal">I can\'t due to personal reasons</string>
+    <string name="btnregDen_personal">Other</string>
 </resources>

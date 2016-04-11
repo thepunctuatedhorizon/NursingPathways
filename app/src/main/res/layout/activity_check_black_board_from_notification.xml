@@ -8,6 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="@drawable/bg"
     tools:context="com.jones.android.nursingpathways.CheckBlackBoardFromNotification"
     android:gravity="center_horizontal">
 
@@ -17,7 +18,8 @@
         android:text="Welcome back to the Pathways Application."
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="false" />
+        android:layout_alignParentStart="false"
+        android:textSize="17sp" />
 
     <TextView
         android:layout_width="wrap_content"

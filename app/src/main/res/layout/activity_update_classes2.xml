@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg"
     tools:context=".UpdateClassesInProgress">
 
     <ScrollView
@@ -25,7 +26,9 @@
                 android:layout_height="wrap_content"
                 android:text="Please select the courses you have successfully completed or that your adviser has said will transfer.  It is ok if you haven&apos;t taken all of the classes listed."
                 android:id="@+id/pleaseUpdateReal"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:background="@android:drawable/btn_default"
+                android:textColor="@color/abc_primary_text_disable_only_material_light" />
 
 
         </LinearLayout>

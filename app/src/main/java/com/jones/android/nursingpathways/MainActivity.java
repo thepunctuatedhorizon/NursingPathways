@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Remove when finished RegisterForClasses
 
-        startActivity(new Intent(this, RegisterForClasses.class));
+        startActivity(new Intent(this, RegistrationDenied.class));
         finish();
 
 

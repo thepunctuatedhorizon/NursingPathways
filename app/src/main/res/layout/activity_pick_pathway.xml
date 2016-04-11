@@ -7,16 +7,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg"
     tools:context="com.jones.android.nursingpathways.PickPathway">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome To the Pathways Application"
+        android:text="Select A Pathway"
         android:id="@+id/textView7"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textSize="32sp" />
+        android:layout_alignParentStart="false"
+        android:textSize="32sp"
+        android:textColor="@color/abc_search_url_text_pressed"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,7 +27,8 @@
         android:text="Below you will find the pathways, please click the pathway you are on."
         android:id="@+id/textView8"
         android:layout_below="@+id/textView7"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@color/abc_search_url_text_pressed" />
 
     <Button
         android:layout_width="wrap_content"

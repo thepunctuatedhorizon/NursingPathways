@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegistrationDenied extends AppCompatActivity {
-    private Button btn_childCare;
+    private Button btn_email;
     private Button btn_financial;
     private Button btn_switchMajor;
     private Button btn_personal;
@@ -22,14 +22,14 @@ public class RegistrationDenied extends AppCompatActivity {
         setContentView(R.layout.activity_registration_denied);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        btn_childCare = (Button)findViewById(R.id.btnChildCare);
+        btn_email = (Button)findViewById(R.id.btnEmail);
         btn_financial = (Button)findViewById(R.id.btnFinancial);
         btn_switchMajor = (Button)findViewById(R.id.btnSwitchMajor);
         btn_personal = (Button)findViewById(R.id.btnPersonal);
-        btn_childCare.setOnClickListener(new View.OnClickListener() {
+        btn_personal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("http://www.ccbcmd.edu/Resources-for-Students/Childcare-Services.aspx");
+                Uri uri = Uri.parse("http://www.ccbcmd.edu/Resources-for-Students");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 sympathy();
@@ -53,7 +53,7 @@ public class RegistrationDenied extends AppCompatActivity {
                 sympathy();
             }
         });
-        btn_personal.setOnClickListener(new View.OnClickListener() {
+        btn_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
