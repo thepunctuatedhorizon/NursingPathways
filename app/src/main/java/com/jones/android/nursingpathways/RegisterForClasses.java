@@ -127,7 +127,7 @@ public class RegisterForClasses extends AppCompatActivity {
                 courseAdded = true;
             }
 
-            if (theClassListObjects.get(i).getPreReqs().equals( "NONE") && !courseAdded)            {
+            if (theClassListObjects.get(i).getPreReqs().equals("NONE") && !courseAdded)            {
                 theClassListDone.add(false);
                 theClassListInProgress.add(false);
                 theClassesToRegister.add(true);
@@ -136,12 +136,15 @@ public class RegisterForClasses extends AppCompatActivity {
             }
 
 
-
+            //TODO FIX THIS LOGIC
             String preReq = theClassListObjects.get(i).getPreReqs();
-            for (int j=0; j<i; j++)
+            int len = theClassListObjects.size()-1;
+            for (int j=len-1; j>=0; j--)
             {
-                String courseString = theClassListObjects.get(i).getTitle();
-                if (courseString.equals(preReq)&& theClassListDone.get(j)){
+
+                String courseString = theClassListObjects.get(len-j).getTitle();
+                if (courseString.equals(preReq)&&theClassListObjects.get(len-j).getDone()){
+
                     theClassesToRegister.add(true);
                     numberAdded +=1;
                     courseAdded = true;
