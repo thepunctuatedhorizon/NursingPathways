@@ -5,7 +5,7 @@
     <string name="title_activity_path_way_display">PathWayDisplay</string>
     <string name="title_activity_set_up">SetUp</string>
 
-    <string name="btnRegisterLink">Register Now!</string>
+    <string name="btnRegisterComplete">Done</string>
     <string name="title_activity_register_denied">We are sorry you are having difficulties with continuing your education here at CCBC. We are committed to your success and we hope you will allow us the opportunity to serve you and help you with your needs.</string>
     <string name="registrationDeniedSympathyText_text">We hope the links here have helped you. Please feel free to contact us with the last button. </string>
     <string name="btnregDen_finAid">I need financial aid</string>
