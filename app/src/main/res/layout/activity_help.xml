@@ -14,8 +14,44 @@
         android:layout_height="wrap_content"
         android:text="Here&apos;s what the colors mean"
         android:id="@+id/textView9"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="115dp"
-        android:layout_marginTop="122dp" />
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cannot Take Yet"
+        android:id="@+id/button5"
+        android:layout_below="@+id/textView9"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="88dp"
+        android:textColor="#ff0000" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next To Take"
+        android:id="@+id/button6"
+        android:layout_below="@+id/button5"
+        android:layout_alignStart="@+id/button5"
+        android:textColor="#ffff00" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currently Taking"
+        android:id="@+id/button7"
+        android:layout_below="@+id/button6"
+        android:layout_alignStart="@+id/button6"
+        android:textColor="#00ff00" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finished"
+        android:id="@+id/button8"
+        android:textColor="#0000ff"
+        android:layout_below="@+id/button7"
+        android:layout_alignStart="@+id/button7" />
+
 </RelativeLayout>

@@ -11,6 +11,7 @@ public class CourseClass {
     boolean done;
     boolean inProgress;
     boolean anyPreReqs;
+    boolean isOpenForRegistration;
     String preReqs;
 
     public CourseClass()
@@ -25,7 +26,7 @@ public class CourseClass {
         preReqs = null;
     }
 
-    public CourseClass(String title, String url, boolean done, boolean inProgress, boolean anyPreReqs, String preReqs){
+    public CourseClass(String title, String url, boolean done, boolean inProgress, boolean anyPreReqs, String preReqs, boolean isOpenForRegistration){
         super();
         //The proper constructor.
         //TODO: Nullable inputs?
@@ -35,6 +36,7 @@ public class CourseClass {
         this.inProgress = inProgress;
         this.anyPreReqs = anyPreReqs;
         this.preReqs = preReqs;
+        this.isOpenForRegistration = isOpenForRegistration;
 
     }
 
@@ -57,6 +59,7 @@ public class CourseClass {
     public String getPreReqs(){
         return preReqs;
     }
+    public boolean getIsOpenForRegistration() {return isOpenForRegistration;}
 
     public void setTitle(String title){
         this.title = title;
@@ -74,6 +77,8 @@ public class CourseClass {
         this.anyPreReqs = anyPreReqs;
     }
     public  void setPreReqs(String preReqs){this.preReqs = preReqs; }
+
+    public void setIsOpenForRegistaration(boolean is) {this.isOpenForRegistration = is;}
 
 
 

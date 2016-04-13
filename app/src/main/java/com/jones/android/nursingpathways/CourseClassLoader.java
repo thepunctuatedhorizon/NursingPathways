@@ -2,6 +2,7 @@ package com.jones.android.nursingpathways;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.jones.android.nursingpathways.CourseClass;
 
@@ -55,12 +56,32 @@ public class CourseClassLoader {
             if (!coursePrereqs[i].equals("NONE")){
                 preReq = true;
             }
+
+            boolean isCourseAvailableForRegistration = false;
+            boolean done = sharedPrefDone.getBoolean(courseLabels[i], false);
+
+            boolean inProgress = sharedPrefInProgress.getBoolean(courseLabels[i], false);
+            if (!done&&!inProgress&&!preReq){
+
+                for (int j=courseLabels.length-1; j>0; j--)
+                {
+                    Log.e("ErrorIn",courseLabels.length-1+ " , " +j);
+                    String courseString = courseLabels[courseLabels.length-j];
+                    boolean prereqDone = sharedPrefDone.getBoolean(courseLabels[courseLabels.length-j],false);
+                    if (courseString.equals(preReq)&&prereqDone){
+                        isCourseAvailableForRegistration = true;
+
+                    }
+                }
+                if (!isCourseAvailableForRegistration && !done && !inProgress && !preReq){isCourseAvailableForRegistration = true;}
+            }
             CourseClass course = new CourseClass(courseLabels[i],
                     courseURLs[i],
-                    sharedPrefDone.getBoolean(courseLabels[i], false),
-                    sharedPrefInProgress.getBoolean(courseLabels[i], false),
+                    done,
+                    inProgress,
                     preReq,
-                    coursePrereqs[i]);
+                    coursePrereqs[i],
+                    isCourseAvailableForRegistration);
             coursesObject.add(course);
         }
     }
