@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import java.security.spec.EllipticCurve;
 import java.util.ArrayList;
 import java.util.List;
 import com.jones.android.nursingpathways.CourseClass;
@@ -65,7 +66,7 @@ public class PathWayDisplay extends AppCompatActivity {
         CourseClassLoader courseClassLoader = new CourseClassLoader(context);
         theCourseObjects = courseClassLoader.loadClassObjects();
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
-
+        params.setMargins(0,50,0,0);
 
         for (int i = 0; i < theCourseObjects.size(); i++) {
             boolean buttonAdded = false;
@@ -77,8 +78,9 @@ public class PathWayDisplay extends AppCompatActivity {
 
                 Button button = new Button(context);
                 button.setText(course.getTitle());
-                button.setTextColor(getResources().getColor(R.color.pathGreenDark));
-
+                button.setBackground(getResources().getDrawable(R.drawable.bttn_purple));
+                button.setTextColor(getResources().getColor(R.color.pathBlack));
+                button.setTextSize(24);
                 button.setLayoutParams(params);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -99,8 +101,9 @@ public class PathWayDisplay extends AppCompatActivity {
 
                 Button button = new Button(context);
                 button.setText(course.getTitle());
-                button.setTextColor(Color.GREEN);
-
+                button.setBackground(getResources().getDrawable(R.drawable.bttn_blue));
+                button.setTextColor(getResources().getColor(R.color.pathBlack));
+                button.setTextSize(24);
                 button.setLayoutParams(params);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -122,7 +125,9 @@ public class PathWayDisplay extends AppCompatActivity {
                 Button button = new Button(context);
                 button.setText(course.getTitle());
                 button.setLayoutParams(params);
-                button.setTextColor(Color.GRAY);
+                button.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+                button.setTextColor(getResources().getColor(R.color.pathBlack));
+                button.setTextSize(24);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -139,7 +144,9 @@ public class PathWayDisplay extends AppCompatActivity {
                 Button button = new Button(context);
                 button.setText(course.getTitle());
                 button.setLayoutParams(params);
-                button.setTextColor(Color.RED);
+                button.setBackground(getResources().getDrawable(R.drawable.bttn_red));
+                button.setTextColor(getResources().getColor(R.color.pathBlack));
+                button.setTextSize(24);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

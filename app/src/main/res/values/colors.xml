@@ -12,4 +12,5 @@
     <color name="pathPurple">#765792</color>
     <color name="pathYellow">#FBD76A</color>
     <color name="pathRed">#A05363</color>
+    <color name="pathBlack">#000000</color>
 </resources>
