@@ -15,6 +15,7 @@ public class Settings extends AppCompatActivity {
         Button button2 = (Button) findViewById(R.id.button2);
         Button button3 = (Button) findViewById(R.id.button3);
         Button button4 = (Button) findViewById(R.id.button4);
+        Button reviewReg = (Button) findViewById(R.id.registrationJUMP);
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +40,14 @@ public class Settings extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent( getApplicationContext(), UpdateClasses.class);
                 intent.putExtra("KEY","Yes");
+                startActivity(intent);
+            }
+        });
+
+        reviewReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(getApplicationContext(), RegisterForClasses.class);
                 startActivity(intent);
             }
         });

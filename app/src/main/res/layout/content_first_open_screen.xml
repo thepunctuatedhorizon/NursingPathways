@@ -21,18 +21,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Allied Health Pathway"
-                android:id="@+id/alliedHealthPathwayText"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:textColor="#00fff7"
-                android:backgroundTint="#514f4f"
-                android:backgroundTintMode="add"
-                android:textSize="42sp"
-                android:gravity="center" />
 
             <TextView
                 android:layout_width="wrap_content"
