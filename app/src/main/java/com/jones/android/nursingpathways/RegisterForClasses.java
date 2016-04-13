@@ -136,7 +136,7 @@ public class RegisterForClasses extends AppCompatActivity {
             }
 
 
-            //TODO FIX THIS LOGIC
+
             String preReq = theClassListObjects.get(i).getPreReqs();
             int len = theClassListObjects.size()-1;
             for (int j=len-1; j>=0; j--)

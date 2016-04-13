@@ -31,7 +31,7 @@
     </LinearLayout>
     </ScrollView>
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:id="@+id/qm"
@@ -39,7 +39,7 @@
         android:src="@drawable/qm"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:clickable="true" />
+        android:clickable="true" /> -->
 
 
 </RelativeLayout>

@@ -47,14 +47,14 @@ public class PathWayDisplay extends AppCompatActivity {
         //courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
         Intent intent = getIntent();
 
-        ImageView imageView = (ImageView) findViewById(R.id.qm);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PathWayDisplay.this, Help.class);
-                startActivity(intent);
-            }
-        });
+//        ImageView imageView = (ImageView) findViewById(R.id.qm);
+//        imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(PathWayDisplay.this, Help.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
@@ -116,6 +116,23 @@ public class PathWayDisplay extends AppCompatActivity {
 
             }
 
+            if (!buttonAdded&& course.getIsOpenForRegistration()){
+                theClassListDone.add(false);
+                theClassListInProgress.add(false);
+                Button button = new Button(context);
+                button.setText(course.getTitle());
+                button.setLayoutParams(params);
+                button.setTextColor(Color.GRAY);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.e("Button Gray", ((Button) view).getText().toString());
+                        setTheButtonPopup(course,view);
+                    }
+                });
+                layout.addView(button);
+                buttonOnPathway.add(button);
+            }
             if (!buttonAdded){
                 theClassListInProgress.add(false);
                 theClassListDone.add(false);
@@ -204,6 +221,11 @@ public class PathWayDisplay extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent intent = new Intent(getApplicationContext(), Settings.class);
             startActivity(intent );
+            return true;
+        }
+        if (id == R.id.action_help){
+            Intent intent = new Intent(getApplicationContext(),Help.class);
+            startActivity(intent);
             return true;
         }
 
