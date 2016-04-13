@@ -66,8 +66,8 @@ public class PathWayDisplay extends AppCompatActivity {
         theCourseObjects = courseClassLoader.loadClassObjects();
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
+
         for (int i = 0; i < theCourseObjects.size(); i++) {
-            //TODO: IMPLEMENT THE PREREQ LOGIC
             boolean buttonAdded = false;
             final CourseClass course = theCourseObjects.get(i);
             final String url = course.getUrl();
@@ -77,7 +77,7 @@ public class PathWayDisplay extends AppCompatActivity {
 
                 Button button = new Button(context);
                 button.setText(course.getTitle());
-                button.setTextColor(Color.BLUE);
+                button.setTextColor(getResources().getColor(R.color.pathGreenDark));
 
                 button.setLayoutParams(params);
                 button.setOnClickListener(new View.OnClickListener() {
@@ -155,9 +155,7 @@ public class PathWayDisplay extends AppCompatActivity {
 
 
 
-        TextView textView = (TextView) findViewById(R.id.textViewTemp);
 
-        textView.setText("The Pathway");
 
 
  //       layout.post(new Runnable() {
