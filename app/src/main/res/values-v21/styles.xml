@@ -6,4 +6,11 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="PathwayTheme" parent="AppTheme" >
+        <item name="colorPrimary">@color/pathGreen</item>
+        <item name="colorPrimaryDark">@color/pathGreenDark</item>
+        <item name="colorAccent">@color/pathBlue</item>
+        <item name="android:windowBackground">@color/pathBackground</item>
+    </style>
 </resources>

@@ -20,4 +20,11 @@
         parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="PathwayTheme" parent="AppTheme" >
+        <item name="colorPrimary">@color/pathGreen</item>
+        <item name="colorPrimaryDark">@color/pathGreenDark</item>
+        <item name="colorAccent">@color/pathBlue</item>
+        <item name="android:windowBackground">@color/pathBackground</item>
+    </style>
+
 </resources>
