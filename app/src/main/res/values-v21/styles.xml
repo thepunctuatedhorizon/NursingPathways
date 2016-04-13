@@ -10,7 +10,8 @@
     <style name="PathwayTheme" parent="AppTheme" >
         <item name="colorPrimary">@color/pathGreen</item>
         <item name="colorPrimaryDark">@color/pathGreenDark</item>
-        <item name="colorAccent">@color/pathBlue</item>
-        <item name="android:windowBackground">@color/pathBackground</item>
+        <item name="colorAccent">@color/pathPurple</item>
+        <item name="android:windowBackground">@color/pathGreyDark</item>
+        <item name="android:colorBackground">@color/pathGrayLight</item>
     </style>
 </resources>

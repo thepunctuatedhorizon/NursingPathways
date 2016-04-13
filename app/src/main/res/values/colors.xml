@@ -6,5 +6,10 @@
     <color name="pathGreen">#00a999</color>
     <color name="pathGreenDark">#0f796f</color>
     <color name="pathBlue">#05a8d3</color>
-    <color name="pathBackground">#9d9ea2</color>
+    <color name="pathGreyDark">#9d9ea2</color>
+    <color name="pathGreyMed">#ABACB0</color>
+    <color name="pathGreyLight">#D3D4D6</color>
+    <color name="pathPurple">#765792</color>
+    <color name="pathYellow">#FBD76A</color>
+    <color name="pathRed">#A05363</color>
 </resources>
