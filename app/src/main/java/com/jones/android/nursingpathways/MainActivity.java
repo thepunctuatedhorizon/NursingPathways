@@ -314,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
     private void setTimeToUpdateClasses(int days){
         //This function will set the UpdateClasses timer
         int alarmId = 013523;
-        long ms = Calendar.getInstance().getTimeInMillis() + days * 24 * 60 * 60 * (1000) ;
+        long ms = Calendar.getInstance().getTimeInMillis() + (days * 24 * 60 * 60 * 1000);
         alarmIntent = new Intent(this, UpdateClassesInProgressAlarmReceiver.class );
         pendingIntent = PendingIntent.getBroadcast( context, alarmId, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         if (alarmManager == null) {
@@ -380,7 +380,7 @@ public class MainActivity extends AppCompatActivity {
     private void setTimeToShowRegistrationPrompt(int seconds){
         //This does exactly what it says it does.
         int alarmId = 013423;
-        long ms = seconds * (1000) + Calendar.getInstance().getTimeInMillis();
+        long ms = (seconds * 1000) + Calendar.getInstance().getTimeInMillis();
         alarmIntent = new Intent(this, RegistrationAlarmReceiver.class );
         pendingIntent = PendingIntent.getBroadcast( context, alarmId, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         if (alarmManager == null) {
