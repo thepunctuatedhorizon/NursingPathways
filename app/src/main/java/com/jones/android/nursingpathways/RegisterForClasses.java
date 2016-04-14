@@ -79,6 +79,7 @@ public class RegisterForClasses extends AppCompatActivity {
                  /** Uri uri = Uri.parse("http://www.ccbcmd.edu/resources-for-students/registering-for-classes");
                  Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                  startActivity(intent); **/
+
              }
 
              });

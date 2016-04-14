@@ -13,5 +13,6 @@
         <item name="colorAccent">@color/pathPurple</item>
         <item name="android:windowBackground">@color/pathGreyDark</item>
         <item name="android:colorBackground">@color/pathGrayLight</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
     </style>
 </resources>

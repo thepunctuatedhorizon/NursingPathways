@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Remove when finished RegisterForClasses
 
-        startActivity(new Intent(this, RegisterForClasses.class));
-        finish();
+      /*  startActivity(new Intent(this, RegisterForClasses.class));
+        finish();*/
 
 
         //This function is designed to check if the registration is within two weeks,  if it is
