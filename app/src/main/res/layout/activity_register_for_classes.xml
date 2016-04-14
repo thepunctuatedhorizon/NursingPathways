@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btnRegisterComplete"
-        android:id="@+id/btnRegisterLink"
+        android:id="@+id/btnRegisterComplete"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true" />
 

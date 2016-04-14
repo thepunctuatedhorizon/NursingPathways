@@ -5,19 +5,15 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.support.annotation.StyleRes;
-import android.support.annotation.StyleableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,7 +21,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -45,7 +40,7 @@ public class RegisterForClasses extends AppCompatActivity {
     List<Boolean> theClassListInProgress;
     List<CourseClass> theClassListObjects;
 
-    private Button btn_register_link;
+    private Button btn_register_complete;
     private Button btn_delay;
 
     @Override
@@ -76,14 +71,14 @@ public class RegisterForClasses extends AppCompatActivity {
         nMgr.cancel(mNotification5);
 
 
-        btn_register_link = (Button)findViewById(R.id.btnRegisterLink);
+        btn_register_complete = (Button)findViewById(R.id.btnRegisterComplete);
 
-        btn_register_link.setOnClickListener(new View.OnClickListener() {
+        btn_register_complete.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Uri uri = Uri.parse("http://www.ccbcmd.edu/resources-for-students/registering-for-classes");
+                 /** Uri uri = Uri.parse("http://www.ccbcmd.edu/resources-for-students/registering-for-classes");
                  Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                 startActivity(intent);
+                 startActivity(intent); **/
              }
 
              });
