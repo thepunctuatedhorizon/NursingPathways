@@ -65,7 +65,7 @@ public class CourseClassLoader {
 
                 for (int j=courseLabels.length-1; j>0; j--)
                 {
-                    Log.e("ErrorIn",courseLabels.length-1+ " , " +j);
+
                     String courseString = courseLabels[courseLabels.length-j];
                     boolean prereqDone = sharedPrefDone.getBoolean(courseLabels[courseLabels.length-j],false);
                     if (courseString.equals(preReq)&&prereqDone){

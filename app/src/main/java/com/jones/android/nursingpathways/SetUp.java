@@ -21,6 +21,7 @@ public class SetUp extends AppCompatActivity {
 
     List<CheckBox> checkBoxesDone;
     List<CheckBox> checkBoxesInProgress;
+    List<CourseClass> courses;
     boolean [] coursesDone;
     boolean [] coursesInProgress;
 
@@ -35,18 +36,27 @@ public class SetUp extends AppCompatActivity {
         checkBoxesDone = new ArrayList<CheckBox>();
         coursesDone = new boolean[courseLabels.length];
         coursesInProgress = new boolean[courseLabels.length];
+        courses = new ArrayList<CourseClass>();
+        CourseClassLoader loader = new CourseClassLoader(context);
+        courses = loader.loadClassObjects();
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.relativeLayoutSetup);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_checkbox_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
         for (int i = 0; i < courseLabels.length; i++) {
-            CheckBox checkBox = new CheckBox(context);
-            checkBox.setText(courseLabels[i]);
-            checkBox.setTextColor(Color.BLACK);
+            if(!courses.get(courseLabels.length-1 -i).getPreReqs().equals("PERMISSION")) {
 
-            checkBox.setLayoutParams(params);
-            linearLayout.addView(checkBox);
-            checkBoxesDone.add(checkBox);
+                CheckBox checkBox = new CheckBox(context);
+                checkBox.setText(courseLabels[i]);
+                checkBox.setTextColor(Color.BLACK);
+
+                checkBox.setLayoutParams(params);
+                linearLayout.addView(checkBox);
+                checkBoxesDone.add(checkBox);
+            } else {
+                CheckBox checkBox = new CheckBox(context);
+                checkBoxesDone.add(checkBox);
+            }
         }
         LinearLayout buttonContainer = new LinearLayout(context);
         buttonContainer.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -116,18 +126,24 @@ public class SetUp extends AppCompatActivity {
         final String[] courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
         final Context context = getApplicationContext();
         checkBoxesInProgress= new ArrayList<CheckBox>();
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_checkbox_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
         for (int i = 0; i < courseLabels.length; i++) {
-            if(!coursesDone[i]) {
+            if(!coursesDone[i]&&!courses.get(courseLabels.length-1 -i).getPreReqs().equals("PERMISSION")) {
+
+
                 CheckBox checkBox = new CheckBox(context);
                 checkBox.setText(courseLabels[i]);
                 checkBox.setTextColor(Color.BLACK);
                 checkBox.setLayoutParams(params);
                 linearLayout.addView(checkBox);
                 checkBoxesInProgress.add(checkBox);
+            } else {
+                CheckBox checkBox = new CheckBox(context);
+                checkBoxesInProgress.add(checkBox);
             }
+
         }
         LinearLayout buttonContainer = new LinearLayout(context);
         buttonContainer.setGravity(Gravity.CENTER_HORIZONTAL);

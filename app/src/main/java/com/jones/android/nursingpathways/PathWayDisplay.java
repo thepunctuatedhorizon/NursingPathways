@@ -137,6 +137,7 @@ public class PathWayDisplay extends AppCompatActivity {
                 });
                 layout.addView(button);
                 buttonOnPathway.add(button);
+                buttonAdded = true;
             }
             if (!buttonAdded){
                 theClassListInProgress.add(false);
