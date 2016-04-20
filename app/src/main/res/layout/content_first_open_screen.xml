@@ -43,7 +43,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:background="@android:drawable/btn_default" />
+                android:background="@android:drawable/btn_default"
+                android:textColor="@color/abc_search_url_text_pressed" />
 
             <TextView
                 android:layout_width="wrap_content"

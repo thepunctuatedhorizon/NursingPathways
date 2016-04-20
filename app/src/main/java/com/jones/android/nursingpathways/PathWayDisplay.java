@@ -46,7 +46,7 @@ public class PathWayDisplay extends AppCompatActivity {
         theClassListInProgress = new ArrayList<Boolean>();
         theCourseObjects = new ArrayList<CourseClass>();
         //courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
 
 //        ImageView imageView = (ImageView) findViewById(R.id.qm);
 //        imageView.setOnClickListener(new View.OnClickListener() {
@@ -184,7 +184,11 @@ public class PathWayDisplay extends AppCompatActivity {
         TextView textView = (TextView) inflatedView.findViewById(R.id.txtTitle);
         textView.setText(course.getTitle());
         TextView txtView = (TextView) inflatedView.findViewById(R.id.txtInfo);
-        txtView.setText("This course has " + course.getPreReqs() + " as a prerequisite.");
+        if (course.getPreReqs().equals("NONE")){
+            txtView.setText("This course has no prerequisite.");
+        } else {
+            txtView.setText("This course has " + course.getPreReqs() + " as a prerequisite.");
+        }
         TextView txtView2 = (TextView) inflatedView.findViewById(R.id.txtTaken);
         if (course.getDone()){
             txtView2.setText("You have completed this course.");
