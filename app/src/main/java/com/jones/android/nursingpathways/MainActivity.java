@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Remove when finished RegisterForClasses
 
-        startActivity(new Intent(this, PickPathway.class));
-        finish();
+        //startActivity(new Intent(this, PickPathway.class));
+        //finish();
 
 
         //This function is designed to check if the registration is within two weeks,  if it is
@@ -204,13 +204,13 @@ public class MainActivity extends AppCompatActivity {
         //This is where most of the application runs will end up.
         if (firstTimeOpeningApp&&timeToUpdateClasses) {
             //If it is the first time opening, both flags will be true and thus we launch first open screen.
-            Intent intent = new Intent(context,FirstOpenScreen.class);
+            Intent intent = new Intent(context,PickPathway.class);
             firstTimeOpeningApp = false;
             editor.putBoolean("FirstTimeOpening",false);
             startActivityForResult(intent, 1);
         } else if (firstTimeOpeningApp && !timeToUpdateClasses) {
             //A case that shouldn't happen, but has to be protected against
-            Intent intent = new Intent(context,FirstOpenScreen.class);
+            Intent intent = new Intent(context,PickPathway.class);
             firstTimeOpeningApp = false;
             editor.putBoolean("FirstTimeOpening",false);
             startActivityForResult(intent, 1);
@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             } else if (resultCode == RESULT_OK){
                 //If the result code is OK then we need to send the user to the setUp class
-                Intent intent = new Intent(getApplicationContext(),PickPathway.class);
+                Intent intent = new Intent(getApplicationContext(),SetUp.class);
                 startActivity(intent);
             }
         }

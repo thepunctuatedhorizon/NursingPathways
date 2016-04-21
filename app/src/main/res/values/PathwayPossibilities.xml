@@ -9,6 +9,7 @@
     </string-array>
 
     <string-array name="PathwayCategoryPRE">
+        <item>General Health Pathway</item>
         <item>Dental Hygiene (AAS)</item>
         <item>Emergency Medical Technology (Degree and Certificate Programs)</item>
         <item>Massage Therapy (Degree and Certificate Programs)</item>

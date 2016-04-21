@@ -51,7 +51,7 @@ public class UpdateClassesInProgress extends AppCompatActivity {
         final SharedPreferences.Editor editorIP = sharedPrefInProgress.edit();
         checkBoxesDone = new ArrayList<CheckBox>();
         coursesDone = new boolean[courseLabels.length];
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_checkbox_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.relativeLayoutUpdate);
 

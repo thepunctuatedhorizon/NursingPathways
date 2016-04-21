@@ -68,8 +68,7 @@ public class PickPathway extends AppCompatActivity {
             public void onClick(View v) {
                 editor.putInt("PathwayChoice", ALLIED_PATHWAY);
                 editor.commit();
-                Intent intent = new Intent(PickPathway.this, SetUp.class);
-                startActivity(intent);
+                finishWithResult();
             }
         });
     }
@@ -95,5 +94,27 @@ public class PickPathway extends AppCompatActivity {
             setUpPathwayButton(bttn,pathwaySelected[i]);
             linearLayout.addView(bttn);
         }
+    }
+
+    //This tells the MainActivity that they haven't taken courses.
+    private void finishWithResultNo()
+    {
+        Bundle conData = new Bundle();
+        conData.putString("result_FirstOpenScreen", "No");
+        Intent intent = new Intent();
+        intent.putExtras(conData);
+        setResult(RESULT_CANCELED, intent);
+        finish();
+    }
+
+    //This tells the MainActivity that they have taken courses.  The main activity will launch setup when receiving these values.
+    private void finishWithResult()
+    {
+        Bundle conData = new Bundle();
+        conData.putString("result_FirstOpenScreen", "Yes");
+        Intent intent = new Intent();
+        intent.putExtras(conData);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
