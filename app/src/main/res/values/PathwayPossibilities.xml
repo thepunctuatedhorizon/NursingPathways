@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="PathwayCategory">
+        <item>Pre-Allied Health</item>
+        <item>Technology, Science, and Math</item>
+        <item>Business, Law, and Criminal Justice</item>
+        <item>Arts and Humanities</item>
+        <item>Behavioral and Social Sciences</item>
+    </string-array>
+
+    <string-array name="PathwayCategoryPRE">
+        <item>Dental Hygiene (AAS)</item>
+        <item>Emergency Medical Technology (Degree and Certificate Programs)</item>
+        <item>Massage Therapy (Degree and Certificate Programs)</item>
+        <item>Medical Laboratory Technology (AAS)</item>
+        <item>Mental Health (Degree and Certificate Programs)</item>
+        <item>Mortuary Science (AAS)</item>
+        <item>Registered Nursing (ASN)</item>
+        <item>Practical Nursing (Certificate)</item>
+        <item>Occupational Therapy Assistant (AAS)</item>
+        <item>Radiation Therapy (AAS)</item>
+        <item>Radiography (AAS)</item>
+        <item>Respiratory Care Therapist (AAS)</item>
+        <item>Veterinary Technology (AAS)</item>
+    </string-array>
+
+    <string-array name="PathwayCategoryBLC">
+        <item>Accounting</item>
+        <item>Business Administration</item>
+        <item>Business Management</item>
+        <item>Criminal Justice Studies</item>
+        <item>Economics</item>
+        <item>Legal Studies</item>
+    </string-array>
+
+</resources>

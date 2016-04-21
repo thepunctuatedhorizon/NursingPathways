@@ -36,14 +36,19 @@ public class UpdateClasses extends AppCompatActivity {
         coursesDone = new boolean[courseLabels.length];
         coursesInProgress = new boolean[courseLabels.length];
 
+        SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPrefDone.edit();
+
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.relativeLayoutUpdateReal);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_checkbox_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
         for (int i = 0; i < courseLabels.length; i++) {
             CheckBox checkBox = new CheckBox(context);
             checkBox.setText(courseLabels[i]);
             checkBox.setTextColor(Color.BLACK);
-
+            if(sharedPrefDone.getBoolean(courseLabels[i],true)){
+                checkBox.setChecked(true);
+            }
             checkBox.setLayoutParams(params);
             linearLayout.addView(checkBox);
             checkBoxesDone.add(checkBox);
@@ -61,8 +66,7 @@ public class UpdateClasses extends AppCompatActivity {
                 //Save Actions
 
 
-                SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPrefDone.edit();
+
                 int counter = 0;
                 for (int i = 0; i < courseLabels.length; i++) {
                     if (checkBoxesDone.size()>0&& checkBoxesDone.size()>counter) {

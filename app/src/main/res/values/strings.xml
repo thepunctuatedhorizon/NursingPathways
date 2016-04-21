@@ -12,4 +12,6 @@
     <string name="btnregDen_childCare">I need to care for a child</string>
     <string name="btnregDen_switchMajor">I want to switch my major</string>
     <string name="btnregDen_personal">Other</string>
+    <string name="select_a_pathway">Select A Pathway</string>
+    <string name="below_you_will_find_the_pathways_please_click_the_pathway_you_are_on">Below you will find the pathways, please click the pathway you are on.</string>
 </resources>

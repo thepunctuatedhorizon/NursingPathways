@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select A Pathway"
+        android:text="@string/select_a_pathway"
         android:id="@+id/textView7"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="false"
@@ -24,17 +24,26 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Below you will find the pathways, please click the pathway you are on."
+        android:text="@string/below_you_will_find_the_pathways_please_click_the_pathway_you_are_on"
         android:id="@+id/textView8"
         android:layout_below="@+id/textView7"
-        android:layout_alignParentStart="true"
-        android:textColor="@color/abc_search_url_text_pressed" />
+        android:layout_alignParentStart="false"
+        android:textColor="@color/abc_search_url_text_pressed"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView8">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AlliedHealth Pathway"
-        android:id="@+id/alliedHeathPathway"
-        android:layout_below="@+id/textView8"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/linLay_PickP_Buttons">
+
+
+    </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>
