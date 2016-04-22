@@ -55,7 +55,6 @@ public class RegisterForClasses extends AppCompatActivity {
 
         final String LOGTAG = getClass().getSimpleName();
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
         int mNotificationId = 071;
         int mNotificationSecondId = 061;
@@ -72,20 +71,24 @@ public class RegisterForClasses extends AppCompatActivity {
 
 
         btn_register_complete = (Button)findViewById(R.id.btnRegisterComplete);
-
+        btn_register_complete.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        btn_register_complete.setTextColor(getResources().getColor(R.color.pathBlack));
+        btn_register_complete.setTextSize(16);
         btn_register_complete.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 /** Uri uri = Uri.parse("http://www.ccbcmd.edu/resources-for-students/registering-for-classes");
-                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                 startActivity(intent); **/
+
+                 Intent intent = new Intent(RegisterForClasses.this,PathWayDisplay.class);
+                 startActivity(intent);
 
              }
 
              });
 
         btn_delay = (Button)findViewById(R.id.delay);
-
+        btn_delay.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        btn_delay.setTextColor(getResources().getColor(R.color.pathBlack));
+        btn_delay.setTextSize(16);
         btn_delay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,6 +182,8 @@ public class RegisterForClasses extends AppCompatActivity {
 
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.register_for_classes_subLayout);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_long), LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0,50,0,0);
         if ( numberAdded == 0){
             TextView txtV = new TextView(context);
             txtV.setText("It appears that you have taken all the classes you yourself can register for, or you are taking the prerequisites of the courses next in the sequence.  Please press below to indicate you have finished the prerequisite courses.  You may also click register for classes  You may also click finshed if you are finished here. ");
@@ -217,11 +222,13 @@ public class RegisterForClasses extends AppCompatActivity {
                 final String url = course.getUrl();
                 Button button = new Button(context);
                 button.setText(course.getTitle());
-                button.setTextColor(Color.GRAY);
+                button.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+                button.setTextColor(getResources().getColor(R.color.pathBlack));
+                button.setTextSize(16);
+                button.setLayoutParams(params);
                 if(recommendedCourse.get(i)){
                     button.setTypeface(null, Typeface.BOLD_ITALIC);
                 }
-                button.setLayoutParams(params);
 
 
                 button.setOnClickListener(new View.OnClickListener() {

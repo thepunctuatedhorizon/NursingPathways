@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,10 +23,30 @@ public class RegistrationDenied extends AppCompatActivity {
         setContentView(R.layout.activity_registration_denied);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_long), LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0,50,0,0);
+
         btn_email = (Button)findViewById(R.id.btnEmail);
+        btn_email.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        btn_email.setTextColor(getResources().getColor(R.color.pathBlack));
+        btn_email.setTextSize(16);
+        btn_email.setLayoutParams(params);
         btn_financial = (Button)findViewById(R.id.btnFinancial);
+        btn_financial.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        btn_financial.setTextColor(getResources().getColor(R.color.pathBlack));
+        btn_financial.setTextSize(16);
+        btn_financial.setLayoutParams(params);
         btn_switchMajor = (Button)findViewById(R.id.btnSwitchMajor);
+        btn_switchMajor.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        btn_switchMajor.setTextColor(getResources().getColor(R.color.pathBlack));
+        btn_switchMajor.setTextSize(16);
+        btn_switchMajor.setLayoutParams(params);
         btn_personal = (Button)findViewById(R.id.btnPersonal);
+        btn_personal.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        btn_personal.setTextColor(getResources().getColor(R.color.pathBlack));
+        btn_personal.setTextSize(16);
+        btn_personal.setLayoutParams(params);
+
         btn_personal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

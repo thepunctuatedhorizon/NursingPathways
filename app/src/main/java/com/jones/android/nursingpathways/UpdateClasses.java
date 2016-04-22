@@ -21,6 +21,7 @@ public class UpdateClasses extends AppCompatActivity {
 
     List<CheckBox> checkBoxesDone;
     List<CheckBox> checkBoxesInProgress;
+    List<CourseClass> courses;
     boolean [] coursesDone;
     boolean [] coursesInProgress;
 
@@ -36,6 +37,9 @@ public class UpdateClasses extends AppCompatActivity {
         coursesDone = new boolean[courseLabels.length];
         coursesInProgress = new boolean[courseLabels.length];
 
+        CourseClassLoader loader = new CourseClassLoader(context);
+        courses = loader.loadClassObjects();
+
         SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPrefDone.edit();
 
@@ -43,15 +47,22 @@ public class UpdateClasses extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_checkbox_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
         for (int i = 0; i < courseLabels.length; i++) {
-            CheckBox checkBox = new CheckBox(context);
-            checkBox.setText(courseLabels[i]);
-            checkBox.setTextColor(Color.BLACK);
-            if(sharedPrefDone.getBoolean(courseLabels[i],true)){
-                checkBox.setChecked(true);
+            if(!courses.get(courseLabels.length-1 -i).getPreReqs().equals("PERMISSION")) {
+
+                CheckBox checkBox = new CheckBox(context);
+                checkBox.setText(courseLabels[i]);
+                checkBox.setTextColor(Color.BLACK);
+                if(sharedPrefDone.getBoolean(courseLabels[i],true)){
+                    checkBox.setChecked(true);
+                }
+                checkBox.setLayoutParams(params);
+                linearLayout.addView(checkBox);
+                checkBoxesDone.add(checkBox);
+            } else {
+                CheckBox checkBox = new CheckBox(context);
+                checkBoxesDone.add(checkBox);
             }
-            checkBox.setLayoutParams(params);
-            linearLayout.addView(checkBox);
-            checkBoxesDone.add(checkBox);
+
         }
         LinearLayout buttonContainer = new LinearLayout(context);
         buttonContainer.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -72,7 +83,8 @@ public class UpdateClasses extends AppCompatActivity {
                     if (checkBoxesDone.size()>0&& checkBoxesDone.size()>counter) {
                         CheckBox box = checkBoxesDone.get(counter);
                         counter++;
-                        if (box.isChecked()) {
+
+                        if(box.isChecked() ) {
                             coursesDone[i] = true;
                             editor.putBoolean(courseLabels[i], true);
                             editor.commit();
@@ -131,13 +143,17 @@ public class UpdateClasses extends AppCompatActivity {
 
 
         for (int i = 0; i < courseLabels.length; i++) {
-            if(!coursesDone[i]) {
+            boolean check = courses.get(courseLabels.length-1 -i).getPreReqs().equals("PERMISSION");
+            if(!coursesDone[i]&&!check) {
                 CheckBox checkBox = new CheckBox(context);
                 checkBox.setText(courseLabels[i]);
                 checkBox.setTextColor(Color.BLACK);
                 checkBox.setLayoutParams(params);
                 linearLayout.addView(checkBox);
                 checkBoxesInProgress.add(checkBox);
+            }
+            if (check){
+                coursesDone[i] = true;
             }
         }
         LinearLayout buttonContainer = new LinearLayout(context);

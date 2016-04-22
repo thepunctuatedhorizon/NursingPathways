@@ -19,6 +19,7 @@ public class PickPathway extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     private LinearLayout linearLayout;
     private String[] pathwayPossibilities;
+    private LinearLayout.LayoutParams params;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,21 +34,22 @@ public class PickPathway extends AppCompatActivity {
         editor =sharedPreferences.edit();
 
         linearLayout = (LinearLayout) findViewById(R.id.linLay_PickP_Buttons);
-
-
+        params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0,25,0,0);
         for(int i=0; i<pathwayPossibilities.length;i++){
             Button bttn = new Button(context);
-
+            bttn.setLayoutParams(params);
             setUpButtons(bttn,pathwayPossibilities[i], i);
             linearLayout.addView(bttn);
 
         }
-        //TODO: SET UP GLOBAL Pathway Variable System
-        //This system will point to the correct XML document with all the required strings
     }
 
     private void setUpButtons(Button bttn, final String category, final int position){
         bttn.setText(category);
+        bttn.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        bttn.setTextColor(getResources().getColor(R.color.pathBlack));
+        bttn.setTextSize(15);
         bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +62,10 @@ public class PickPathway extends AppCompatActivity {
     private void setUpPathwayButton(Button bttn, String category){
 
         bttn.setText(category);
+        bttn.setLayoutParams(params);
+        bttn.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        bttn.setTextColor(getResources().getColor(R.color.pathBlack));
+        bttn.setTextSize(15);
         if (category.equals("PATHWAYS")){
             //Implement
         }

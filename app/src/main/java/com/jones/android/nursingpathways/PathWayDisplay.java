@@ -20,10 +20,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.security.spec.EllipticCurve;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import com.jones.android.nursingpathways.CourseClass;
 
 public class PathWayDisplay extends AppCompatActivity {
@@ -61,7 +65,7 @@ public class PathWayDisplay extends AppCompatActivity {
 
         buttonOnPathway = new ArrayList<Button>();
         final LinearLayout layout = (LinearLayout) findViewById(R.id.content_path_way_display_linearLayout);
-        Context context = getApplicationContext();
+        final Context context = getApplicationContext();
 
         CourseClassLoader courseClassLoader = new CourseClassLoader(context);
         theCourseObjects = courseClassLoader.loadClassObjects();
@@ -162,20 +166,6 @@ public class PathWayDisplay extends AppCompatActivity {
         }
 
 
-
-
-
-
- //       layout.post(new Runnable() {
- //           @Override
-//            public void run() {
-//                This method should implement a way to pause then increase the size of the buttons.
-//                for (Button button : buttonOnPathway) {
-//                    button.setTextSize(24);
-//                    Log.e("String", "It's doing this");
-//                }
- //           }
-  //      });
     }
 
     public void setTheButtonPopup(CourseClass course, View view){
@@ -187,7 +177,7 @@ public class PathWayDisplay extends AppCompatActivity {
         if (course.getPreReqs().equals("NONE")){
             txtView.setText("This course has no prerequisite.");
         } else {
-            txtView.setText("This course has " + course.getPreReqs() + " as a prerequisite.");
+            txtView.setText("The prerequisite is " + course.getPreReqs() + ".");
         }
         TextView txtView2 = (TextView) inflatedView.findViewById(R.id.txtTaken);
         if (course.getDone()){
@@ -202,14 +192,14 @@ public class PathWayDisplay extends AppCompatActivity {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int x = (int) size.x *2 /3;
-        int startX =(int) size.x/5;
+        int x = (int) size.x *2/3;
+        int startX =(int) size.x/17;
         int locx =(int) view.getX();
         int offset = (int) -startX;
-        PopupWindow popWindow = new PopupWindow(inflatedView, x, 300, true );
+        PopupWindow popWindow = new PopupWindow(inflatedView, x, getResources().getInteger(R.integer.pathway_checkbox_width), true );
         popWindow.setFocusable(true);
         popWindow.setOutsideTouchable(true);
-        popWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.gray));
+        popWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.bttn_green));
         popWindow.showAsDropDown(view, offset, 0);
     }
 

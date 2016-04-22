@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context="com.jones.android.nursingpathways.Help">
 
     <TextView
@@ -20,38 +18,34 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cannot Take Yet"
-        android:id="@+id/button5"
+        android:text="Already Taken"
+        android:id="@+id/purple"
         android:layout_below="@+id/textView9"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="88dp"
-        android:textColor="#ff0000" />
+        android:layout_marginStart="88dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next To Take"
-        android:id="@+id/button6"
-        android:layout_below="@+id/button5"
-        android:layout_alignStart="@+id/button5"
-        android:textColor="#ffff00" />
+        android:text="Taking"
+        android:id="@+id/blue"
+        android:layout_below="@+id/purple"
+        android:layout_alignStart="@+id/purple" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Currently Taking"
-        android:id="@+id/button7"
-        android:layout_below="@+id/button6"
-        android:layout_alignStart="@+id/button6"
-        android:textColor="#00ff00" />
+        android:text="Able to take"
+        android:id="@+id/green"
+        android:layout_below="@+id/blue"
+        android:layout_alignStart="@+id/blue" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Finished"
-        android:id="@+id/button8"
-        android:textColor="#0000ff"
-        android:layout_below="@+id/button7"
-        android:layout_alignStart="@+id/button7" />
+        android:text="Not Able to Take Yet"
+        android:id="@+id/red"
+        android:layout_below="@+id/green"
+        android:layout_alignStart="@+id/green" />
 
-</RelativeLayout>
+</LinearLayout>

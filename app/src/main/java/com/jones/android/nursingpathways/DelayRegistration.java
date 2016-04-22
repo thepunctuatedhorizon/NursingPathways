@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -50,13 +51,32 @@ public class DelayRegistration extends AppCompatActivity {
         btn_15Min = (Button) findViewById(R.id.btn_15Min);
         btn_2Hours = (Button) findViewById(R.id.btn_2Hours);
         btn_tomorrow = (Button) findViewById(R.id.btn_tomorrow);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_long), LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0,50,0,0);
+        btn_15Min.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        btn_15Min.setTextColor(getResources().getColor(R.color.pathBlack));
+        btn_15Min.setTextSize(16);
+        btn_15Min.setLayoutParams(params);
 
+        btn_2Hours.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        btn_2Hours.setTextColor(getResources().getColor(R.color.pathBlack));
+        btn_2Hours.setTextSize(16);
+        btn_2Hours.setLayoutParams(params);
+
+        btn_tomorrow.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        btn_tomorrow.setTextColor(getResources().getColor(R.color.pathBlack));
+        btn_tomorrow.setTextSize(16);
+        btn_tomorrow.setLayoutParams(params);
 
         setRegistrationReminderOnClickListener(btn_15Min, 15);
         setRegistrationReminderOnClickListener(btn_2Hours, 120);
         setRegistrationReminderOnClickListener(btn_tomorrow, 1440);
 
         btn_never = (Button) findViewById(R.id.btn_never);
+        btn_never.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        btn_never.setTextColor(getResources().getColor(R.color.pathBlack));
+        btn_never.setTextSize(16);
+        btn_never.setLayoutParams(params);
         btn_never.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
