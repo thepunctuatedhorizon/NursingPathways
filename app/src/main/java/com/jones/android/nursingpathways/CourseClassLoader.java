@@ -58,22 +58,24 @@ public class CourseClassLoader {
             }
 
             boolean isCourseAvailableForRegistration = false;
+
+            String iCoursePrereq = coursePrereqs[i];
             boolean done = sharedPrefDone.getBoolean(courseLabels[i], false);
-
             boolean inProgress = sharedPrefInProgress.getBoolean(courseLabels[i], false);
-            if (!done&&!inProgress&&!preReq){
 
-                for (int j=courseLabels.length-1; j>0; j--)
+            if (!done&&!inProgress){
+
+                for (int j =0; j<courseLabels.length-1; j++)
                 {
 
-                    String courseString = courseLabels[courseLabels.length-j];
-                    boolean prereqDone = sharedPrefDone.getBoolean(courseLabels[courseLabels.length-j],false);
-                    if (courseString.equals(preReq)&&prereqDone){
+                    String courseString = courseLabels[j];
+                    boolean prereqDone = sharedPrefDone.getBoolean(courseLabels[j],false);
+                    if (courseString.equals(iCoursePrereq)&&prereqDone){
                         isCourseAvailableForRegistration = true;
 
                     }
                 }
-                if (!isCourseAvailableForRegistration && !done && !inProgress && !preReq){isCourseAvailableForRegistration = true;}
+                if (!isCourseAvailableForRegistration && !done && !inProgress &&!preReq){isCourseAvailableForRegistration = true;}
             }
             CourseClass course = new CourseClass(courseLabels[i],
                     courseURLs[i],
