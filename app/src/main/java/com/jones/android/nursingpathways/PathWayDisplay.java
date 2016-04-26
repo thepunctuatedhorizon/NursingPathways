@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.github.florent37.parallax.ParallaxView;
 import com.jones.android.nursingpathways.CourseClass;
 
 public class PathWayDisplay extends AppCompatActivity {
@@ -64,6 +65,7 @@ public class PathWayDisplay extends AppCompatActivity {
 
 
         buttonOnPathway = new ArrayList<Button>();
+
         final LinearLayout layout = (LinearLayout) findViewById(R.id.content_path_way_display_linearLayout);
         final Context context = getApplicationContext();
 
@@ -164,6 +166,7 @@ public class PathWayDisplay extends AppCompatActivity {
 
             }
         }
+      //  plax.addView(layout);
 
 
     }
