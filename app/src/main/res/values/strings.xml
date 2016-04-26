@@ -4,7 +4,6 @@
     <string name="title_activity_first_open_screen">FirstOpenScreen</string>
     <string name="title_activity_path_way_display">PathWayDisplay</string>
     <string name="title_activity_set_up">SetUp</string>
-
     <string name="btnRegisterComplete">Done</string>
     <string name="title_activity_register_denied">We are sorry you are having difficulties with continuing your education here at CCBC. We are committed to your success and we hope you will allow us the opportunity to serve you and help you with your needs.</string>
     <string name="registrationDeniedSympathyText_text">We hope the links here have helped you. Please feel free to contact us with the last button. </string>
@@ -14,4 +13,10 @@
     <string name="btnregDen_personal">Other</string>
     <string name="select_a_pathway">Select A Pathway</string>
     <string name="below_you_will_find_the_pathways_please_click_the_pathway_you_are_on">Below you will find the pathways, please click the pathway you are on.</string>
+    <string name="pathwayGraphic">CCBC Pathway graphic</string>
+    <string name="courseNoPrereq">No prerequisites</string>
+    <string name="coursePrereq">The prerequisite is %1$s.</string>
+    <string name="courseComplete">You have completed this course.</string>
+    <string name="courseInProg">You are currently taking this course.</string>
+    <string name="courseRequired">This is a required course for your path.</string>
 </resources>

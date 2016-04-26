@@ -6,8 +6,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -15,8 +15,6 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class CheckBlackBoardFromNotification extends AppCompatActivity {
-    private static Intent alarmIntent = null;
-    private static PendingIntent pendingIntent = null;
     private static AlarmManager alarmManager = null;
     private static Context context;
 
@@ -62,8 +60,8 @@ public class CheckBlackBoardFromNotification extends AppCompatActivity {
         //This function sets an alarm for showing the blackboard prompt.
         int alarmId = 013424;
         long ms = seconds * (1000) + Calendar.getInstance().getTimeInMillis();
-        alarmIntent = new Intent(this, BlackboardAlarmReceiver.class );
-        pendingIntent = PendingIntent.getBroadcast(context, alarmId, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent alarmIntent = new Intent(this, BlackboardAlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarmId, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         if (alarmManager == null) {
             alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         }

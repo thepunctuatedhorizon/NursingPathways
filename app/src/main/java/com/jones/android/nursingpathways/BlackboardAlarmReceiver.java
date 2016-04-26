@@ -1,13 +1,12 @@
 package com.jones.android.nursingpathways;
 
-import android.app.Activity;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.widget.Toast;
 
 /**
@@ -22,8 +21,9 @@ public class BlackboardAlarmReceiver extends BroadcastReceiver {
     {
         try
         {
-            Bundle bundle = intent.getExtras();
-            String message = bundle.getString("alarm_message");
+            //Commented out what IDE says are unused variables. -DD
+           // Bundle bundle = intent.getExtras();
+           // String message = bundle.getString("alarm_message");
             Toast.makeText(context, "We are showing the toast.", Toast.LENGTH_SHORT).show();
             Notification.Builder notificationBuilder = new Notification.Builder(context)
                     .setSmallIcon(R.drawable.pathway_icon)

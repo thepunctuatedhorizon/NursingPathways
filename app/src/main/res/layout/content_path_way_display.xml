@@ -28,7 +28,8 @@
                     android:layout_height="fill_parent"
                     android:scaleType="fitXY"
                     android:src="@drawable/bg"
-                    android:tag="parallax=0.7"/>
+                    android:tag="parallax=0.7"
+                    android:contentDescription="@string/pathwayGraphic" />
 
 
                 <LinearLayout
@@ -38,6 +39,7 @@
                     android:id="@+id/content_path_way_display_linearLayout"
                     android:gravity="center_horizontal"
                     android:tag="parallax=0.0"
+
                     >
 
 
