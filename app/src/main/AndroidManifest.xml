@@ -21,26 +21,26 @@
         </activity>
         <activity
             android:name=".FirstOpenScreen"
-            android:label="@string/title_activity_first_open_screen"
+            android:label="Have you taken any courses?"
             android:noHistory="true"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/PathwayTheme" />
         <activity
             android:name=".PathWayDisplay"
             android:label="@string/title_activity_path_way_display"
             android:theme="@style/PathwayTheme" />
         <activity
             android:name=".SetUp"
-            android:label="@string/title_activity_set_up"
+            android:label="Select Completed Courses "
             android:noHistory="true"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/PathwayTheme" />
         <activity
             android:name=".UpdateClassesInProgress"
-            android:label="UpdateClasses"
+            android:label="Update Classes"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UpdateClasses"
-            android:label="UpdateClasses"
+            android:label="Update Classes"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CheckBlackBoardFromNotification" />
@@ -61,15 +61,16 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".RegisterForClasses" android:theme="@style/PathwayTheme" />
-        <activity android:name=".RegistrationDenied" android:noHistory="true" android:theme="@style/PathwayTheme"/>
+        <activity android:name=".RegisterForClasses" android:theme="@style/PathwayTheme" android:label="@string/app_name" />
+        <activity android:name=".RegistrationDenied" android:noHistory="true" android:theme="@style/PathwayTheme" android:label="@string/app_name"/>
         <activity
             android:name=".Settings"
+            android:label="Settings"
             android:noHistory="true"
             android:theme="@style/PathwayTheme"/>
-        <activity android:name=".PickPathway" android:theme="@style/PathwayTheme" />
-        <activity android:name=".Help" android:theme="@style/PathwayTheme" />
-        <activity android:name=".DelayRegistration" android:noHistory="true" android:theme="@style/PathwayTheme" />
+        <activity android:name=".PickPathway" android:theme="@style/PathwayTheme" android:label="Select Your Pathway" />
+        <activity android:name=".Help" android:theme="@style/PathwayTheme" android:label="@string/app_name" />
+        <activity android:name=".DelayRegistration" android:noHistory="true" android:theme="@style/PathwayTheme" android:label="@string/app_name"></activity>
     </application>
 
 </manifest>

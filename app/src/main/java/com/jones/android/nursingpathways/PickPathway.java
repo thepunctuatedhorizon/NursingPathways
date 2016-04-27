@@ -47,7 +47,10 @@ public class PickPathway extends AppCompatActivity {
 
     private void setUpButtons(Button bttn, final String category, final int position){
         bttn.setText(category);
-        bttn.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        if (category.equals(pathwayPossibilities[0])){
+            bttn.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        } else{
+        bttn.setBackground(getResources().getDrawable(R.drawable.bttn_blue));}
         bttn.setTextColor(getResources().getColor(R.color.pathBlack));
         bttn.setTextSize(15);
         bttn.setOnClickListener(new View.OnClickListener() {

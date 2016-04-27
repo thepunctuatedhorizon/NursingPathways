@@ -22,41 +22,6 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/welcome"
-                android:id="@+id/welcomeText"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="120dp"
-                android:textSize="38sp"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/this_appears_to_be_the_first_time_you_have_used_this_application"
-                android:id="@+id/thisAppearsText"
-                android:layout_below="@+id/scrollView3"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:background="@android:drawable/btn_default"
-                android:textColor="@color/abc_search_url_text_pressed" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/have_you_taken_any_courses"
-                android:id="@+id/promptText"
-                android:layout_below="@+id/scrollView3"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="@color/abc_search_url_text_selected" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -66,14 +31,14 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/yes"
+                    android:text="Yes"
                     android:id="@+id/yesButton"
                     android:layout_below="@+id/scrollView3"
                     />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/no"
+                    android:text="No"
                     android:id="@+id/noButton" />
             </LinearLayout>
         </LinearLayout>
