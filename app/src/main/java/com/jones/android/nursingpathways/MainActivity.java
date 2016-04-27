@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             } else if (resultCode == RESULT_OK){
                 //If the result code is OK then we need to send the user to the setUp class
-                Intent intent = new Intent(getApplicationContext(),SetUp.class);
+                Intent intent = new Intent(getApplicationContext(),FirstOpenScreen.class);
                 startActivity(intent);
             }
         }

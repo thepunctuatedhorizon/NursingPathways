@@ -28,7 +28,14 @@ public class FirstOpenScreen extends AppCompatActivity {
 
 
         final Button yesButton = (Button) findViewById(R.id.yesButton);
+        yesButton.setBackground(getResources().getDrawable(R.drawable.bttn_blue));
+        yesButton.setTextColor(getResources().getColor(R.color.pathBlack));
+        yesButton.setTextSize(15);
+
         final Button noButton = (Button) findViewById(R.id.noButton);
+        noButton.setBackground(getResources().getDrawable(R.drawable.bttn_blue));
+        noButton.setTextColor(getResources().getColor(R.color.pathBlack));
+        noButton.setTextSize(15);
 
 
         yesButton.setOnClickListener(new View.OnClickListener() {
@@ -51,22 +58,17 @@ public class FirstOpenScreen extends AppCompatActivity {
     //This tells the MainActivity that they haven't taken courses.
     private void finishWithResultNo()
     {
-        Bundle conData = new Bundle();
-        conData.putString("result_FirstOpenScreen", "No");
-        Intent intent = new Intent();
-        intent.putExtras(conData);
-        setResult(RESULT_CANCELED, intent);
+
+        Intent intent = new Intent(getApplicationContext(), PathWayDisplay.class);
+        startActivity(intent);
         finish();
     }
 
     //This tells the MainActivity that they have taken courses.  The main activity will launch setup when receiving these values.
     private void finishWithResult()
     {
-        Bundle conData = new Bundle();
-        conData.putString("result_FirstOpenScreen", "Yes");
-        Intent intent = new Intent();
-        intent.putExtras(conData);
-        setResult(RESULT_OK, intent);
+        Intent intent = new Intent(getApplicationContext(), SetUp.class);
+        startActivity(intent);
         finish();
     }
 }
