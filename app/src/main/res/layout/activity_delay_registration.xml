@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delay Registration"
+        android:text="@string/delay_registration"
         android:id="@+id/textView10"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Do you need to check your schedule? Select when you&apos;d like to be reminded."
+        android:text="@string/do_you_need_to_check_your_schedule_select_when_you_apos_d_like_to_be_reminded"
         android:id="@+id/textView11"
         android:layout_below="@+id/textView10"
         android:layout_centerHorizontal="true"
@@ -33,7 +33,7 @@
     <Button
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="15 minutes"
+        android:text="@string/_15_minutes"
         android:id="@+id/btn_15Min"
         android:layout_below="@+id/textView11"
         android:layout_centerHorizontal="true" />
@@ -41,7 +41,7 @@
     <Button
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Two Hours"
+        android:text="@string/two_hours"
         android:id="@+id/btn_2Hours"
         android:layout_below="@+id/btn_15Min"
         android:layout_centerHorizontal="true" />
@@ -49,7 +49,7 @@
     <Button
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Tomorrow"
+        android:text="@string/tomorrow"
         android:id="@+id/btn_tomorrow"
         android:layout_below="@+id/btn_2Hours"
         android:layout_centerHorizontal="true" />
@@ -57,7 +57,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I can&apos;t register"
+        android:text="@string/i_can_apos_t_register"
         android:id="@+id/btn_never"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />

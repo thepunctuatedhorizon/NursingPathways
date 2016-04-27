@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome back to the Pathways Application."
+        android:text="@string/welcome_back_to_the_pathways_application""
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="false"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="It is time to check Blackboard."
+        android:text="@string/it_is_time_to_check_blackboard"
         android:id="@+id/textView2"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="false" />
@@ -33,7 +33,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CheckBlackboard"
+        android:text="@string/check_blackboard"
         android:id="@+id/bttnCheckBlackBoard"
         android:layout_below="@+id/textView2"
         android:layout_alignParentEnd="false"

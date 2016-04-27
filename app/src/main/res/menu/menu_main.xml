@@ -4,7 +4,7 @@
     tools:context="com.jones.android.nursingpathways.MainActivity">
     <item android:id="@+id/action_help"
         android:orderInCategory="99"
-        android:title="Help"
+        android:title="@string/help"
         app:showAsAction = "never"/>
     <item
         android:id="@+id/action_settings"

@@ -100,7 +100,7 @@ public class DelayRegistration extends AppCompatActivity {
                     alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                 }
                 alarmManager.set(AlarmManager.RTC_WAKEUP, ms, pendingIntent);
-                Toast.makeText(getApplicationContext(), "You will be remined in " + minutes +" minutes.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "You will be reminded in " + minutes +" minutes.", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(DelayRegistration.this, PathWayDisplay.class));
             }
         });

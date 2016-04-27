@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Here&apos;s what the colors mean"
+        android:text="@string/heres_what_the_colors_mean"
         android:id="@+id/textView9"
         android:layout_alignParentTop="false"
         android:layout_alignParentEnd="false" />
@@ -18,7 +18,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Already Taken"
+        android:text="@string/already_taken"
         android:id="@+id/purple"
         android:layout_below="@+id/textView9"
         android:layout_alignParentStart="true"
@@ -27,7 +27,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Taking"
+        android:text="@string/taking"
         android:id="@+id/blue"
         android:layout_below="@+id/purple"
         android:layout_alignStart="@+id/purple" />
@@ -35,7 +35,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Able to take"
+        android:text="@string/able_to_take"
         android:id="@+id/green"
         android:layout_below="@+id/blue"
         android:layout_alignStart="@+id/blue" />
@@ -43,7 +43,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Not Able to Take Yet"
+        android:text="@string/not_able_to_take_yet"
         android:id="@+id/red"
         android:layout_below="@+id/green"
         android:layout_alignStart="@+id/green" />

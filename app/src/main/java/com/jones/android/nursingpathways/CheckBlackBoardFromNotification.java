@@ -23,7 +23,7 @@ public class CheckBlackBoardFromNotification extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //This Class is triggered when a person taps the notification.  It has a button that
-        // directly links blakcboard.
+        // directly links blackboard.
         // TODO: update this class so that the user doesn't barf from the inglorious interface.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_black_board_from_notification);
@@ -48,7 +48,7 @@ public class CheckBlackBoardFromNotification extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        // THis sets up the blackboard propmt to two weeks.
+        // THis sets up the blackboard prompt to two weeks.
         //TODO: Do we need it to be two weeks? Or a random number of weeks?
         Random random = new Random();
         int rand = random.nextInt(14);

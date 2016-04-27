@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="&quot;Please select the courses you have successfully completed or that your advisor has said will transfer.  It is ok if you haven&apos;t taken all of the classes listed."
+            android:text="@string/please_select_the_courses_you_have_successfully_completed_or_that_your_adviser_has_said_will_transfer_it_is_ok_if_you_haven_apos_t_taken_all_of_the_classes_listed"
             android:id="@+id/pleaseSetUp"
             android:gravity="center_horizontal"
             android:background="@android:drawable/btn_default"

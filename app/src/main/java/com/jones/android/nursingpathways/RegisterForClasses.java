@@ -185,7 +185,7 @@ public class RegisterForClasses extends AppCompatActivity {
         params.setMargins(0,50,0,0);
         if ( numberAdded == 0){
             TextView txtV = new TextView(context);
-            txtV.setText("It appears that you have taken all the classes you yourself can register for, or you are taking the prerequisites of the courses next in the sequence.  Please press below to indicate you have finished the prerequisite courses.  You may also click register for classes  You may also click finshed if you are finished here. ");
+            txtV.setText("It appears that you have taken all the classes you yourself can register for, or you are taking the prerequisites of the courses next in the sequence.  Please press below to indicate you have finished the prerequisite courses.  You may also click register for classes  You may also click finished if you are finished here. ");
             Button bttn  = new Button(context);
             bttn.setText("Update courses");
             bttn.setOnClickListener(new OnClickListener() {
@@ -313,7 +313,7 @@ public class RegisterForClasses extends AppCompatActivity {
                         registerShow = 4 * 30 * dayConversion + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 4 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 4 * 30 * dayConversion + 7 * dayConversion;
                         break;
                     case 4:
                         registerShow = 4 * 30 * dayConversion;
@@ -336,7 +336,7 @@ public class RegisterForClasses extends AppCompatActivity {
                         registerShow = 3 * 30 * dayConversion + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 3 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 3 * 30 * dayConversion + 7 * dayConversion;
                         break;
                     case 4:
                         registerShow = 3 * 30 * dayConversion;
@@ -359,7 +359,7 @@ public class RegisterForClasses extends AppCompatActivity {
                         registerShow = 2 * 30 * dayConversion + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 2 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 2 * 30 * dayConversion + 7 * dayConversion;
                         break;
                     case 4:
                         registerShow = 2 * 30 * dayConversion;
@@ -377,16 +377,16 @@ public class RegisterForClasses extends AppCompatActivity {
                         registerShow = 2 * 30 * dayConversion;
                         break;
                     case 1:
-                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        registerShow = 30 * dayConversion + 7*3* dayConversion;
                         break;
                     case 2:
-                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        registerShow = 30 * dayConversion + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 30 * dayConversion + 7 * dayConversion;
                         break;
                     case 4:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                     default:
                         registerShow = 2 * 30 * dayConversion;
@@ -397,22 +397,22 @@ public class RegisterForClasses extends AppCompatActivity {
             case 4:
                 switch (weekOfMonth){
                     case 0:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                     case 1:
-                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        registerShow = 0 + 7*3* dayConversion;
                         break;
                     case 2:
-                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        registerShow = 0 + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 0 + 7 * dayConversion;
                         break;
                     case 4:
-                        registerShow = 0 * 30 * dayConversion;
+                        registerShow = 0;
                         break;
                     default:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                 }
                 setTimeToShowRegistrationPrompt(registerShow);
@@ -423,16 +423,16 @@ public class RegisterForClasses extends AppCompatActivity {
                         registerShow = 2 * 30 * dayConversion;
                         break;
                     case 1:
-                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        registerShow = 30 * dayConversion + 7*3* dayConversion;
                         break;
                     case 2:
-                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        registerShow = 30 * dayConversion + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 30 * dayConversion + 7 * dayConversion;
                         break;
                     case 4:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                     default:
                         registerShow = 2 * 30 * dayConversion;
@@ -443,22 +443,22 @@ public class RegisterForClasses extends AppCompatActivity {
             case 6:
                 switch (weekOfMonth){
                     case 0:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                     case 1:
-                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        registerShow = 0 + 7*3* dayConversion;
                         break;
                     case 2:
-                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        registerShow = 0 + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 0 + 7 * dayConversion;
                         break;
                     case 4:
-                        registerShow = 0 * 30 * dayConversion;
+                        registerShow = 0;
                         break;
                     default:
-                        registerShow = 0 * 30 * dayConversion;
+                        registerShow = 0;
                         break;
                 }
                 setTimeToShowRegistrationPrompt(registerShow);
@@ -475,7 +475,7 @@ public class RegisterForClasses extends AppCompatActivity {
                         registerShow = 2 * 30 * dayConversion + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 2 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 2 * 30 * dayConversion + 7 * dayConversion;
                         break;
                     case 4:
                         registerShow = 2 * 30 * dayConversion;
@@ -493,16 +493,16 @@ public class RegisterForClasses extends AppCompatActivity {
                         registerShow = 2 * 30 * dayConversion;
                         break;
                     case 1:
-                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        registerShow = 30 * dayConversion + 7*3* dayConversion;
                         break;
                     case 2:
-                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        registerShow = 30 * dayConversion + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 30 * dayConversion + 7 * dayConversion;
                         break;
                     case 4:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                     default:
                         registerShow = 2 * 30 * dayConversion;
@@ -513,22 +513,22 @@ public class RegisterForClasses extends AppCompatActivity {
             case 9:
                 switch (weekOfMonth){
                     case 0:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                     case 1:
-                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        registerShow = 0 + 7*3* dayConversion;
                         break;
                     case 2:
-                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        registerShow = 0 + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 0 + 7 * dayConversion;
                         break;
                     case 4:
-                        registerShow = 0 * 30 * dayConversion;
+                        registerShow = 0;
                         break;
                     default:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                 }
                 setTimeToShowRegistrationPrompt(registerShow);
@@ -539,16 +539,16 @@ public class RegisterForClasses extends AppCompatActivity {
                         registerShow = 2 * 30 * dayConversion;
                         break;
                     case 1:
-                        registerShow = 1 * 30 * dayConversion + 7*3* dayConversion;
+                        registerShow = 30 * dayConversion + 7*3* dayConversion;
                         break;
                     case 2:
-                        registerShow = 1 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        registerShow = 30 * dayConversion + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 1 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 30 * dayConversion + 7 * dayConversion;
                         break;
                     case 4:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                     default:
                         registerShow = 2 * 30 * dayConversion;
@@ -559,22 +559,22 @@ public class RegisterForClasses extends AppCompatActivity {
             case 11:
                 switch (weekOfMonth){
                     case 0:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                     case 1:
-                        registerShow = 0 * 30 * dayConversion + 7*3* dayConversion;
+                        registerShow = 0 + 7*3* dayConversion;
                         break;
                     case 2:
-                        registerShow = 0 * 30 * dayConversion + 7 * 2 * dayConversion;
+                        registerShow = 0 + 7 * 2 * dayConversion;
                         break;
                     case 3:
-                        registerShow = 0 * 30 * dayConversion + 7 * 1 * dayConversion;
+                        registerShow = 0 + 7 * dayConversion;
                         break;
                     case 4:
-                        registerShow = 0 * 30 * dayConversion;
+                        registerShow = 0;
                         break;
                     default:
-                        registerShow = 1 * 30 * dayConversion;
+                        registerShow = 30 * dayConversion;
                         break;
                 }
                 setTimeToShowRegistrationPrompt(registerShow);
@@ -582,7 +582,7 @@ public class RegisterForClasses extends AppCompatActivity {
 
         }
     }
-        //TODO: FIX THE seT uP ALARMS IT"S ADDING a new registration propmt!!!!
+        //TODO: FIX THE seT uP ALARMS IT"S ADDING a new registration prompt!!!!
 
     private void setTimeToShowRegistrationPrompt(int seconds){
         int alarmId = 013423;

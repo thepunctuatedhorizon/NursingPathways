@@ -69,7 +69,7 @@
             android:theme="@style/PathwayTheme"/>
         <activity android:name=".PickPathway" android:theme="@style/PathwayTheme" />
         <activity android:name=".Help" android:theme="@style/PathwayTheme" />
-        <activity android:name=".DelayRegistration" android:noHistory="true" android:theme="@style/PathwayTheme"></activity>
+        <activity android:name=".DelayRegistration" android:noHistory="true" android:theme="@style/PathwayTheme" />
     </application>
 
 </manifest>

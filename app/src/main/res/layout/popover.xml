@@ -1,6 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -26,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Allied Health Pathway"
+            android:text="@string/allied_health_pathway"
             android:id="@+id/alliedHealthPathwayText"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -39,7 +37,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome!"
+                android:text="@string/welcome"
                 android:id="@+id/welcomeText"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
@@ -50,7 +48,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="This appears to be the first time you have used this application. "
+                android:text="@string/this_appears_to_be_the_first_time_you_have_used_this_application"
                 android:id="@+id/thisAppearsText"
                 android:layout_below="@+id/scrollView3"
                 android:layout_centerHorizontal="true"
@@ -60,7 +58,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Have you taken any college courses previously?"
+                android:text="@string/have_you_taken_any_college_courses_previously"
                 android:id="@+id/promptText"
                 android:layout_below="@+id/scrollView3"
                 android:layout_centerHorizontal="true"
@@ -76,14 +74,14 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yes"
+                android:text="@string/yes"
                 android:id="@+id/yesButton"
                 android:layout_below="@+id/scrollView3"
                  />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No"
+                    android:text="@string/no"
                     android:id="@+id/noButton" />
             </LinearLayout>
         </LinearLayout>
