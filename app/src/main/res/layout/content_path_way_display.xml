@@ -4,37 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.jones.android.nursingpathways.PathWayDisplay"
-    tools:showIn="@layout/activity_path_way_display">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"        >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/content_path_way_display_linearLayout"
-        android:gravity="center_horizontal">
+    tools:showIn="@layout/activity_path_way_display"
+    >
+
+    <!--Github dependency allows for parallax scrolling with android:tag="parallax=FLOAT_VALUE" -->
+        <com.github.florent37.parallax.ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewTemp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+                <!--Had trouble getting the image to scale to same size as the linear layout.
+                May need to generate it programmatically.
+                    -->
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bg"
+                    android:tag="parallax=0.7"
+                    android:contentDescription="@string/pathwayGraphic" />
 
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="60dp"
-            android:id="@+id/gradCap"
-            android:src="@drawable/gradcap" />
 
-    </LinearLayout>
-    </ScrollView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/content_path_way_display_linearLayout"
+                    android:gravity="center_horizontal"
+                    android:tag="parallax=0.0"
+
+                    >
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textViewTemp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true" />
+
+                    <ImageView
+                        android:layout_width="90dp"
+                        android:layout_height="60dp"
+                        android:id="@+id/gradCap"
+                        android:src="@drawable/gradcap" />
+
+                </LinearLayout>
+            </RelativeLayout>
+        </com.github.florent37.parallax.ScrollView>
+
+
+
+
+        <!-- Your View -->
+
+
+
 
     <!--<ImageView
         android:layout_width="64dp"
