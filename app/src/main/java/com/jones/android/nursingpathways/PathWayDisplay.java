@@ -181,7 +181,7 @@ public class PathWayDisplay extends AppCompatActivity {
         {
             txtView2.setText(R.string.courseInProg);
         } else{
-            txtView2.setText(R.string.courseRequired);
+            txtView2.setText("");
         }
 
         Display display = getWindowManager().getDefaultDisplay();
