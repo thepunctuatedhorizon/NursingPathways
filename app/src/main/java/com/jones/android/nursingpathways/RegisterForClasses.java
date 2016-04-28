@@ -214,8 +214,7 @@ public class RegisterForClasses extends AppCompatActivity {
 
         List<Button> courseButtons = new ArrayList<Button>();
 
-        for (int i=0; i<theClassListObjects.size(); i++)
-        {
+        for (int i=0; i<theClassListObjects.size(); i++)        {
             if (theClassesToRegister.get(i)) {
                final CourseClass course = theClassListObjects.get(i);
                 final String url = course.getUrl();
@@ -234,38 +233,9 @@ public class RegisterForClasses extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Log.e("RegistrationButton", ((Button) view).getText().toString());
-
-
-                        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                        final View inflatedView = layoutInflater.inflate(R.layout.register_for_classes_popover, null, false);
-
-                        TextView textView = (TextView) inflatedView.findViewById(R.id.textView5);
-                        textView.setText(course.getTitle());
-                        Button button = (Button) inflatedView.findViewById(R.id.button);
-                        String buttonText = "Register for " + course.getTitle();
-
-                        button.setText(buttonText);
-                        button.setOnClickListener(new OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Uri uri = Uri.parse(url); //course.getUrl());
-                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                                startActivity(intent);
-                            }
-                        });
-                        Display display = getWindowManager().getDefaultDisplay();
-                        Point size = new Point();
-                        display.getSize(size);
-                        int x = size.x *2 /3;
-                        int startX = size.x /5;
-                        int locx =(int) button.getX();
-                        int offset = locx - startX;
-                        PopupWindow popWindow = new PopupWindow(inflatedView, x, 300, true );
-                        popWindow.setFocusable(true);
-                        popWindow.setOutsideTouchable(true);
-                        popWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.gray));
-                        popWindow.showAsDropDown(view, offset, 0);
-
+                        Uri uri = Uri.parse(url); //course.getUrl());
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
 
                     }
                 });
