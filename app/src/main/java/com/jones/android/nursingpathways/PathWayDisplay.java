@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -58,11 +59,13 @@ public class PathWayDisplay extends AppCompatActivity {
 
         final LinearLayout layout = (LinearLayout) findViewById(R.id.content_path_way_display_linearLayout);
         final Context context = getApplicationContext();
+        final ImageView bg = (ImageView) findViewById(R.id.content_path_way_display_bg);
 
         CourseClassLoader courseClassLoader = new CourseClassLoader(context);
         theCourseObjects = courseClassLoader.loadClassObjects();
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(0,50,0,0);
+
 
         for (int i = 0; i < theCourseObjects.size(); i++) {
             boolean buttonAdded = false;
@@ -156,7 +159,6 @@ public class PathWayDisplay extends AppCompatActivity {
 
             }
         }
-      //  plax.addView(layout);
 
 
     }
