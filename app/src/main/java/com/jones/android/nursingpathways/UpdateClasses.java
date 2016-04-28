@@ -71,6 +71,9 @@ public class UpdateClasses extends AppCompatActivity {
         Button resetButton = new Button(context);
 
         saveButton.setText("Save");
+        saveButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        saveButton.setTextColor(getResources().getColor(R.color.pathBlack));
+        saveButton.setTextSize(15);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,6 +113,9 @@ public class UpdateClasses extends AppCompatActivity {
         });
 
         resetButton.setText("Reset");
+        resetButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        resetButton.setTextColor(getResources().getColor(R.color.pathBlack));
+        resetButton.setTextSize(15);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,6 +169,9 @@ public class UpdateClasses extends AppCompatActivity {
         Button resetButton = new Button(context);
 
         saveButton.setText("Save");
+        saveButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        saveButton.setTextColor(getResources().getColor(R.color.pathBlack));
+        saveButton.setTextSize(15);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,6 +208,9 @@ public class UpdateClasses extends AppCompatActivity {
         });
 
         resetButton.setText("Reset");
+        resetButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        resetButton.setTextColor(getResources().getColor(R.color.pathBlack));
+        resetButton.setTextSize(15);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

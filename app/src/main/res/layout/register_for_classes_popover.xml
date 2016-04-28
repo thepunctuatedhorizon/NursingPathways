@@ -11,6 +11,7 @@
         android:id="@+id/textView5"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="false"
         android:gravity="center_horizontal" />
 
     <Button

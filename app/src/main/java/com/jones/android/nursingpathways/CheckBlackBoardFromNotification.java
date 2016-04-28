@@ -41,6 +41,9 @@ public class CheckBlackBoardFromNotification extends AppCompatActivity {
         nMgr.cancel(mNotification4);
         nMgr.cancel(mNotification5);
         Button checkBB = (Button) findViewById(R.id.bttnCheckBlackBoard);
+        checkBB.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        checkBB.setTextColor(getResources().getColor(R.color.pathBlack));
+        checkBB.setTextSize(15);
         checkBB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

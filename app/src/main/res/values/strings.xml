@@ -19,7 +19,8 @@
     <string name="courseComplete">You have completed this course.</string>
     <string name="courseInProg">You are currently taking this course.</string>
     <string name="courseRequired">This is a required course for your path.</string>
-    <string name="help">Help</string>
+    <string name="help">Help With Colors</string>
+    <string name="realHelp">Help With School</string>
     <string name="heres_what_the_colors_mean">Here\'s what the colors mean</string>
     <string name="welcome_back_to_the_pathways_application">Welcome back to the Pathways Application.</string>
     <string name="delay_registration">Delay Registration</string>
@@ -28,7 +29,7 @@
     <string name="these_are_the_courses_you_are_ready_to_take_pleases_select_the_classes_you_would_like_to_register_for_now">These are the courses you are ready to take. Pleases select the classes you would like to register for now.</string>
     <string name="already_taken">Already Taken</string>
     <string name="please_select_the_courses_you_have_successfully_completed_or_that_your_adviser_has_said_will_transfer_it_is_ok_if_you_haven_apos_t_taken_all_of_the_classes_listed">Please select the courses you have successfully completed or that your adviser has said will transfer. It is ok if you haven\'t taken all of the classes listed.</string>
-    <string name="quot_please_select_the_courses_you_have_successfully_completed_or_that_your_advisor_has_said_will_transfer_it_is_ok_if_you_haven_apos_t_taken_all_of_the_classes_listed">\"Please select the courses you have successfully completed or that your advisor has said will transfer. It is ok if you haven\'t taken all of the classes listed.</string>
+    <string name="quot_please_select_the_courses_you_have_successfully_completed_or_that_your_advisor_has_said_will_transfer_it_is_ok_if_you_haven_apos_t_taken_all_of_the_classes_listed">Please select the courses you have successfully completed or that your advisor has said will transfer. It is ok if you haven\'t taken all of the classes listed.</string>
     <string name="allied_health_pathway">Allied Health Pathway</string>
     <string name="welcome">Welcome!</string>
     <string name="i_need_to_email_someone">I need to email someone</string>

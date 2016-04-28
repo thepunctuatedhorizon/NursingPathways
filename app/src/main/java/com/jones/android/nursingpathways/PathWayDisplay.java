@@ -183,7 +183,7 @@ public class PathWayDisplay extends AppCompatActivity {
         {
             txtView2.setText(R.string.courseInProg);
         } else{
-            txtView2.setText(R.string.courseRequired);
+            txtView2.setText("");
         }
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -222,6 +222,12 @@ public class PathWayDisplay extends AppCompatActivity {
         }
         if (id == R.id.action_help){
             Intent intent = new Intent(getApplicationContext(),Help.class);
+            startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.action_real_help){
+            Intent intent = new Intent(getApplicationContext(),RegistrationDenied.class);
             startActivity(intent);
             return true;
         }

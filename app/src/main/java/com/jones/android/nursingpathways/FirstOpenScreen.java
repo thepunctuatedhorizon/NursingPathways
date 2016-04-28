@@ -28,12 +28,12 @@ public class FirstOpenScreen extends AppCompatActivity {
 
 
         final Button yesButton = (Button) findViewById(R.id.yesButton);
-        yesButton.setBackground(getResources().getDrawable(R.drawable.bttn_blue));
+        yesButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         yesButton.setTextColor(getResources().getColor(R.color.pathBlack));
         yesButton.setTextSize(15);
 
         final Button noButton = (Button) findViewById(R.id.noButton);
-        noButton.setBackground(getResources().getDrawable(R.drawable.bttn_blue));
+        noButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         noButton.setTextColor(getResources().getColor(R.color.pathBlack));
         noButton.setTextSize(15);
 

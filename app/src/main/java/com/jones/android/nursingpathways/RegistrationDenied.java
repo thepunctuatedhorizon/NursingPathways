@@ -78,10 +78,15 @@ public class RegistrationDenied extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setData(Uri.parse("mailto:ksamuel1@umbc.edu"));
-                emailIntent.setType("text/plain");
+                emailIntent.setType("message/rfc822");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, "ksamuel1@umbc.edu");
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Cannot register for course(s)");
                 emailIntent.putExtra(Intent.EXTRA_TEXT, "Enter message body here");
+                /*String uriText = "mailto:" + Uri.encode("ksamuel1@umbc.edu") +
+                        "?subject=" + Uri.encode("Cannot register for course(s)") +
+                        "&body=" + Uri.encode("Enter message body here");
+                Uri uri = Uri.parse(uriText);
+                emailIntent.setData(uri);*/
                 try {
                     startActivity(Intent.createChooser(emailIntent, "Send email"));
                     Log.d("","Sent email!");
