@@ -224,6 +224,12 @@ public class PathWayDisplay extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_real_help){
+            Intent intent = new Intent(getApplicationContext(),RegistrationDenied.class);
+            startActivity(intent);
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

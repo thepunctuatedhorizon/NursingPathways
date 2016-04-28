@@ -12,6 +12,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@drawable/bg"
     tools:showIn="@layout/activity_set_up"
+    android:id="@+id/setupResetLayout"
     tools:context="com.jones.android.nursingpathways.SetUp">
 
     <ScrollView
