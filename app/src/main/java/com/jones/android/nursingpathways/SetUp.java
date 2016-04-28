@@ -65,12 +65,14 @@ public class SetUp extends AppCompatActivity {
         Button resetButton = new Button(context);
 
         saveButton.setText("Save");
+        saveButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        saveButton.setTextColor(getResources().getColor(R.color.pathBlack));
+        saveButton.setTextSize(15);
+        saveButton.setPadding(0,0,16,0);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Save Actions
-
-
                 SharedPreferences sharedPrefDone = getSharedPreferences("courses", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPrefDone.edit();
                 int counter = 0;
@@ -97,6 +99,9 @@ public class SetUp extends AppCompatActivity {
         });
 
         resetButton.setText("Reset");
+        resetButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        resetButton.setTextColor(getResources().getColor(R.color.pathBlack));
+        resetButton.setTextSize(15);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,10 +123,12 @@ public class SetUp extends AppCompatActivity {
     {
         setContentView(R.layout.activity_set_up);
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.relativeLayoutSetup);
+        linearLayout.setPadding(0,250,0,0);
         //linearLayout.removeAllViews();
+        getSupportActionBar().setTitle("Select In-Progress Courses");
 
         TextView textView = (TextView) findViewById(R.id.pleaseSetUp);
-        textView.setText("Please check any in progress courses you are taking");
+        textView.setText("Please check any in-progress courses you are taking");
 
         final String[] courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
         final Context context = getApplicationContext();
@@ -152,6 +159,10 @@ public class SetUp extends AppCompatActivity {
         Button resetButton = new Button(context);
 
         saveButton.setText("Save");
+        saveButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        saveButton.setTextColor(getResources().getColor(R.color.pathBlack));
+        saveButton.setTextSize(15);
+        saveButton.setPadding(0,0,16,0);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -188,6 +199,9 @@ public class SetUp extends AppCompatActivity {
         });
 
         resetButton.setText("Reset");
+        resetButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        resetButton.setTextColor(getResources().getColor(R.color.pathBlack));
+        resetButton.setTextSize(15);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
