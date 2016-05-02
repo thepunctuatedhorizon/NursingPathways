@@ -139,13 +139,17 @@ public class UpdateClasses extends AppCompatActivity {
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.relativeLayoutUpdateReal);
         //linearLayout.removeAllViews();
 
+        SharedPreferences sharedPrefIP = getSharedPreferences("coursesInProgress", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPrefIP.edit();
+
+
         TextView textView = (TextView) findViewById(R.id.pleaseUpdateReal);
         textView.setText("Please check any in progress courses you are taking");
 
         final String[] courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
         final Context context = getApplicationContext();
         checkBoxesInProgress= new ArrayList<CheckBox>();
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_app_button_width), LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_checkbox_width), LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
         for (int i = 0; i < courseLabels.length; i++) {
@@ -155,6 +159,9 @@ public class UpdateClasses extends AppCompatActivity {
                 checkBox.setText(courseLabels[i]);
                 checkBox.setTextColor(Color.BLACK);
                 checkBox.setLayoutParams(params);
+                if(sharedPrefIP.getBoolean(courseLabels[i],true)){
+                    checkBox.setChecked(true);
+                }
                 linearLayout.addView(checkBox);
                 checkBoxesInProgress.add(checkBox);
             }
