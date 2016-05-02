@@ -178,10 +178,10 @@ public class PathWayDisplay extends AppCompatActivity {
         }
         TextView txtView2 = (TextView) inflatedView.findViewById(R.id.txtTaken);
         if (course.getDone()){
-            txtView2.setText(R.string.courseComplete);
+            txtView2.setText("");
         }else if (course.getInProgress())
         {
-            txtView2.setText(R.string.courseInProg);
+            txtView2.setText("");
         } else{
             txtView2.setText("");
         }

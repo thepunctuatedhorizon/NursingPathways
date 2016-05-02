@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     //sent at the correct time.
     private boolean registrationSoon = false;
 
+    //This boolean may help keep the program from crashing.
+    boolean isFromResult;
 
     //This is unnecessary,
     private ImageView image3;
@@ -62,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         // This will stop the application from rerunning the main application once everything has
         // been set up.  This is important so that the main application is not on the backstack.
         if(paused){finish();}
+
+        isFromResult = false;
 
         setContentView(R.layout.activity_main);
 
@@ -208,11 +212,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(context,PickPathway.class);
             firstTimeOpeningApp = false;
             editor.putBoolean("FirstTimeOpening",false);
+            isFromResult = true;
             startActivityForResult(intent, 1);
         } else if (firstTimeOpeningApp && !timeToUpdateClasses) {
             //A case that shouldn't happen, but has to be protected against
             Intent intent = new Intent(context,PickPathway.class);
             firstTimeOpeningApp = false;
+            isFromResult = true;
             editor.putBoolean("FirstTimeOpening",false);
             startActivityForResult(intent, 1);
         } else {
@@ -236,12 +242,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
      public void onResume() {
         super.onResume();
+
+
         //This causes the application to quit when the back button is pressed in the other activities.
         //Otherwise, there would be no way to exit the app.
-        if (paused)
+        if (paused && !isFromResult)
         {
             finish();
         }
+        isFromResult = false;
 
     }
 

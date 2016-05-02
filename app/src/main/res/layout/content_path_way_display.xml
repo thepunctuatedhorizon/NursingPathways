@@ -33,7 +33,7 @@
                     android:layout_height="@dimen/activity_vertical_margin"
                     android:scaleType="fitXY"
                     android:src="@drawable/bg"
-                    android:tag="parallax=0.0"
+                    android:tag="parallax=0.35"
                     android:id="@+id/content_path_way_display_bg"
                     android:contentDescription="@string/pathwayGraphic" />
 

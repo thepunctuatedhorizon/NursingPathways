@@ -49,8 +49,17 @@ public class PickPathway extends AppCompatActivity {
         bttn.setText(category);
         if (category.equals(pathwayPossibilities[0])){
             bttn.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+        } else if (category.equals(pathwayPossibilities[1])) {
+            bttn.setBackground(getResources().getDrawable(R.drawable.bttn_blue));
+        }else if (category.equals(pathwayPossibilities[2])) {
+            bttn.setBackground(getResources().getDrawable(R.drawable.bttn_red));
+        }else if (category.equals(pathwayPossibilities[3])) {
+            bttn.setBackground(getResources().getDrawable(R.drawable.bttn_purple));
+        }else if (category.equals(pathwayPossibilities[4])) {
+            bttn.setBackground(getResources().getDrawable(R.drawable.bttn_yellow));
         } else{
-        bttn.setBackground(getResources().getDrawable(R.drawable.bttn_blue));}
+            bttn.setBackground(getResources().getDrawable(R.drawable.bttn_blue));}
+
         bttn.setTextColor(getResources().getColor(R.color.pathBlack));
         bttn.setTextSize(15);
         bttn.setOnClickListener(new View.OnClickListener() {

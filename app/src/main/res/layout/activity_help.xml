@@ -5,15 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:background="@drawable/bg"
     tools:context="com.jones.android.nursingpathways.Help">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/heres_what_the_colors_mean"
-        android:id="@+id/textView9"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentEnd="false" />
 
     <Button
         android:layout_width="wrap_content"
