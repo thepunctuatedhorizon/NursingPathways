@@ -13,6 +13,7 @@
         <com.github.florent37.parallax.ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/content_path_way_display_scrollview"
             >
 
             <RelativeLayout

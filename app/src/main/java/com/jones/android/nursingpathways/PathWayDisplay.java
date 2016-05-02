@@ -14,10 +14,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import com.github.florent37.parallax.ScrollView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +60,7 @@ public class PathWayDisplay extends AppCompatActivity {
 
         final LinearLayout layout = (LinearLayout) findViewById(R.id.content_path_way_display_linearLayout);
         final Context context = getApplicationContext();
-        final ImageView bg = (ImageView) findViewById(R.id.content_path_way_display_bg);
+        final ScrollView scroll = (ScrollView) findViewById(R.id.content_path_way_display_scrollview);
 
         CourseClassLoader courseClassLoader = new CourseClassLoader(context);
         theCourseObjects = courseClassLoader.loadClassObjects();
@@ -160,8 +161,17 @@ public class PathWayDisplay extends AppCompatActivity {
             }
         }
 
+        //Makes the bottom of the scrollview visible on load instead of top.
+        scroll.post(new Runnable() {
+            @Override
+            public void run() {
+                scroll.fullScroll(View.FOCUS_DOWN);
+            }
+        });
 
     }
+
+
 
     public void setTheButtonPopup(CourseClass course, View view){
         LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
