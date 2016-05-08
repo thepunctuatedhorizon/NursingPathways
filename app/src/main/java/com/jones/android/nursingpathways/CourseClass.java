@@ -6,13 +6,13 @@ package com.jones.android.nursingpathways;
 public class CourseClass {
 
     //These are the different types of information used by the course class.
-    String title;
-    String url;
-    boolean done;
-    boolean inProgress;
-    boolean anyPreReqs;
-    boolean isOpenForRegistration;
-    String preReqs;
+    private String title;
+    private String url;
+    private boolean done;
+    private boolean inProgress;
+    private boolean anyPreReqs;
+    private boolean isOpenForRegistration;
+    private String preReqs;
 
     public CourseClass()
     {

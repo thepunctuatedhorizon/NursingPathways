@@ -3,6 +3,7 @@ package com.jones.android.nursingpathways;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.jones.android.nursingpathways.CourseClass;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class CourseClassLoader {
     private List<CourseClass> coursesObject;
+    private List<CourseClass> sortedObject;
     final private int ALLIED_HEALTH = 100;
 
     String[] courseLabels;
@@ -50,6 +52,12 @@ public class CourseClassLoader {
 
 
         coursesObject = new ArrayList<CourseClass>();
+        sortedObject = new ArrayList<CourseClass>();
+        List<CourseClass> courseDone = new ArrayList<CourseClass>();
+        List<CourseClass> courseInProgress = new ArrayList<CourseClass>();
+        List<CourseClass> courseTop = new ArrayList<CourseClass>();
+        List<CourseClass> courseAvailable = new ArrayList<CourseClass>();
+
         for (int i = courseLabels.length-1; i>=0; i--)
         {
             boolean preReq = false;
@@ -84,12 +92,49 @@ public class CourseClassLoader {
                     preReq,
                     coursePrereqs[i],
                     isCourseAvailableForRegistration);
+
+
+            boolean added = false;
+            if (done){
+                courseDone.add(course);
+                added = true;
+            }
+            if (inProgress && !added){
+                courseInProgress.add(course);
+                added = true;
+            }
+            if (isCourseAvailableForRegistration && !added){
+                courseAvailable.add(course);
+                added = true;
+            }
+            if (!added){
+                courseTop.add(course);
+            }
             coursesObject.add(course);
         }
+
+
+            for (CourseClass course : courseTop) {
+                sortedObject.add(course);
+
+            }
+        for (CourseClass course : courseAvailable){
+            sortedObject.add(course);
+        }
+
+        for (CourseClass course : courseInProgress){
+            sortedObject.add(course);
+
+        }
+        for (CourseClass course : courseDone){
+            sortedObject.add(course);
+
+        }
+
     }
 
     //TODO: What if the list is NULL?
     public List<CourseClass> loadClassObjects(){
-        return coursesObject;
+        return sortedObject;
     }
 }

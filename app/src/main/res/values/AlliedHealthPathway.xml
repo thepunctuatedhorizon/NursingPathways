@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="AlliedHealthPathway">
+        <item>MATH 083</item>
         <item>ACDV 101</item>
         <item>ENGL 101</item>
-        <item>MATH 083</item>
         <item>BIOL 110</item>
         <item>PSYC 101</item>
-        <item>BIOL 210</item>
-        <item>PSYC 103</item>
-        <item>CMNS 101</item>
         <item>SOCL 101</item>
+        <item>CMNS 101</item>
+        <item>PSYC 103</item>
+        <item>BIOL 210</item>
         <item>BIOL 230</item>
         <item>NURS S01</item>
         <item>NURS S02</item>
@@ -23,10 +23,10 @@
         <item>NONE</item>
         <item>NONE</item>
         <item>NONE</item>
-        <item>BIOL 110</item>
+        <item>NONE</item>
+        <item>NONE</item>
         <item>PSYC 101</item>
-        <item>NONE</item>
-        <item>NONE</item>
+        <item>BIOL 110</item>
         <item>BIOL 210</item>
         <item>PERMISSION</item>
         <item>PERMISSION</item>
