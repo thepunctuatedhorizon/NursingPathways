@@ -68,7 +68,8 @@
                 android:id="@+id/btnEmail"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_below="@+id/btnPersonal"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"/>
 
             <TextView
                 android:layout_width="match_parent"

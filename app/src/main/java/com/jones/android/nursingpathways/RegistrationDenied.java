@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegistrationDenied extends AppCompatActivity {
-    private Button btn_email;
+    //private Button btn_email;
     private Button btn_financial;
     private Button btn_switchMajor;
     private Button btn_personal;
@@ -26,11 +26,11 @@ public class RegistrationDenied extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_long), LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(0,50,0,0);
 
-        btn_email = (Button)findViewById(R.id.btnEmail);
+        /*btn_email = (Button)findViewById(R.id.btnEmail);
         btn_email.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         btn_email.setTextColor(getResources().getColor(R.color.pathBlack));
         btn_email.setTextSize(16);
-        btn_email.setLayoutParams(params);
+        btn_email.setLayoutParams(params);*/
         btn_financial = (Button)findViewById(R.id.btnFinancial);
         btn_financial.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         btn_financial.setTextColor(getResources().getColor(R.color.pathBlack));
@@ -74,19 +74,19 @@ public class RegistrationDenied extends AppCompatActivity {
                 sympathy();
             }
         });
-        btn_email.setOnClickListener(new View.OnClickListener() {
+        /*btn_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setType("message/rfc822");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, "ksamuel1@umbc.edu");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, "email@email.com");
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Cannot register for course(s)");
                 emailIntent.putExtra(Intent.EXTRA_TEXT, "Enter message body here");
-                /*String uriText = "mailto:" + Uri.encode("ksamuel1@umbc.edu") +
+                *//*String uriText = "mailto:" + Uri.encode("email@email.com") +
                         "?subject=" + Uri.encode("Cannot register for course(s)") +
                         "&body=" + Uri.encode("Enter message body here");
                 Uri uri = Uri.parse(uriText);
-                emailIntent.setData(uri);*/
+                emailIntent.setData(uri);*//*
                 try {
                     startActivity(Intent.createChooser(emailIntent, "Send email"));
                     Log.d("","Sent email!");
@@ -97,7 +97,7 @@ public class RegistrationDenied extends AppCompatActivity {
                     sympathy();
                 }
             }
-        });
+        });*/
     }
 
     private void sympathy(){
