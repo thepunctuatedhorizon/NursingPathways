@@ -12,12 +12,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:id="@+id/scrollViewUpdateClassesReal">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/relativeLayoutUpdateReal"
             android:gravity="center_horizontal">
@@ -29,8 +29,6 @@
                 android:gravity="center_horizontal"
                 android:background="@android:drawable/btn_default"
                 android:textColor="@color/abc_primary_text_disable_only_material_light" />
-
-
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -64,6 +65,7 @@ public class UpdateClassesInProgress extends AppCompatActivity {
                 CheckBox checkBox = new CheckBox(context);
                 checkBox.setText(courseLabels[i]);
                 checkBox.setTextColor(Color.BLACK);
+                checkBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
                 checkBox.setLayoutParams(params);
                 linearLayout.addView(checkBox);
                 checkBoxesDone.add(checkBox);
@@ -74,7 +76,7 @@ public class UpdateClassesInProgress extends AppCompatActivity {
         if(checkBoxesDone.size()==0){
             //Really Dumb way of handling this.
             TextView textView = (TextView) findViewById(R.id.pleaseUpdate);
-            textView.setText("It Seems No Courses were in progress.  That's ok! Just hit save.");
+            textView.setText("It seems no courses were in progress.  That's OK! Just hit save.");
         }
         LinearLayout buttonContainer = new LinearLayout(context);
         buttonContainer.setGravity(Gravity.CENTER_HORIZONTAL);

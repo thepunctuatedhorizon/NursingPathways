@@ -181,7 +181,7 @@ public class PathWayDisplay extends AppCompatActivity {
         TextView txtView = (TextView) inflatedView.findViewById(R.id.txtInfo);
         Resources res = getResources();
         if (course.getPreReqs().equals("NONE")){
-            txtView.setText(R.string.courseNoPrereq);
+            txtView.setText("");
         } else {
             //TODO: Verify placeholder works properly at runtime.
             txtView.setText(res.getString(R.string.coursePrereq, course.getPreReqs()));

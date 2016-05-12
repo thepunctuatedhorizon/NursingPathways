@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -52,6 +53,7 @@ public class UpdateClasses extends AppCompatActivity {
                 CheckBox checkBox = new CheckBox(context);
                 checkBox.setText(courseLabels[i]);
                 checkBox.setTextColor(Color.BLACK);
+                checkBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
                 if(sharedPrefDone.getBoolean(courseLabels[i],true)){
                     checkBox.setChecked(true);
                 }
