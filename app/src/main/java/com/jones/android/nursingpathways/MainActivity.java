@@ -205,7 +205,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
         //This is where most of the application runs will end up.
         if (firstTimeOpeningApp&&timeToUpdateClasses) {
             //If it is the first time opening, both flags will be true and thus we launch first open screen.
@@ -713,7 +712,6 @@ public class MainActivity extends AppCompatActivity {
     private  void setUpAlarmsFirstInstall(){
         //When the user first uses the application, the alarms must be set up
 
-        //TODO: MAKE IT STOP SHOWING THE PROMPT ON FIRST INSTALL!
         Calendar calendar = Calendar.getInstance();
 
         int year       = calendar.get(Calendar.YEAR);
