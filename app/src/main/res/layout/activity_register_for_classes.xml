@@ -23,13 +23,14 @@
         android:textColor="#000000" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/i_need_some_time_dimen"
         android:layout_height="wrap_content"
         android:text="@string/i_need_some_time"
         android:id="@+id/delay"
         android:layout_gravity="right"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="false"
+        android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -40,13 +41,5 @@
         android:layout_below="@+id/textView3">
 
     </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btnRegisterComplete"
-        android:id="@+id/btnRegisterComplete"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" />
 
 </RelativeLayout>

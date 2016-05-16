@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="i_need_some_time_dimen">200dp</dimen>
     <integer name="pathway_app_button_width">550</integer>
     <integer name="pathway_long">675</integer>
     <integer name="pathway_checkbox_width">300</integer>

@@ -69,20 +69,20 @@ public class RegisterForClasses extends AppCompatActivity {
         nMgr.cancel(mNotification5);
 
 
-        btn_register_complete = (Button)findViewById(R.id.btnRegisterComplete);
-        btn_register_complete.setBackground(getResources().getDrawable(R.drawable.bttn_green));
-        btn_register_complete.setTextColor(getResources().getColor(R.color.pathBlack));
-        btn_register_complete.setTextSize(16);
-        btn_register_complete.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
+        //btn_register_complete = (Button)findViewById(R.id.btnRegisterComplete);
+        //btn_register_complete.setBackground(getResources().getDrawable(R.drawable.bttn_green));
+       // btn_register_complete.setTextColor(getResources().getColor(R.color.pathBlack));
+        //btn_register_complete.setTextSize(16);
+        //btn_register_complete.setOnClickListener(new View.OnClickListener() {
+          //   @Override
+          //   public void onClick(View v) {
 
-                 Intent intent = new Intent(RegisterForClasses.this,PathWayDisplay.class);
-                 startActivity(intent);
+          //       Intent intent = new Intent(RegisterForClasses.this,PathWayDisplay.class);
+           //      startActivity(intent);
 
-             }
+            // }
 
-             });
+           //  });
 
         btn_delay = (Button)findViewById(R.id.delay);
         btn_delay.setBackground(getResources().getDrawable(R.drawable.bttn_green));
