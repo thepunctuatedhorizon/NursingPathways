@@ -5,9 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.TypedValue;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -72,7 +71,7 @@ public class UpdateClasses extends AppCompatActivity {
         Button saveButton = new Button(context);
         Button resetButton = new Button(context);
 
-        saveButton.setText("Save");
+        saveButton.setText(R.string.save);
         saveButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         saveButton.setTextColor(getResources().getColor(R.color.pathBlack));
         saveButton.setTextSize(15);
@@ -114,7 +113,7 @@ public class UpdateClasses extends AppCompatActivity {
             }
         });
 
-        resetButton.setText("Reset");
+        resetButton.setText(R.string.reset);
         resetButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         resetButton.setTextColor(getResources().getColor(R.color.pathBlack));
         resetButton.setTextSize(15);
@@ -146,7 +145,7 @@ public class UpdateClasses extends AppCompatActivity {
 
 
         TextView textView = (TextView) findViewById(R.id.pleaseUpdateReal);
-        textView.setText("Please check any in progress courses you are taking");
+        textView.setText(R.string.checkInProgress);
 
         final String[] courseLabels = getResources().getStringArray(R.array.AlliedHealthPathway);
         final Context context = getApplicationContext();

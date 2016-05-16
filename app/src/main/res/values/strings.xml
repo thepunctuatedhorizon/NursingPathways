@@ -54,4 +54,7 @@
     <string name="have_you_taken_any_college_courses_previously">Have you taken any college courses previously?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="save">Save</string>
+    <string name="reset">Reset</string>
+    <string name="checkInProgress">Please check any in progress courses you are taking</string>
 </resources>
