@@ -19,7 +19,8 @@
         android:text="@string/it_is_time_to_check_blackboard"
         android:id="@+id/textView2"
         android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="false"/>
+        android:layout_alignParentLeft="false"
+        android:background="@drawable/bttn_green" />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,5 +29,6 @@
         android:id="@+id/bttnCheckBlackBoard"
         android:layout_below="@+id/textView2"
         android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="false" />
+        android:layout_alignParentStart="false"
+        android:layout_marginTop="20dp" />
 </LinearLayout>

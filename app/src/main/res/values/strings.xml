@@ -36,7 +36,7 @@
     <string name="it_is_time_to_register">It is time to register!</string>
     <string name="do_you_need_to_check_your_schedule_select_when_you_apos_d_like_to_be_reminded">Do you need to check your schedule? Select when you\'d like to be reminded.</string>
     <string name="it_is_time_to_check_blackboard">It is time to check Blackboard.</string>
-    <string name="i_need_some_time">I need some time</string>
+    <string name="i_need_some_time">\&#032;I need some time\&#032;</string>
     <string name="reset_all_progress">Reset All Progress</string>
     <string name="taking">Taking</string>
     <string name="edit_courses_taken">Edit courses taken</string>

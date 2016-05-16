@@ -32,7 +32,7 @@
             android:text="You should also select courses that your advisor has said will transfer.  It is ok if you haven&apos;t taken all of the classes listed."
             android:id="@+id/pleaseSetUp"
             android:gravity="center_horizontal"
-            android:background="@android:drawable/btn_default"
+            android:background="@drawable/bttn_green"
             android:textColor="@color/abc_search_url_text_selected" />
 
 

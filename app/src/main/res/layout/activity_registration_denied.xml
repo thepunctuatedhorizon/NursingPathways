@@ -32,7 +32,7 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="24sp"
                 android:gravity="center"
-                android:background="@android:drawable/screen_background_light_transparent"
+                android:background="@drawable/bttn_green"
                 android:textColor="@color/abc_search_url_text_selected" />
 
             <Button

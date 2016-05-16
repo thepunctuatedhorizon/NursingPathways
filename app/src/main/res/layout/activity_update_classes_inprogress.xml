@@ -27,7 +27,7 @@
                 android:text="@string/quot_please_select_the_courses_you_have_successfully_completed_or_that_your_advisor_has_said_will_transfer_it_is_ok_if_you_haven_apos_t_taken_all_of_the_classes_listed"
                 android:id="@+id/pleaseUpdate"
                 android:gravity="center_horizontal"
-                android:background="@android:drawable/btn_default"
+                android:background="@drawable/bttn_green"
                 android:textColor="#000000" />
 
 

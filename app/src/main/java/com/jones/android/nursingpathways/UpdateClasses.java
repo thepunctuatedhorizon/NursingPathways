@@ -53,7 +53,7 @@ public class UpdateClasses extends AppCompatActivity {
                 CheckBox checkBox = new CheckBox(context);
                 checkBox.setText(courseLabels[i]);
                 checkBox.setTextColor(Color.BLACK);
-                checkBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                //checkBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
                 if(sharedPrefDone.getBoolean(courseLabels[i],true)){
                     checkBox.setChecked(true);
                 }
