@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -180,12 +181,14 @@ public class PathWayDisplay extends AppCompatActivity {
         textView.setText(course.getTitle());
         TextView txtView = (TextView) inflatedView.findViewById(R.id.txtInfo);
         Resources res = getResources();
-        if (course.getPreReqs().equals("NONE")){
+        /*if (course.getPreReqs().equals("NONE")){
             txtView.setText("");
         } else {
             //TODO: Verify placeholder works properly at runtime.
             txtView.setText(res.getString(R.string.coursePrereq, course.getPreReqs()));
-        }
+        }*/
+        txtView.setText("See more information here:\n" + course.getUrl());
+        Linkify.addLinks(txtView, Linkify.WEB_URLS);
         TextView txtView2 = (TextView) inflatedView.findViewById(R.id.txtTaken);
         if (course.getDone()){
             txtView2.setText("");
