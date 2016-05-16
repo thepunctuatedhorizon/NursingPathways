@@ -52,7 +52,12 @@ public class UpdateClasses extends AppCompatActivity {
                 CheckBox checkBox = new CheckBox(context);
                 checkBox.setText(courseLabels[i]);
                 checkBox.setTextColor(Color.BLACK);
-                //checkBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+                checkBox.setPadding(5,5,5,5);
+                //checkBox.setGravity(Gravity.CENTER_HORIZONTAL);
+                //checkBox.setHeight(100);
+
+
+                //checkBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
                 if(sharedPrefDone.getBoolean(courseLabels[i],true)){
                     checkBox.setChecked(true);
                 }
@@ -176,7 +181,7 @@ public class UpdateClasses extends AppCompatActivity {
         Button saveButton = new Button(context);
         Button resetButton = new Button(context);
 
-        saveButton.setText("Save");
+        saveButton.setText(R.string.save);
         saveButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         saveButton.setTextColor(getResources().getColor(R.color.pathBlack));
         saveButton.setTextSize(15);
@@ -215,7 +220,7 @@ public class UpdateClasses extends AppCompatActivity {
             }
         });
 
-        resetButton.setText("Reset");
+        resetButton.setText(R.string.reset);
         resetButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         resetButton.setTextColor(getResources().getColor(R.color.pathBlack));
         resetButton.setTextSize(15);
