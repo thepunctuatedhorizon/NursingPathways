@@ -63,7 +63,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".RegisterForClasses" android:theme="@style/PathwayTheme" android:label="@string/app_name" android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
+        <activity android:name=".RegisterForClasses" android:theme="@style/PathwayTheme" android:label="@string/register" android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
         <activity android:name=".RegistrationDenied" android:noHistory="true" android:theme="@style/PathwayTheme" android:label="@string/app_name" android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
         <activity
             android:name=".Settings"
