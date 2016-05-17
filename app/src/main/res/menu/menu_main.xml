@@ -1,19 +1,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
+    android:panelFullBackground="@drawable/bttn_blue"
     tools:context="com.jones.android.nursingpathways.MainActivity">
     <item android:id="@+id/action_help"
         android:orderInCategory="99"
         android:title="@string/help"
+        android:itemBackground="@drawable/bttn_blue"
         app:showAsAction = "never"/>
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
+        android:itemBackground="@drawable/bttn_blue"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_real_help"
         android:orderInCategory="98"
         android:title="@string/realHelp"
+        android:itemBackground="@drawable/bttn_blue"
         app:showAsAction="never"/>
 </menu>
