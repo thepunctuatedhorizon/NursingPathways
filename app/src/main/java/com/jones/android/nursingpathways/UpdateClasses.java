@@ -80,6 +80,7 @@ public class UpdateClasses extends AppCompatActivity {
         saveButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         saveButton.setTextColor(getResources().getColor(R.color.pathBlack));
         saveButton.setTextSize(15);
+        saveButton.setPadding(5,5,5,5);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,6 +123,7 @@ public class UpdateClasses extends AppCompatActivity {
         resetButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         resetButton.setTextColor(getResources().getColor(R.color.pathBlack));
         resetButton.setTextSize(15);
+        resetButton.setPadding(5,5,5,5);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

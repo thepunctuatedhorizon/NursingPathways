@@ -6,20 +6,18 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import com.github.florent37.parallax.ScrollView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,6 +39,7 @@ public class RegisterForClasses extends AppCompatActivity {
 
     private Button btn_register_complete;
     private Button btn_delay;
+    private ScrollView scroll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +96,6 @@ public class RegisterForClasses extends AppCompatActivity {
             }
 
         });
-
 
         setUpAlarms();
 
