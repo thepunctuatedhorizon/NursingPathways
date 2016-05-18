@@ -20,5 +20,6 @@
         android:orderInCategory="98"
         android:title="@string/realHelp"
         android:itemBackground="@drawable/bttn_blue"
+        android:icon="@android:drawable/ic_menu_help"
         app:showAsAction="never"/>
 </menu>
