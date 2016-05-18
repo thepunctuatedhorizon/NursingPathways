@@ -27,10 +27,10 @@
     <string name="delay_registration">Delay Registration</string>
     <string name="here_in_the_settings_you_can_reset_your_progress_or_modify_your_progress_as_needed">Here in the settings, you can reset your progress or modify your progress as needed.</string>
     <string name="stop_being_stupid">Stop Being Stupid</string>
-    <string name="these_are_the_courses_you_are_ready_to_take_pleases_select_the_classes_you_would_like_to_register_for_now">These are the courses you are ready to take. Pleases select the classes you would like to register for now.</string>
+    <string name="these_are_the_courses_you_are_ready_to_take_pleases_select_the_classes_you_would_like_to_register_for_now">These are the courses you are ready to take.\nTap to view the description or register now</string>
     <string name="already_taken">Already Taken</string>
-    <string name="please_select_the_courses_you_have_successfully_completed_or_that_your_adviser_has_said_will_transfer_it_is_ok_if_you_haven_apos_t_taken_all_of_the_classes_listed">Please select the courses you have successfully completed or that your adviser has said will transfer. It is ok if you haven\'t taken all of the classes listed.</string>
-    <string name="quot_please_select_the_courses_you_have_successfully_completed_or_that_your_advisor_has_said_will_transfer_it_is_ok_if_you_haven_apos_t_taken_all_of_the_classes_listed">Please select the courses you have successfully completed or that your advisor has said will transfer. It is ok if you haven\'t taken all of the classes listed.</string>
+    <string name="please_select_the_courses_you_have_successfully_completed_or_that_your_adviser_has_said_will_transfer_it_is_ok_if_you_haven_apos_t_taken_all_of_the_classes_listed">Select the courses you have successfully completed or that your adviser has said will transfer.</string>
+    <string name="quot_please_select_the_courses_you_have_successfully_completed_or_that_your_advisor_has_said_will_transfer_it_is_ok_if_you_haven_apos_t_taken_all_of_the_classes_listed">Select the courses you have successfully completed or that your advisor has said will transfer.</string>
     <string name="allied_health_pathway">Allied Health Pathway</string>
     <string name="welcome">Welcome!</string>
     <string name="i_need_to_email_someone">I need to email someone</string>
