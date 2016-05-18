@@ -46,7 +46,7 @@ public class PathWayDisplay extends AppCompatActivity {
     private CharSequence mTitle;
     private String[] mPlanetTitles = {"School Resources", "Help", "Settings"};
 
-
+    private boolean operational = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -230,6 +230,7 @@ public class PathWayDisplay extends AppCompatActivity {
             @Override
             public void run() {
                 scroll.fullScroll(View.FOCUS_DOWN);
+                operational = true;
             }
         });
 
@@ -244,24 +245,25 @@ public class PathWayDisplay extends AppCompatActivity {
 
     private void selectItem(int position) {
 
+        if (operational) {
+            if (position == 0) {
 
-        if (position == 0) {
-
-            Intent intent = new Intent(getApplicationContext(), RegistrationDenied.class);
-            startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), RegistrationDenied.class);
+                startActivity(intent);
 
 
-        }
-        if (position == 1) {
-            Intent intent = new Intent(getApplicationContext(), Help.class);
-            startActivity(intent);
+            }
+            if (position == 1) {
+                Intent intent = new Intent(getApplicationContext(), Help.class);
+                startActivity(intent);
 
-        }
+            }
 
-        if (position == 2) {
-            Intent intent = new Intent(getApplicationContext(), Settings.class);
-            startActivity(intent);
+            if (position == 2) {
+                Intent intent = new Intent(getApplicationContext(), Settings.class);
+                startActivity(intent);
 
+            }
         }
         // update the main content by replacing fragments
         /*
