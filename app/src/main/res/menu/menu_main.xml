@@ -4,7 +4,7 @@
 
     android:panelFullBackground="@drawable/bttn_blue"
     tools:context="com.jones.android.nursingpathways.MainActivity">
-    <item android:id="@+id/action_help"
+    <!--<item android:id="@+id/action_help"
         android:orderInCategory="99"
         android:title="@string/help"
         android:itemBackground="@drawable/bttn_blue"
@@ -20,5 +20,5 @@
         android:orderInCategory="98"
         android:title="@string/realHelp"
         android:itemBackground="@drawable/bttn_blue"
-        app:showAsAction="never"/>
+        app:showAsAction="never"/>  -->
 </menu>

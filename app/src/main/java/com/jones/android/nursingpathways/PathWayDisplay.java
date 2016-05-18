@@ -363,6 +363,7 @@ public class PathWayDisplay extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        /*
         if (id == R.id.action_settings) {
             Intent intent = new Intent(getApplicationContext(), Settings.class);
             startActivity(intent);
@@ -379,7 +380,7 @@ public class PathWayDisplay extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
-
+        */
         return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
 
 
