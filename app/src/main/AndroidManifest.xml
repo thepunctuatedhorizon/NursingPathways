@@ -12,7 +12,7 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:noHistory="false"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/PathwayTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,17 +63,43 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".RegisterForClasses" android:theme="@style/PathwayTheme" android:label="@string/register" android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
-        <activity android:name=".RegistrationDenied" android:noHistory="true" android:theme="@style/PathwayTheme" android:label="@string/app_name" android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
+        <activity
+            android:name=".RegisterForClasses"
+            android:theme="@style/PathwayTheme"
+            android:label="@string/register"
+            android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
+
+        <activity
+            android:name=".RegistrationDenied"
+            android:noHistory="true"
+            android:theme="@style/PathwayTheme"
+            android:label="@string/app_name"
+            android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
+
         <activity
             android:name=".Settings"
             android:label="Settings"
             android:noHistory="true"
             android:theme="@style/PathwayTheme"
             android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
-        <activity android:name=".PickPathway" android:theme="@style/PathwayTheme" android:label="Select Your Pathway" />
-        <activity android:name=".Help" android:theme="@style/PathwayTheme" android:label="@string/app_name" android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
-        <activity android:name=".DelayRegistration" android:noHistory="true" android:theme="@style/PathwayTheme" android:label="@string/app_name" android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"></activity>
+
+        <activity
+            android:name=".PickPathway"
+            android:theme="@style/PathwayTheme"
+            android:label="Select Your Pathway" />
+
+        <activity
+            android:name=".Help"
+            android:theme="@style/PathwayTheme"
+            android:label="@string/app_name"
+            android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
+
+        <activity
+            android:name=".DelayRegistration"
+            android:noHistory="true"
+            android:theme="@style/PathwayTheme"
+            android:label="@string/app_name"
+            android:parentActivityName="com.jones.android.nursingpathways.PathWayDisplay"/>
     </application>
 
 </manifest>

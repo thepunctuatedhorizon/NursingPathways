@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.jones.android.nursingpathways.PathWayDisplay">
-
-   <!-- <android.support.design.widget.AppBarLayout
+    android:layout_height="match_parent">
+    <!-- The main content view -->
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="com.jones.android.nursingpathways.PathWayDisplay"
+        >
+        <include layout="@layout/content_path_way_display" />
+    </android.support.design.widget.CoordinatorLayout>
 
-
-
-    </android.support.design.widget.AppBarLayout> -->
-
-    <include layout="@layout/content_path_way_display" />
-
-
-
-</android.support.design.widget.CoordinatorLayout>
+    <!-- The navigation drawer -->
+    <ListView android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:paddingTop="28dp"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="2dp"
+        android:background="#111"/>
+</android.support.v4.widget.DrawerLayout>

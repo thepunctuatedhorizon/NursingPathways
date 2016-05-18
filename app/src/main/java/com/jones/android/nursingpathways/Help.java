@@ -1,7 +1,7 @@
 package com.jones.android.nursingpathways;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -11,6 +11,8 @@ public class Help extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_long), LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(0,50,0,0);
@@ -40,4 +42,7 @@ public class Help extends AppCompatActivity {
         redBttn.setTextSize(18);
         redBttn.setLayoutParams(params);
     }
+
+
+
 }
