@@ -93,6 +93,7 @@ public class PickPathway extends AppCompatActivity {
     }
 
     private void resetAndAskForWhichPath(String categoryChosen,int position){
+        getSupportActionBar().setTitle("Select Your Program");
         linearLayout.removeAllViews();
         String[] pathwaySelected;
         switch(position){
