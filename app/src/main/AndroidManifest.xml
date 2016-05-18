@@ -27,7 +27,8 @@
         <activity
             android:name=".PathWayDisplay"
             android:label="@string/app_name"
-            android:theme="@style/PathwayTheme" />
+            android:theme="@style/PathwayTheme"
+            android:launchMode="singleTop" />
         <activity
             android:name=".SetUp"
             android:label="Select Completed Courses "
