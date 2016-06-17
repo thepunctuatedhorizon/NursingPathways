@@ -19,19 +19,20 @@ import android.widget.PopupWindow;
 public class FirstOpenScreen extends AppCompatActivity {
 
     //This is shown to the students when they first install.
-    //TODO: MAKE THE INTERFACE ACCEPTABLE!
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_open_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
+        //Setting up the yes button
         final Button yesButton = (Button) findViewById(R.id.yesButton);
         yesButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         yesButton.setTextColor(getResources().getColor(R.color.pathBlack));
         yesButton.setTextSize(15);
 
+        //Setting up the no button
         final Button noButton = (Button) findViewById(R.id.noButton);
         noButton.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         noButton.setTextColor(getResources().getColor(R.color.pathBlack));
@@ -40,10 +41,7 @@ public class FirstOpenScreen extends AppCompatActivity {
 
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                finishWithResult();
-            }
+            public void onClick(View view) { finishWithResult(); }
         });
 
         noButton.setOnClickListener(new View.OnClickListener() {

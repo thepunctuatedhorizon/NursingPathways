@@ -15,10 +15,16 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+//This class is designed to implement the Delay registration requirement.  It will present the user with a prompt
+//Asking how long do they want to delay.  Upon selection, the class sets the timer and redirects the user to the pathwaydisplay.
 public class DelayRegistration extends AppCompatActivity {
+
+    //These are for the alarm.
     private static Intent alarmIntent = null;
     private static PendingIntent pendingIntent = null;
     private static AlarmManager alarmManager = null;
+
+    //These variables allow access to the buttons
     private Button btn_15Min;
     private Button btn_2Hours;
     private Button btn_tomorrow;
@@ -30,6 +36,9 @@ public class DelayRegistration extends AppCompatActivity {
         setContentView(R.layout.activity_delay_registration);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        //These integers hold the address of the notifications that could have popped up.  I'm not sure why we want
+        //to remove them.
+        //TODO: DO WE ACTUALLY NEED TO DISMISS THE NOTIFICATIONS?
         int mNotificationId = 071;
         int m2NotificationId = 061;
         int m3NotificationId = 051;
@@ -47,36 +56,45 @@ public class DelayRegistration extends AppCompatActivity {
         nMgr.cancel(mNotification4);
         nMgr.cancel(mNotification5);
 
+        //Parameters for the layout.
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_long), LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0,50,0,0);
 
+        //This allows access to the buttons
         btn_15Min = (Button) findViewById(R.id.btn_15Min);
         btn_2Hours = (Button) findViewById(R.id.btn_2Hours);
         btn_tomorrow = (Button) findViewById(R.id.btn_tomorrow);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_long), LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins(0,50,0,0);
+
+        //This sets the style of teh button
         btn_15Min.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         btn_15Min.setTextColor(getResources().getColor(R.color.pathBlack));
         btn_15Min.setTextSize(16);
         btn_15Min.setLayoutParams(params);
 
+        //This sets the style of teh button
         btn_2Hours.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         btn_2Hours.setTextColor(getResources().getColor(R.color.pathBlack));
         btn_2Hours.setTextSize(16);
         btn_2Hours.setLayoutParams(params);
 
+        //This sets the style of teh button
         btn_tomorrow.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         btn_tomorrow.setTextColor(getResources().getColor(R.color.pathBlack));
         btn_tomorrow.setTextSize(16);
         btn_tomorrow.setLayoutParams(params);
 
+        //This sets the timer for each timer button.
         setRegistrationReminderOnClickListener(btn_15Min, 15);
         setRegistrationReminderOnClickListener(btn_2Hours, 120);
         setRegistrationReminderOnClickListener(btn_tomorrow, 1440);
 
+        //This sets up the never button with the right style
         btn_never = (Button) findViewById(R.id.btn_never);
         btn_never.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         btn_never.setTextColor(getResources().getColor(R.color.pathBlack));
         btn_never.setTextSize(16);
         btn_never.setLayoutParams(params);
+        //This directs the user to the 'need help' page.
         btn_never.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +105,8 @@ public class DelayRegistration extends AppCompatActivity {
 
     }
 
+    //This function allows code reuse for setting the button timers.
+    //It creates an onclicklistener that sets the alarm and directs the user to the pathway.
     public void setRegistrationReminderOnClickListener(Button btn, final int minutes){
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -550,7 +550,6 @@ public class RegisterForClasses extends AppCompatActivity {
 
         }
     }
-        //TODO: FIX THE seT uP ALARMS IT"S ADDING a new registration prompt!!!!
 
     private void setTimeToShowRegistrationPrompt(int seconds){
         int alarmId = 013423;

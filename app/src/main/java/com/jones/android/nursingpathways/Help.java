@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+
+//This class allows students to figure out what the colors mean.  Nothing more.
 public class Help extends AppCompatActivity {
 
     @Override
@@ -13,7 +15,7 @@ public class Help extends AppCompatActivity {
         setContentView(R.layout.activity_help);
 
 
-
+        //This simply sets up the colors for each of the buttons
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_long), LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(0,50,0,0);
 
