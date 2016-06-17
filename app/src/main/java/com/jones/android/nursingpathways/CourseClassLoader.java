@@ -12,8 +12,15 @@ import java.util.List;
 
 
 public class CourseClassLoader {
+
+    //This list loads the courses (unsorted) from the booleans stored in shared preferences.
     private List<CourseClass> coursesObject;
+
+    //This list allows the courses to be sorted according to their status as done, inprogress, available, and not able to take
     private List<CourseClass> sortedObject;
+
+    //This variable is the default pathway.
+    //TODO: PUT IN ALL OF THE SUB PATHWAYS AND ALLOW THE COURSE LOADER TO LOAD THEM INTO MEMORY
     final private int ALLIED_HEALTH = 100;
 
     String[] courseLabels;

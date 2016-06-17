@@ -9,9 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-/**
- * Created by jones on 3/19/2016.
- */
 
 public class BlackboardAlarmReceiver extends BroadcastReceiver {
 
@@ -21,10 +18,6 @@ public class BlackboardAlarmReceiver extends BroadcastReceiver {
     {
         try
         {
-            //Commented out what IDE says are unused variables. -DD
-           // Bundle bundle = intent.getExtras();
-           // String message = bundle.getString("alarm_message");
-            Toast.makeText(context, "We are showing the toast.", Toast.LENGTH_SHORT).show();
             Notification.Builder notificationBuilder = new Notification.Builder(context)
                     .setSmallIcon(R.drawable.pathway_icon)
                     .setContentTitle("Blackboard")
@@ -48,7 +41,6 @@ public class BlackboardAlarmReceiver extends BroadcastReceiver {
         }
         catch (Exception e)
         {
-            Toast.makeText(context, "There was an error somewhere, but we still received an alarm", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }

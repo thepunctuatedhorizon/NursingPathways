@@ -6,12 +6,20 @@ package com.jones.android.nursingpathways;
 public class CourseClass {
 
     //These are the different types of information used by the course class.
+    //This will store the title of the course
     private String title;
+    //This will store the url to the quick register link
     private String url;
+    //This will store the status of whether this course has been completed
     private boolean done;
+    //This will store the status of whether this course is in progress or not.
     private boolean inProgress;
+    //This will store the fact that the course has a prerequisite or not.
     private boolean anyPreReqs;
+    //This will store the boolean that determines whether this particular course is open for registration
+    //This will be set by a calculation.
     private boolean isOpenForRegistration;
+    //This will store the name of the prerequisite course (if there is one, else it will be "NONE")
     private String preReqs;
 
     public CourseClass()
@@ -29,7 +37,6 @@ public class CourseClass {
     public CourseClass(String title, String url, boolean done, boolean inProgress, boolean anyPreReqs, String preReqs, boolean isOpenForRegistration){
         super();
         //The proper constructor.
-        //TODO: Nullable inputs?
         this.title = title;
         this.url = url;
         this.done = done;
