@@ -26,11 +26,7 @@ public class RegistrationDenied extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(getResources().getInteger(R.integer.pathway_long), LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(0,50,0,0);
 
-        /*btn_email = (Button)findViewById(R.id.btnEmail);
-        btn_email.setBackground(getResources().getDrawable(R.drawable.bttn_green));
-        btn_email.setTextColor(getResources().getColor(R.color.pathBlack));
-        btn_email.setTextSize(16);
-        btn_email.setLayoutParams(params);*/
+
         btn_financial = (Button)findViewById(R.id.btnFinancial);
         btn_financial.setBackground(getResources().getDrawable(R.drawable.bttn_green));
         btn_financial.setTextColor(getResources().getColor(R.color.pathBlack));
